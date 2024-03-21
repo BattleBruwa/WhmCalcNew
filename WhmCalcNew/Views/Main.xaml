@@ -1,0 +1,73 @@
+﻿<Window x:Class="WhmCalcNew.Views.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WhmCalcNew.Views"
+        mc:Ignorable="d"
+        Title="Main"
+        Height="450"
+        Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#202030"
+            CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0"
+                        Grid.Row="0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBox x:Name="AttacksBox"
+                         Margin="20 0 0 0"
+                         Text="A"
+                         Style="{StaticResource TextBoxTheme}" />
+                <TextBox x:Name="AccuracyBox"
+                         Text="WS"
+                         Margin="20 0 0 0"
+                         Style="{StaticResource TextBoxTheme}" />
+                <TextBox x:Name="StrengthBox"
+                         Text="S"
+                         Margin="20 0 0 0"
+                         Style="{StaticResource TextBoxTheme}" />
+                <TextBox x:Name="ArmorPenBox"
+                         Text="AP"
+                         Margin="20 0 20 0"
+                         Style="{StaticResource TextBoxTheme}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="0"
+                        Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBox x:Name="ToughnessBox"
+                         Margin="20 0 0 0"
+                         Text="T"
+                         Style="{StaticResource TextBoxTheme}" />
+                <TextBox x:Name="SaveBox"
+                         Text="Sv"
+                         Margin="20 0 0 0"
+                         Style="{StaticResource TextBoxTheme}" />
+                <TextBox x:Name="WoundsBox"
+                         Text="W"
+                         Margin="20 0 0 0"
+                         Style="{StaticResource TextBoxTheme}" />
+                <ComboBox Margin="20 0 20 0"
+                          Width="80"
+                          Height="80"
+                          Padding="5"
+                          x:Name="ChoiceBox"
+                          Style="{StaticResource ComboBoxTheme}" />
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
