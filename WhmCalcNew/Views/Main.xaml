@@ -68,6 +68,21 @@
                           Style="{StaticResource ComboBoxTheme}" />
 
             </StackPanel>
+            <ListView Grid.Row="2"
+                      ItemsSource="{Binding Targets}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding UnitName}"
+                                        Header="Name" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Thoughness}"
+                                        Header="Tougthness" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Save}"
+                                        Header="Save" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Wounds}"
+                                        Header="Wounds" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Border>
 </Window>

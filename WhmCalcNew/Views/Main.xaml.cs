@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
 {
@@ -22,6 +23,8 @@ namespace WhmCalcNew.Views
         public Main()
         {
             InitializeComponent();
+            MainViewModel mainViewModel = new MainViewModel();
+            this.DataContext = mainViewModel;
         }
     }
 }
