@@ -9,8 +9,10 @@
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Border CornerRadius="10"
                                 Background="#292739"
-                                Width="80"
-                                Height="80">
+                                BorderBrush="#FF97A0A5"
+                                BorderThickness="1"
+                                Width="70"
+                                Height="70" Margin="0 20 0 0">
                             <Grid>
                                 <TextBox Text="{TemplateBinding Text}"
                                          BorderThickness="0"

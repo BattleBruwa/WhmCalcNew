@@ -6,19 +6,24 @@
         xmlns:local="clr-namespace:WhmCalcNew.Views"
         mc:Ignorable="d"
         Title="Main"
-        Height="450"
-        Width="800"
+        Height="700"
+        Width="450"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
     <Border Background="#202030"
-            CornerRadius="20">
+            CornerRadius="20"
+            BorderBrush="#FF97A0A5"
+            BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="40" />
                 <RowDefinition />
+                <RowDefinition Height="80" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -26,63 +31,163 @@
                         Grid.Row="0"
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <TextBox x:Name="AttacksBox"
-                         Margin="20 0 0 0"
-                         Text="A"
-                         Style="{StaticResource TextBoxTheme}" />
-                <TextBox x:Name="AccuracyBox"
-                         Text="WS"
-                         Margin="20 0 0 0"
-                         Style="{StaticResource TextBoxTheme}" />
-                <TextBox x:Name="StrengthBox"
-                         Text="S"
-                         Margin="20 0 0 0"
-                         Style="{StaticResource TextBoxTheme}" />
-                <TextBox x:Name="ArmorPenBox"
-                         Text="AP"
-                         Margin="20 0 20 0"
-                         Style="{StaticResource TextBoxTheme}" />
+                <StackPanel Orientation="Vertical">
+                    <Label Content="A"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="AttacksBox"
+                             Text="0"
+                             Margin="10 5 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="WS"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="AccuracyBox"
+                             Text="0"
+                             Margin="10 5 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="S"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="StrengthBox"
+                             Text="0"
+                             Margin="10 5 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="AP"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="ArmorPenBox"
+                             Text="0"
+                             Margin="10 5 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="D"
+                           Margin="0 20 0 0"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="DamageBox"
+                             Text="0"
+                             Margin="10 5 10 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
             </StackPanel>
 
+
+
+            <Grid Grid.Column="0"
+                  Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Grid.Column="0"
+                          Grid.Row="0"
+                          Content="Lethal Hits"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="0"
+                          Grid.Row="1"
+                          Content="Procs on 5+"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="1"
+                          Grid.Row="0"
+                          Content="Sustained Hits"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="1"
+                          Grid.Row="1"
+                          Content="Procs on 5+"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="2"
+                          Grid.Row="0"
+                          Content="Devastating wounds"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="2"
+                          Grid.Row="1"
+                          Content="Procs on 5+"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+            </Grid>
+
+
+
+            <Grid Grid.Row="2"
+                  Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Border BorderBrush="#FF97A0A5"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        Width="190"
+                        Height="40"
+                        Padding="1"
+                        Background="#292739"
+                        HorizontalAlignment="Left"
+                        Margin="30 0 0 0">
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               TextWrapping="Wrap"
+                               x:Name="TargetTextBlock"
+                               Text="Target:"
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Foreground="White"
+                               FontSize="20" />
+                </Border>
+
+
+                <ComboBox Grid.Row="0"
+                          Grid.Column="1"
+                          Width="190"
+                          Height="40"
+                          HorizontalAlignment="Right"
+                          Margin="0 0 30 0"
+                          HorizontalContentAlignment="Center"
+                          Padding="1"
+                          x:Name="TargetChoiceBox">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="20"
+                                       Text="{Binding UnitName}"
+                                       TextAlignment="Center" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+
+
+
             <StackPanel Grid.Column="0"
-                        Grid.Row="1"
+                        Grid.Row="3"
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <TextBox x:Name="ToughnessBox"
-                         Margin="20 0 0 0"
-                         Text="T"
+                         Margin="20 0 0 20"
+                         Text="{Binding Toughness}"
                          Style="{StaticResource TextBoxTheme}" />
                 <TextBox x:Name="SaveBox"
-                         Text="Sv"
-                         Margin="20 0 0 0"
+                         Text="{Binding Save}"
+                         Margin="20 0 0 20"
                          Style="{StaticResource TextBoxTheme}" />
                 <TextBox x:Name="WoundsBox"
-                         Text="W"
-                         Margin="20 0 0 0"
+                         Text="{Binding Wounds}"
+                         Margin="20 0 0 20"
                          Style="{StaticResource TextBoxTheme}" />
-                <ComboBox Margin="20 0 20 0"
-                          Width="80"
-                          Height="80"
-                          Padding="5"
-                          x:Name="ChoiceBox"
-                          Style="{StaticResource ComboBoxTheme}" />
-
             </StackPanel>
-            <ListView Grid.Row="2"
-                      ItemsSource="{Binding Targets}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding UnitName}"
-                                        Header="Name" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Thoughness}"
-                                        Header="Tougthness" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Save}"
-                                        Header="Save" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Wounds}"
-                                        Header="Wounds" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
         </Grid>
     </Border>
 </Window>

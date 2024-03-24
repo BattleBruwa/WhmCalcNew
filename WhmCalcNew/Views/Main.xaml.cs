@@ -25,6 +25,8 @@ namespace WhmCalcNew.Views
             InitializeComponent();
             MainViewModel mainViewModel = new MainViewModel();
             this.DataContext = mainViewModel;
+            TargetChoiceBox.ItemsSource = mainViewModel.Targets;
+            WoundsBox.DataContext = TargetChoiceBox.Items.CurrentItem;
         }
     }
 }

@@ -9,6 +9,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles\TextBoxTheme.xaml" />
                 <ResourceDictionary Source="Styles\ComboBoxTheme.xaml" />
+                <ResourceDictionary Source="Styles\LabelTheme.xaml" />
+                <ResourceDictionary Source="Styles\CheckBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
