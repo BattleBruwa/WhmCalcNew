@@ -12,6 +12,7 @@ namespace WhmCalcNew.Models
         public byte? Accuracy { get; set; }
         public byte? Strength { get; set; }
         public byte? ArmorPen { get; set; }
+        public string? Damage { get; set; }
 
         public AttackingUnit()
         { 

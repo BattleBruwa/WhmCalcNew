@@ -14,29 +14,30 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
     <Border Background="#202030"
-            CornerRadius="20"
-            BorderBrush="#FF97A0A5"
-            BorderThickness="2">
+            CornerRadius="20">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="80" />
-                <RowDefinition Height="40" />
-                <RowDefinition />
-                <RowDefinition Height="80" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="41" />
+                <RowDefinition Height="135" />
+                <RowDefinition Height="100" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Column="0"
+            <StackPanel x:Name="AttackStatsPanel"
                         Grid.Row="0"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        Width="410"
+                        DataContext="{Binding AttackingUnit}"
+                        Margin="0,15,0,0">
                 <StackPanel Orientation="Vertical">
                     <Label Content="A"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AttacksBox"
                              Text="0"
-                             Margin="10 5 0 0"
+                             Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -44,7 +45,7 @@
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AccuracyBox"
                              Text="0"
-                             Margin="10 5 0 0"
+                             Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -52,7 +53,7 @@
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="StrengthBox"
                              Text="0"
-                             Margin="10 5 0 0"
+                             Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -60,24 +61,26 @@
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="ArmorPenBox"
                              Text="0"
-                             Margin="10 5 0 0"
+                             Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="D"
-                           Margin="0 20 0 0"
+                           Margin="0 10 0 0"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="DamageBox"
                              Text="0"
-                             Margin="10 5 10 0"
+                             Margin="10 0 10 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
             </StackPanel>
 
 
 
-            <Grid Grid.Column="0"
-                  Grid.Row="1">
+            <Grid x:Name="AttackProp"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  Margin="0,5,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -110,7 +113,7 @@
 
                 <CheckBox Grid.Column="2"
                           Grid.Row="0"
-                          Content="Devastating wounds"
+                          Content="Dev. wounds"
                           Style="{StaticResource CheckBoxTheme}" />
 
                 <CheckBox Grid.Column="2"
@@ -128,12 +131,12 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                
-                <Border BorderBrush="#FF97A0A5"
+
+                <Border BorderBrush="Transparent"
                         BorderThickness="1"
                         CornerRadius="5"
                         Width="190"
-                        Height="40"
+                        Height="39"
                         Padding="1"
                         Background="#292739"
                         HorizontalAlignment="Left"
@@ -150,15 +153,16 @@
                 </Border>
 
 
-                <ComboBox Grid.Row="0"
+                <ComboBox x:Name="TargetChoiceBox"
+                          Grid.Row="0"
                           Grid.Column="1"
                           Width="190"
-                          Height="40"
+                          Height="39"
                           HorizontalAlignment="Right"
                           Margin="0 0 30 0"
                           HorizontalContentAlignment="Center"
                           Padding="1"
-                          x:Name="TargetChoiceBox">
+                          ItemsSource="{Binding Targets}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="20"
@@ -169,25 +173,137 @@
                 </ComboBox>
             </Grid>
 
-
-
-            <StackPanel Grid.Column="0"
+            <StackPanel x:Name="TargetStatsPanel"
                         Grid.Row="3"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center">
-                <TextBox x:Name="ToughnessBox"
-                         Margin="20 0 0 20"
-                         Text="{Binding Toughness}"
-                         Style="{StaticResource TextBoxTheme}" />
-                <TextBox x:Name="SaveBox"
-                         Text="{Binding Save}"
-                         Margin="20 0 0 20"
-                         Style="{StaticResource TextBoxTheme}" />
-                <TextBox x:Name="WoundsBox"
-                         Text="{Binding Wounds}"
-                         Margin="20 0 0 20"
-                         Style="{StaticResource TextBoxTheme}" />
+                        HorizontalAlignment="Center"
+                        DataContext="{Binding ElementName=TargetChoiceBox}"
+                        Width="240">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="T"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="ToughnessBox"
+                             Text="{Binding SelectedItem.Thoughness}"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Sv"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="SaveBox"
+                             Text="{Binding SelectedItem.Save}"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="W"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="WoundsBox"
+                             Text="{Binding SelectedItem.Wounds}"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
             </StackPanel>
+
+
+            <Grid x:Name="TargetPropPanel"
+                  Grid.Column="0"
+                  Grid.Row="4"
+                  Margin="0,5,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Grid.Column="0"
+                          Grid.Row="0"
+                          Content="-1 to Hit"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="0"
+                          Grid.Row="1"
+                          Content="-1 AP"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <CheckBox Grid.Column="1"
+                          Grid.Row="0"
+                          Content="-1 to Wound"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <!--<CheckBox Grid.Column="1"
+                          Grid.Row="1"
+                          Content="Procs on 5+"
+                          Style="{StaticResource CheckBoxTheme}" />-->
+
+                <CheckBox Grid.Column="2"
+                          Grid.Row="0"
+                          Content="-1 Damage"
+                          Style="{StaticResource CheckBoxTheme}" />
+
+                <!--<CheckBox Grid.Column="2"
+                          Grid.Row="1"
+                          Content="Procs on 5+"
+                          Style="{StaticResource CheckBoxTheme}" />-->
+
+            </Grid>
+
+
+            <StackPanel x:Name="OutputPanel"
+                        Grid.Row="5"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Width="410"
+                        Margin="0,15,0,0">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Output"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="OutHitsBox"
+                             Text="0"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Output"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="OutWoundsBox"
+                             Text="0"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Output"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="OutUnsavedBox"
+                             Text="0"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Output"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="OutDeadModelsBox"
+                             Text="0"
+                             Margin="10 0 0 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Output"
+                           Margin="0 10 0 0"
+                           Style="{StaticResource LabelTheme}" />
+                    <TextBox x:Name="OutTotalDamageBox"
+                             Text="0"
+                             Margin="10 0 10 0"
+                             Style="{StaticResource TextBoxTheme}" />
+                </StackPanel>
+            </StackPanel>
+
+
+
         </Grid>
     </Border>
 </Window>

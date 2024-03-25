@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WhmCalcNew.Engine;
 using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
@@ -25,8 +26,6 @@ namespace WhmCalcNew.Views
             InitializeComponent();
             MainViewModel mainViewModel = new MainViewModel();
             this.DataContext = mainViewModel;
-            TargetChoiceBox.ItemsSource = mainViewModel.Targets;
-            WoundsBox.DataContext = TargetChoiceBox.Items.CurrentItem;
         }
     }
 }

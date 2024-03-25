@@ -5,14 +5,34 @@ namespace WhmCalcNew.ViewModel
 {
     public class MainViewModel
     {
-        public ObservableCollection<TargetUnit> Targets { get; set; }
+        private ObservableCollection<TargetUnit>? _targets;
+        public ObservableCollection<TargetUnit>? Targets
+        {
+            get { return _targets; }
+            set
+            {
+                _targets = value; 
+            }
+        }
 
-        public string DirPath { get; set; }
+        private AttackingUnit? _attackingUnit;
+        public AttackingUnit? AttackingUnit
+        {
+            get { return _attackingUnit; }
+            set
+            {
+                _attackingUnit = value;
+            }
+        }
+
+        public float CalculatedDamage { get; set; }
 
         public MainViewModel()
         {
             TargetManager.FillCollection();
             Targets = TargetManager.GetTargets();
+            AttackingUnit = new AttackingUnit();
+            
         }
     }
 }
