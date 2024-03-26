@@ -16,5 +16,10 @@ namespace WhmCalcNew.Models
         {
             ExcelDataProvider.FillTargetCollection(_TargetsCollection);
         }
+
+        static TargetManager()
+        {
+            FillCollection();
+        }
     }
 }

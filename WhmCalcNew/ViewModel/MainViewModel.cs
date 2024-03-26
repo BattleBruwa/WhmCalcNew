@@ -25,13 +25,21 @@ namespace WhmCalcNew.ViewModel
             }
         }
 
-        public float CalculatedDamage { get; set; }
+        private OutputDataManager? _outputData;
+        public OutputDataManager? OutputData
+        {
+            get { return _outputData; }
+            set
+            {
+                _outputData = value;
+            }
+        }
 
         public MainViewModel()
         {
-            TargetManager.FillCollection();
             Targets = TargetManager.GetTargets();
             AttackingUnit = new AttackingUnit();
+            OutputData = new OutputDataManager();
             
         }
     }
