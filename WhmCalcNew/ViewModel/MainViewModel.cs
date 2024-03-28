@@ -1,9 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using WhmCalcNew.Models;
+using WhmCalcNew.Views;
 
 namespace WhmCalcNew.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<TargetUnit>? _targets;
         public ObservableCollection<TargetUnit>? Targets
@@ -11,7 +15,8 @@ namespace WhmCalcNew.ViewModel
             get { return _targets; }
             set
             {
-                _targets = value; 
+                _targets = value;
+                OnPropertyChanged();
             }
         }
 
@@ -22,16 +27,19 @@ namespace WhmCalcNew.ViewModel
             set
             {
                 _attackingUnit = value;
+                OnPropertyChanged();
             }
         }
 
         private OutputDataManager? _outputData;
+
         public OutputDataManager? OutputData
         {
             get { return _outputData; }
             set
             {
                 _outputData = value;
+                OnPropertyChanged();
             }
         }
 
@@ -40,7 +48,14 @@ namespace WhmCalcNew.ViewModel
             Targets = TargetManager.GetTargets();
             AttackingUnit = new AttackingUnit();
             OutputData = new OutputDataManager();
-            
+
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

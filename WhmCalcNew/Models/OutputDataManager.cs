@@ -1,8 +1,9 @@
-﻿using WhmCalcNew.Engine;
+﻿using System.ComponentModel;
+using WhmCalcNew.Engine;
 
 namespace WhmCalcNew.Models
 {
-    public class OutputDataManager
+    public class OutputDataManager : INotifyPropertyChanged
     {
         public float? HitsNum { get; set; }
         public float? WoundsNum { get; set; }
@@ -10,7 +11,9 @@ namespace WhmCalcNew.Models
         public int? DeadModelsNum { get; set; }
         public float? TotalDamageNum { get; set; }
 
-        public void GetHits(AttackingUnit attacker, TargetUnit target)
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void GetHits(AttackingUnit attacker, TargetUnit target)
         {
             float attacks = AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
             float hitProb = AccuracyCalc.ToHitRoll(attacker, target);
@@ -18,21 +21,21 @@ namespace WhmCalcNew.Models
             this.HitsNum = attacks * hitProb;
         }
 
-        public void GetWounds(AttackingUnit attacker, TargetUnit target)
+        private void GetWounds(AttackingUnit attacker, TargetUnit target)
         {
             float woundProb = ToWoundCalc.ToWoundRoll(attacker, target);
 
             this.WoundsNum = this.HitsNum * woundProb;
         }
 
-        public void GetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
+        private void GetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
         {
             float saveProp = ArmorSaveCalc.ToSaveRoll(attacker, target);
 
             this.UnSavedNum = this.WoundsNum - (saveProp * this.WoundsNum);
         }
 
-        public void GetDeadModels(AttackingUnit attacker, TargetUnit target)
+        private void GetDeadModels(AttackingUnit attacker, TargetUnit target)
         {
             float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
             int? deadModels = 0;
@@ -62,7 +65,7 @@ namespace WhmCalcNew.Models
             this.DeadModelsNum = deadModels;
         }
 
-        public void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
+        private void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
         {
             this.TotalDamageNum = TotalDamageCalc.GetTotalDamage(attacker, target);
         }
