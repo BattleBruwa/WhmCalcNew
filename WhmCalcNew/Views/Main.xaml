@@ -30,22 +30,21 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Width="410"
-                        DataContext="{Binding AttackingUnit}"
+                        DataContext="{Binding AttackingUnit, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                         Margin="0,15,0,0">
                 <StackPanel Orientation="Vertical">
                     <Label Content="A"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AttacksBox"
-                             Text="{Binding Attacks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding Attacks}"
                              Margin="10 0 0 0"
-                             Style="{StaticResource TextBoxTheme}"
-                             TextChanged="AttacksBox_TextChanged" />
+                             Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="WS"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AccuracyBox"
-                             Text="{Binding Accuracy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding Accuracy}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -53,7 +52,7 @@
                     <Label Content="S"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="StrengthBox"
-                             Text="{Binding Strength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding Strength}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -61,7 +60,7 @@
                     <Label Content="AP"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="ArmorPenBox"
-                             Text="{Binding ArmorPen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding ArmorPen}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -70,7 +69,7 @@
                            Margin="0 10 0 0"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="DamageBox"
-                             Text="{Binding Damage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding Damage}"
                              Margin="10 0 10 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -163,7 +162,8 @@
                           Margin="0 0 30 0"
                           HorizontalContentAlignment="Center"
                           Padding="1"
-                          ItemsSource="{Binding Targets}">
+                          ItemsSource="{Binding Targets}"
+                          SelectedItem="{Binding SelectedTarget}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="20"
@@ -186,6 +186,7 @@
                     <TextBox x:Name="ToughnessBox"
                              Text="{Binding SelectedItem.Thoughness}"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -194,6 +195,7 @@
                     <TextBox x:Name="SaveBox"
                              Text="{Binding SelectedItem.Save}"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -202,6 +204,7 @@
                     <TextBox x:Name="WoundsBox"
                              Text="{Binding SelectedItem.Wounds}"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
             </StackPanel>
@@ -259,38 +262,41 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Width="410"
-                        DataContext="{Binding OutputData}"
                         Margin="0,15,0,0">
                 <StackPanel Orientation="Vertical">
                     <Label Content="Output"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="OutHitsBox"
-                             Text="{Binding HitsNum, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding OutAttacks}"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Output"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="OutWoundsBox"
-                             Text="{Binding WoundsNum, UpdateSourceTrigger=PropertyChanged}"
+                             Text="0"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Output"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="OutUnsavedBox"
-                             Text="{Binding UnSavedNum, UpdateSourceTrigger=PropertyChanged}"
+                             Text="0"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Output"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="OutDeadModelsBox"
-                             Text="{Binding DeadModelsNum, UpdateSourceTrigger=PropertyChanged}"
+                             Text="0"
                              Margin="10 0 0 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -298,8 +304,9 @@
                            Margin="0 10 0 0"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="OutTotalDamageBox"
-                             Text="{Binding TotalDamageNum, UpdateSourceTrigger=PropertyChanged}"
+                             Text="0"
                              Margin="10 0 10 0"
+                             IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
             </StackPanel>

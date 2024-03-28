@@ -4,11 +4,11 @@ namespace WhmCalcNew.Engine
 {
     public static class AccuracyCalc
     {
-        public static float ToHitRoll(AttackingUnit attacker, TargetUnit target)
+        public static float ToHitRoll(AttackingUnit? attacker, TargetUnit? target)
         {
-            if (attacker.Accuracy == null)
+            if (attacker == null || target == null || attacker.Accuracy == null)
             {
-                return 0;
+                return 0f;
             }
             if (attacker.Accuracy == 0)
             {

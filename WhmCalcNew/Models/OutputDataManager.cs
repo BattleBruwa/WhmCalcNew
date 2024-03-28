@@ -1,17 +1,79 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using WhmCalcNew.Engine;
 
 namespace WhmCalcNew.Models
 {
     public class OutputDataManager : INotifyPropertyChanged
     {
-        public float? HitsNum { get; set; }
-        public float? WoundsNum { get; set; }
-        public float? UnSavedNum { get; set; }
-        public int? DeadModelsNum { get; set; }
-        public float? TotalDamageNum { get; set; }
+        #region Свойства
+        private float? _hitsNum;
+        public float? HitsNum
+        {
+            get => _hitsNum;
+            set 
+            {
+                _hitsNum = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float? _woundsNum;
+        public float? WoundsNum
+        {
+            get => _woundsNum;
+            set
+            {
+                _woundsNum = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float? _unSavedNum;
+        public float? UnSavedNum
+        {
+            get => _unSavedNum;
+            set
+            {
+                _unSavedNum = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int? _deadModelsNum;
+        public int? DeadModelsNum
+        {
+            get => _deadModelsNum;
+            set
+            {
+                _deadModelsNum = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float? _totalDamageNum;
+        public float? TotalDamageNum
+        {
+            get => _totalDamageNum;
+            set
+            {
+                _totalDamageNum = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+
+        public OutputDataManager()
+        {
+
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         private void GetHits(AttackingUnit attacker, TargetUnit target)
         {
@@ -37,32 +99,33 @@ namespace WhmCalcNew.Models
 
         private void GetDeadModels(AttackingUnit attacker, TargetUnit target)
         {
-            float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
-            int? deadModels = 0;
+            //float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
+            //int? deadModels = 0;
 
-            if (damage < target.Wounds)
-            {
-                for (int i = 1; i < this.UnSavedNum; i++)
-                {
-                    float c = damage;
-                    while (c < target.Wounds && i < this.UnSavedNum)
-                    {
-                        i++;
-                        c = c + damage;
-                    }
-                    if (c >= target.Wounds)
-                    {
-                        deadModels++;
-                    }
-                }
+            //if (damage < target.Wounds)
+            //{
+            //    for (int i = 1; i < this.UnSavedNum; i++)
+            //    {
+            //        float c = damage;
+            //        while (c < target.Wounds && i < this.UnSavedNum)
+            //        {
+            //            i++;
+            //            c = c + damage;
+            //        }
+            //        if (c >= target.Wounds)
+            //        {
+            //            deadModels++;
+            //        }
+            //    }
 
-            }
-            if (damage >= target.Wounds)
-            {
-                deadModels = (int?)this.UnSavedNum;
-            }
+            //}
+            //if (damage >= target.Wounds)
+            //{
+            //    deadModels = (int?)this.UnSavedNum;
+            //}
 
-            this.DeadModelsNum = deadModels;
+            //this.DeadModelsNum = deadModels;
+            this.DeadModelsNum = 99;
         }
 
         private void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
@@ -70,13 +133,16 @@ namespace WhmCalcNew.Models
             this.TotalDamageNum = TotalDamageCalc.GetTotalDamage(attacker, target);
         }
 
-        public void Recalculate(AttackingUnit attacker, TargetUnit target)
+        public void Recalculate(AttackingUnit? attacker, TargetUnit? target)
         {
-            this.GetHits(attacker, target);
-            this.GetWounds(attacker, target);
-            this.GetUnsavedWounds(attacker, target);
-            this.GetDeadModels(attacker, target);
-            this.GetTotalDamage(attacker, target);
+            if (attacker != null && target != null)
+            {
+                this.GetHits(attacker, target);
+                this.GetWounds(attacker, target);
+                this.GetUnsavedWounds(attacker, target);
+                this.GetDeadModels(attacker, target);
+                this.GetTotalDamage(attacker, target);
+            }
         }
     }
 }

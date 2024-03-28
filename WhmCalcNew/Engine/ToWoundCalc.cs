@@ -4,11 +4,11 @@ namespace WhmCalcNew.Engine
 {
     public static class ToWoundCalc
     {
-        public static float ToWoundRoll(AttackingUnit attacker, TargetUnit target)
+        public static float ToWoundRoll(AttackingUnit? attacker, TargetUnit? target)
         {
-            if (attacker.Strength == null || target.Thoughness == null)
+            if (attacker == null || target == null || attacker.Strength == null || target.Thoughness == null)
             {
-                return 0;
+                return 0f;
             }
 
             byte resultedRoll = 0;

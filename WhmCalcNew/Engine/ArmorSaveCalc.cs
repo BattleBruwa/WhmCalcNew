@@ -4,11 +4,11 @@ namespace WhmCalcNew.Engine
 {
     public static class ArmorSaveCalc
     {
-        public static float ToSaveRoll(AttackingUnit attacker, TargetUnit target)
+        public static float ToSaveRoll(AttackingUnit? attacker, TargetUnit? target)
         {
-            if ( attacker.ArmorPen == null || target.Save == null)
+            if (attacker == null || target == null || attacker.ArmorPen == null || target.Save == null)
             {
-                return 0;
+                return 0f;
             }
 
             int resultedRoll = 0;

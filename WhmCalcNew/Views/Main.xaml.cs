@@ -30,10 +30,5 @@ namespace WhmCalcNew.Views
             
             this.DataContext = mainViewModel;
         }
-
-        private void AttacksBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            mainViewModel.OutputData.Recalculate(mainViewModel.AttackingUnit, TargetChoiceBox.SelectedItem as TargetUnit);
-        }
     }
 }

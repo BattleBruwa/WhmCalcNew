@@ -4,8 +4,12 @@ namespace WhmCalcNew.Engine
 {
     public static class TotalDamageCalc
     {
-        public static float GetTotalDamage(AttackingUnit attacker, TargetUnit target)
+        public static float GetTotalDamage(AttackingUnit? attacker, TargetUnit? target)
         {
+            if (attacker == null || target == null)
+            {
+                return 0f;
+            }
             float attacks = AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
             float accuracy = AccuracyCalc.ToHitRoll(attacker, target);
             float wounds = ToWoundCalc.ToWoundRoll(attacker, target);

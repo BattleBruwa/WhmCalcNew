@@ -6,7 +6,7 @@
         {
             if (string.IsNullOrEmpty(input))
             {
-                return 0;
+                return 0f;
             }
 
             bool result = float.TryParse(input, out var number);
