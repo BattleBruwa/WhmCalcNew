@@ -2,12 +2,12 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using WhmCalcNew.Engine;
+using WhmCalcNew.Engine.Calculations;
 using WhmCalcNew.Models;
 
 namespace WhmCalcNew.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ObservableObject
     {
         private ObservableCollection<TargetUnit>? _targets;
         public ObservableCollection<TargetUnit>? Targets
@@ -69,7 +69,7 @@ namespace WhmCalcNew.ViewModel
         public MainViewModel()
         {
             Targets = TargetManager.GetTargets();
-            AttackingUnit = new AttackingUnit();
+            this.AttackingUnit = new AttackingUnit();
             OutputData = new OutputDataManager();
 
 
@@ -88,13 +88,6 @@ namespace WhmCalcNew.ViewModel
                 }
             });
 
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using WhmCalcNew.Models;
 
-namespace WhmCalcNew.Engine
+namespace WhmCalcNew.Engine.Calculations
 {
     public static class TotalDamageCalc
     {
@@ -16,7 +16,7 @@ namespace WhmCalcNew.Engine
             float save = ArmorSaveCalc.ToSaveRoll(attacker, target);
             float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
 
-            float result = ((attacks*accuracy*wounds) - ((attacks * accuracy * wounds)*save))*damage;
+            float result = (attacks * accuracy * wounds - attacks * accuracy * wounds * save) * damage;
 
             return result;
         }

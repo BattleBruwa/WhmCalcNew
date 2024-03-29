@@ -1,8 +1,8 @@
-﻿namespace WhmCalcNew.Engine
+﻿namespace WhmCalcNew.Engine.Calculations
 {
     public static class AttacksOrDamageCalc
     {
-        public static float CalculateAorD (string? input)
+        public static float CalculateAorD(string? input)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -26,20 +26,20 @@
                 }
                 else
                 {
-                    numBeforeD = (float)(Char.GetNumericValue(input[indexOfD - 1]));
+                    numBeforeD = (float)char.GetNumericValue(input[indexOfD - 1]);
                     if (numBeforeD == 0)
                     {
                         string _newString = string.Concat(input[indexOfD - 2], input[indexOfD - 1]);
-                        numBeforeD = (float)(Convert.ToDouble(_newString));
+                        numBeforeD = (float)Convert.ToDouble(_newString);
                     }
                 }
 
                 float numAfterD = 0;
-                if (Char.GetNumericValue(input[indexOfD + 1]) == 3)
+                if (char.GetNumericValue(input[indexOfD + 1]) == 3)
                 {
                     numAfterD = 2.0f;
                 }
-                if (Char.GetNumericValue(input[indexOfD + 1]) == 6)
+                if (char.GetNumericValue(input[indexOfD + 1]) == 6)
                 {
                     numAfterD = 3.5f;
                 }

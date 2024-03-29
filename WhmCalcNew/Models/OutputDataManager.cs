@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using WhmCalcNew.Engine;
+using WhmCalcNew.Engine.Calculations;
 
 namespace WhmCalcNew.Models
 {

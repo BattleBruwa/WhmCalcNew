@@ -1,9 +1,6 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace WhmCalcNew.Models
+﻿namespace WhmCalcNew.Models
 {
-    public class AttackingUnit : INotifyPropertyChanged
+    public class AttackingUnit : ObservableObject
     {
         #region Свойства
         private string? _attacks;
@@ -66,12 +63,6 @@ namespace WhmCalcNew.Models
         public AttackingUnit()
         {
 
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

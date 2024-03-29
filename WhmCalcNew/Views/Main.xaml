@@ -36,7 +36,7 @@
                     <Label Content="A"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AttacksBox"
-                             Text="{Binding Attacks}"
+                             Text="{Binding Path=Attacks}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
