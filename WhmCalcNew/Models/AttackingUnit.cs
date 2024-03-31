@@ -62,7 +62,11 @@
 
         public AttackingUnit()
         {
-
+            Attacks = 0.ToString();
+            Accuracy = 1;
+            Strength = 2;
+            ArmorPen = 3;
+            Damage = 4.ToString();
         }
     }
 }

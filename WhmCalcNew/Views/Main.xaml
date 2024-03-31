@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WhmCalcNew.Views"
+        xmlns:models="clr-namespace:WhmCalcNew.Models"
         mc:Ignorable="d"
         Title="Main"
         Height="700"
@@ -13,6 +14,9 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <models:StringToByteDataConverter x:Key="stringToByteConverter" />
+    </Window.Resources>
     <Border Background="#202030"
             CornerRadius="20">
         <Grid>
@@ -30,7 +34,7 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Width="410"
-                        DataContext="{Binding AttackingUnit, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        DataContext="{Binding AttackingUnit, UpdateSourceTrigger=PropertyChanged}"
                         Margin="0,15,0,0">
                 <StackPanel Orientation="Vertical">
                     <Label Content="A"
@@ -44,7 +48,7 @@
                     <Label Content="WS"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AccuracyBox"
-                             Text="{Binding Accuracy}"
+                             Text="{Binding Path=Accuracy, Converter={StaticResource stringToByteConverter}}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -52,7 +56,7 @@
                     <Label Content="S"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="StrengthBox"
-                             Text="{Binding Strength}"
+                             Text="{Binding Path=Strength, Converter={StaticResource stringToByteConverter}}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -60,7 +64,7 @@
                     <Label Content="AP"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="ArmorPenBox"
-                             Text="{Binding ArmorPen}"
+                             Text="{Binding Path=ArmorPen, Converter={StaticResource stringToByteConverter}}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -69,7 +73,7 @@
                            Margin="0 10 0 0"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="DamageBox"
-                             Text="{Binding Damage}"
+                             Text="{Binding Path=Damage}"
                              Margin="10 0 10 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>

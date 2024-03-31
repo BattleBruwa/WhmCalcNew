@@ -69,7 +69,7 @@ namespace WhmCalcNew.ViewModel
         public MainViewModel()
         {
             Targets = TargetManager.GetTargets();
-            this.AttackingUnit = new AttackingUnit();
+            this.AttackingUnit = new WhmCalcNew.Models.AttackingUnit();
             OutputData = new OutputDataManager();
 
 
