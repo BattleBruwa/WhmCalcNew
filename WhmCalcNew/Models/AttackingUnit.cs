@@ -6,7 +6,7 @@
         private string? _attacks;
         public string? Attacks
         {
-            get => _attacks;
+            get { return _attacks; }
             set
             {
                 _attacks = value;
@@ -14,10 +14,10 @@
             }
         }
 
-        private byte? _accuracy;
-        public byte? Accuracy
+        private string? _accuracy;
+        public string? Accuracy
         {
-            get => _accuracy;
+            get { return _accuracy; }
             set
             {
                 _accuracy = value;
@@ -25,10 +25,10 @@
             }
         }
 
-        private byte? _strength;
-        public byte? Strength
+        private string? _strength;
+        public string? Strength
         {
-            get => _strength;
+            get { return _strength; }
             set
             {
                 _strength = value;
@@ -36,10 +36,10 @@
             }
         }
 
-        private byte? _armorPen;
-        public byte? ArmorPen
+        private string? _armorPen;
+        public string? ArmorPen
         {
-            get => _armorPen;
+            get { return _armorPen; }
             set
             {
                 _armorPen = value;
@@ -50,23 +50,86 @@
         private string? _damage;
         public string? Damage
         {
-            get => _damage;
+            get { return _damage; }
             set
             {
                 _damage = value;
                 OnPropertyChanged();
             }
         }
+
+        private bool _hasRerollToHit1;
+        public bool HasRerollToHit1
+        {
+            get { return _hasRerollToHit1; }
+            set
+            { 
+                _hasRerollToHit1 = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _hasRerollToWound1;
+        public bool HasRerollToWound1
+        {
+            get { return _hasRerollToWound1; }
+            set
+            {
+                _hasRerollToWound1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _hasRerollToHitAll;
+        public bool HasRerollToHitAll
+        {
+            get { return _hasRerollToHitAll; }
+            set
+            {
+                _hasRerollToHitAll = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _hasRerollToWoundAll;
+        public bool HasRerollToWoundAll
+        {
+            get { return _hasRerollToWoundAll; }
+            set
+            {
+                _hasRerollToWoundAll = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private LethalHits _hasLethalHits;
+
+        public LethalHits HasLethalHits
+        {
+            get { return _hasLethalHits; }
+            set {  }
+        }
+
+
         #endregion
 
-
-        public AttackingUnit()
+        #region Енумы для свойств
+        private enum LethalHits
         {
-            Attacks = 0.ToString();
-            Accuracy = 1;
-            Strength = 2;
-            ArmorPen = 3;
-            Damage = 4.ToString();
+            False,
+            OnSixes,
+            OnFives
         }
+
+        private enum DevastatingWounds
+        {
+            False,
+            OnSixes,
+            OnFives,
+            OnFours,
+            OnThrees,
+            OnTwos
+        }
+        #endregion
     }
 }

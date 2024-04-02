@@ -4,7 +4,7 @@ using WhmCalcNew.Engine.Calculations;
 
 namespace WhmCalcNew.Models
 {
-    public class OutputDataManager : INotifyPropertyChanged
+    public class OutputDataManager : ObservableObject
     {
         #region Свойства
         private float? _hitsNum;
@@ -67,12 +67,6 @@ namespace WhmCalcNew.Models
         public OutputDataManager()
         {
 
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void GetHits(AttackingUnit attacker, TargetUnit target)

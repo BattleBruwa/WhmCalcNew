@@ -14,7 +14,7 @@
                                 Width="70"
                                 Height="70">
                             <Grid>
-                                <TextBox Text="{TemplateBinding Property=Text}"
+                                <TextBox Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          BorderThickness="0"
                                          Background="Transparent"
                                          VerticalAlignment="Center"

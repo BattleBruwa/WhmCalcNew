@@ -38,6 +38,7 @@ namespace WhmCalcNew.ViewModel
             {
                 _attackingUnit = value;
                 OnPropertyChanged();
+                OutputData?.Recalculate(AttackingUnit, SelectedTarget);
             }
         }
 
@@ -53,23 +54,10 @@ namespace WhmCalcNew.ViewModel
             }
         }
 
-        private string? _outAttacks;
-
-        public string? OutAttacks
-        {
-            get { return _outAttacks; }
-            set 
-            {
-                _outAttacks = (AttacksOrDamageCalc.CalculateAorD(this.AttackingUnit?.Attacks)).ToString();
-                OnPropertyChanged();
-            }
-        }
-
-        //_outAttacks =(AttacksOrDamageCalc.CalculateAorD(this.AttackingUnit?.Attacks)).ToString();
         public MainViewModel()
         {
             Targets = TargetManager.GetTargets();
-            this.AttackingUnit = new WhmCalcNew.Models.AttackingUnit();
+            AttackingUnit = new AttackingUnit();
             OutputData = new OutputDataManager();
 
 
@@ -83,7 +71,7 @@ namespace WhmCalcNew.ViewModel
                     Debug.WriteLine(i.ToString());
                     Debug.WriteLine($"Attacker: {AttackingUnit?.Attacks}, {AttackingUnit?.Accuracy}, {AttackingUnit?.Strength}, {AttackingUnit?.ArmorPen}, {AttackingUnit?.Damage}");
                     Debug.WriteLine($"Target: {SelectedTarget?.Thoughness}, {SelectedTarget?.Save}, {SelectedTarget?.Wounds}");
-                    Debug.WriteLine($"Out: {OutAttacks}");
+                    Debug.WriteLine($"Output: {OutputData?.HitsNum}, {OutputData?.WoundsNum}, {OutputData?.UnSavedNum}, {OutputData?.DeadModelsNum}, {OutputData?.TotalDamageNum}");
                     Thread.Sleep(1000);
                 }
             });
