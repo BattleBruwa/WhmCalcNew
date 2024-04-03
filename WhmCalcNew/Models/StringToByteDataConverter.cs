@@ -6,25 +6,26 @@ namespace WhmCalcNew.Models
     [ValueConversion(typeof(string), typeof(byte)) ]
     public class StringToByteDataConverter : IValueConverter
     {
-        // Стринг в байт:
+        // Байт в стринг:
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
-                string? val = value.ToString();
-                byte result;
-                if (byte.TryParse(val, out result))
-                {
-                    return result;
-                }
-                return (byte)0;
-            
+            if (value != null)
+            {
+                return value.ToString();
+            }
+            return String.Empty;
         }
 
-        // Байт в стринг:
+        // Стринг в байт:
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
-            return value.ToString();
+            string? val = value.ToString();
+            byte result;
+            if (byte.TryParse(val, out result))
+            {
+                return result;
+            }
+            return (byte)0;
         }
     }
 }

@@ -7,7 +7,7 @@ using WhmCalcNew.Models;
 
 namespace WhmCalcNew.ViewModel
 {
-    public class MainViewModel : ObservableObject
+    public partial class MainViewModel : ObservableObject
     {
         private ObservableCollection<TargetUnit>? _targets;
         public ObservableCollection<TargetUnit>? Targets
@@ -27,6 +27,7 @@ namespace WhmCalcNew.ViewModel
             {
                 _selectedTarget = value;
                 OnPropertyChanged();
+                Recalculate(this.AttackingUnit, this.SelectedTarget);
             }
         }
 
@@ -38,7 +39,7 @@ namespace WhmCalcNew.ViewModel
             {
                 _attackingUnit = value;
                 OnPropertyChanged();
-                OutputData?.Recalculate(AttackingUnit, SelectedTarget);
+                Recalculate(this.AttackingUnit, this.SelectedTarget);
             }
         }
 
@@ -76,6 +77,18 @@ namespace WhmCalcNew.ViewModel
                 }
             });
 
+        }
+
+        private void Recalculate(AttackingUnit? attacker, TargetUnit? target)
+        {
+            if (attacker != null && target != null && this.OutputData != null)
+            {
+                OutputData.GetHits(attacker, target);
+                OutputData.GetWounds(attacker, target);
+                OutputData.GetUnsavedWounds(attacker, target);
+                OutputData.GetDeadModels(attacker, target);
+                OutputData.GetTotalDamage(attacker, target);
+            }
         }
     }
 }
