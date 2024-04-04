@@ -6,7 +6,7 @@ namespace WhmCalcNew.Models
     [ValueConversion(typeof(string), typeof(byte)) ]
     public class StringToByteDataConverter : IValueConverter
     {
-        // Байт в стринг:
+        // В стринг:
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value != null)

@@ -20,7 +20,7 @@
                 int indexOfD = input.IndexOf('D');
 
                 float numBeforeD = 0;
-                if (input[indexOfD - 1].Equals(' ') || input[indexOfD - 1].Equals('1'))
+                if (indexOfD == 0 || input[indexOfD - 1].Equals(' ') || input[indexOfD - 1].Equals('1'))
                 {
                     numBeforeD = 1;
                 }
@@ -44,7 +44,7 @@
                     numAfterD = 3.5f;
                 }
 
-                amount = numBeforeD + numAfterD;
+                amount = numBeforeD * numAfterD;
                 return amount;
             }
         }

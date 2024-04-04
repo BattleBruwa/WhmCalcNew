@@ -3,6 +3,8 @@
     public class AttackingUnit : ObservableObject
     {
         #region Свойства
+
+        // Количество атак
         private string? _attacks;
         public string? Attacks
         {
@@ -14,6 +16,7 @@
             }
         }
 
+        // WS/BS меткость атак
         private byte? _accuracy;
         public byte? Accuracy
         {
@@ -25,6 +28,7 @@
             }
         }
 
+        // Сила атаки
         private byte? _strength;
         public byte? Strength
         {
@@ -36,6 +40,7 @@
             }
         }
 
+        // Пробивание защиты
         private byte? _armorPen;
         public byte? ArmorPen
         {
@@ -47,6 +52,7 @@
             }
         }
 
+        // Урон атаки
         private string? _damage;
         public string? Damage
         {

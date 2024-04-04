@@ -12,7 +12,7 @@ namespace WhmCalcNew.Engine.Calculations
             }
             if (attacker.Accuracy == 0)
             {
-                return AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
+                return 1;
             }
             if (target.IsHardToHit == true)
             {

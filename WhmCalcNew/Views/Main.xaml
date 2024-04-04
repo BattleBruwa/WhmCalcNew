@@ -40,7 +40,7 @@
                     <Label Content="A"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AttacksBox"
-                             Text="{Binding Attacks}"
+                             Text="{Binding Attacks, UpdateSourceTrigger=PropertyChanged}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -48,7 +48,7 @@
                     <Label Content="WS"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="AccuracyBox"
-                             Text="{Binding Accuracy, Converter={StaticResource stringToByteConverter}}"
+                             Text="{Binding Accuracy, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -56,7 +56,7 @@
                     <Label Content="S"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="StrengthBox"
-                             Text="{Binding Strength, Converter={StaticResource stringToByteConverter}}"
+                             Text="{Binding Strength, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -64,7 +64,7 @@
                     <Label Content="AP"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="ArmorPenBox"
-                             Text="{Binding ArmorPen, Converter={StaticResource stringToByteConverter}}"
+                             Text="{Binding ArmorPen, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                              Margin="10 0 0 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>
@@ -73,7 +73,7 @@
                            Margin="0 10 0 0"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="DamageBox"
-                             Text="{Binding Damage}"
+                             Text="{Binding Damage, UpdateSourceTrigger=PropertyChanged}"
                              Margin="10 0 10 0"
                              Style="{StaticResource TextBoxTheme}" />
                 </StackPanel>

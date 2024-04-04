@@ -57,9 +57,9 @@ namespace WhmCalcNew.ViewModel
 
         public MainViewModel()
         {
-            Targets = TargetManager.GetTargets();
-            AttackingUnit = new AttackingUnit();
-            OutputData = new OutputDataManager();
+            this.Targets = TargetManager.GetTargets();
+            this.AttackingUnit = new AttackingUnit();
+            this.OutputData = new OutputDataManager();
 
 
             //TESTING!!!!!!!! ПОТОМ УДАЛИТЬ!!!!!!!!!
@@ -83,11 +83,11 @@ namespace WhmCalcNew.ViewModel
         {
             if (attacker != null && target != null && this.OutputData != null)
             {
-                OutputData.GetHits(attacker, target);
-                OutputData.GetWounds(attacker, target);
-                OutputData.GetUnsavedWounds(attacker, target);
-                OutputData.GetDeadModels(attacker, target);
-                OutputData.GetTotalDamage(attacker, target);
+                this.OutputData.GetHits(attacker, target);
+                this.OutputData.GetWounds(attacker, target);
+                this.OutputData.GetUnsavedWounds(attacker, target);
+                this.OutputData.GetDeadModels(attacker, target);
+                this.OutputData.GetTotalDamage(attacker, target);
             }
         }
     }
