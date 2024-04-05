@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Main"
         Height="700"
-        Width="450"
+        Width="550"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -17,7 +17,7 @@
     <Window.Resources>
         <models:StringToByteDataConverter x:Key="stringToByteConverter" />
     </Window.Resources>
-    <Border Background="#202030"
+    <Border Background="#0f1316"
             CornerRadius="20">
         <Grid>
             <Grid.RowDefinitions>

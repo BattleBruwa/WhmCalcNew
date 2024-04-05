@@ -4,6 +4,9 @@ namespace WhmCalcNew.Engine.Calculations
 {
     public static class AccuracyCalc
     {
+        /// <summary>
+        /// Расчитывает вероятность попасть атакой по цели.
+        /// </summary>
         public static float ToHitRoll(AttackingUnit? attacker, TargetUnit? target)
         {
             if (attacker == null || target == null || attacker.Accuracy == null)
