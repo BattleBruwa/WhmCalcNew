@@ -3,11 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d"
              d:DesignHeight="390"
              d:DesignWidth="110">
-    <Grid HorizontalAlignment="Center">
+    <UserControl.Resources>
+        <models:StringToByteDataConverter x:Key="stringToByteConverter" />
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Center"
+          DataContext="{Binding AttackingUnit}">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -21,16 +26,17 @@
             <Label Content="A"
                    Style="{StaticResource LabelTheme}"
                    VerticalAlignment="Center"
-                   Margin="0 0 0 0"
+                   Margin="0 0 0 5"
                    Width="40"
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <TextBox x:Name="AttacksTB"
-                     Text=" "
+                     Text="{Binding Attacks, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
+                     VerticalAlignment="Top"
                      Style="{StaticResource TextBoxTheme}"
                      Height="70"
-                     Width="70"/>
+                     Width="70" />
         </StackPanel>
 
         <StackPanel Grid.Row="1"
@@ -43,7 +49,7 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="AccuracyTB"
-                     Text=" "
+                     Text="{Binding Accuracy, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Height="70"
@@ -60,7 +66,7 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="StrengthTB"
-                     Text=" "
+                     Text="{Binding Strength, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Height="70"
@@ -77,7 +83,7 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="ArmorPenTB"
-                     Text=" "
+                     Text="{Binding ArmorPen, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Height="70"
@@ -89,13 +95,14 @@
             <Label Content="D"
                    Style="{StaticResource LabelTheme}"
                    VerticalAlignment="Center"
-                   Margin="0 0 0 0"
+                   Margin="0 5 0 0"
                    Width="40"
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="DamageTB"
-                     Text=" "
+                     Text="{Binding Damage, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
+                     VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
                      Height="70"
                      Width="70" />

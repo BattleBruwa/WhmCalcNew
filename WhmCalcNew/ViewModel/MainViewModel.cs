@@ -71,7 +71,7 @@ namespace WhmCalcNew.ViewModel
                     i++;
                     Debug.WriteLine(i.ToString());
                     Debug.WriteLine($"Attacker: {AttackingUnit?.Attacks}, {AttackingUnit?.Accuracy}, {AttackingUnit?.Strength}, {AttackingUnit?.ArmorPen}, {AttackingUnit?.Damage}");
-                    Debug.WriteLine($"Target: {SelectedTarget?.Thoughness}, {SelectedTarget?.Save}, {SelectedTarget?.Wounds}");
+                    Debug.WriteLine($"Target: {SelectedTarget?.Toughness}, {SelectedTarget?.Save}, {SelectedTarget?.Wounds}");
                     Debug.WriteLine($"Output: {OutputData?.HitsNum}, {OutputData?.WoundsNum}, {OutputData?.UnSavedNum}, {OutputData?.DeadModelsNum}, {OutputData?.TotalDamageNum}");
                     Thread.Sleep(1000);
                 }

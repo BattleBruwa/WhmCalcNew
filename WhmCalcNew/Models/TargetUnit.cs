@@ -9,7 +9,7 @@
         public string? UnitName { get; set; }
 
         // Стойкость цели
-        public byte? Thoughness { get; set; }
+        public byte? Toughness { get; set; }
 
         // Защита цели
         public byte? Save { get; set; }

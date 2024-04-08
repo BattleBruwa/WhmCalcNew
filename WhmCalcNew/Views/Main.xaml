@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WhmCalcNew.Views"
         xmlns:models="clr-namespace:WhmCalcNew.Models"
+        xmlns:components="clr-namespace:WhmCalcNew.Views.Components"
         mc:Ignorable="d"
         Title="Main"
         Height="700"
@@ -28,6 +29,18 @@
                 <RowDefinition Height="100" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <components:AttackerPartComponent Grid.Column="1"
+                                              Grid.RowSpan="6" />
+            <components:TargetPartComponent Grid.Column="2"
+                                            Grid.RowSpan="6"
+                                            DataContext="{Binding ElementName=TargetChoiceBox}" />
 
             <StackPanel x:Name="AttackStatsPanel"
                         Grid.Row="0"
@@ -188,7 +201,7 @@
                     <Label Content="T"
                            Style="{StaticResource LabelTheme}" />
                     <TextBox x:Name="ToughnessBox"
-                             Text="{Binding SelectedItem.Thoughness}"
+                             Text="{Binding SelectedItem.Toughness}"
                              Margin="10 0 0 0"
                              IsReadOnly="True"
                              Style="{StaticResource TextBoxTheme}" />
