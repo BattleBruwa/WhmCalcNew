@@ -1,18 +1,21 @@
 ﻿using WhmCalcNew.Models;
 
-namespace WhmCalcNew.Engine
+namespace WhmCalcNew.Engine.Calculations
 {
     public static class AccuracyCalc
     {
-        public static float ToHitRoll(AttackingUnit attacker, TargetUnit target)
+        /// <summary>
+        /// Расчитывает вероятность попасть атакой по цели.
+        /// </summary>
+        public static float ToHitRoll(AttackingUnit? attacker, TargetUnit? target)
         {
-            if (attacker.Accuracy == null)
+            if (attacker == null || target == null || attacker.Accuracy == null)
             {
-                return 0;
+                return 0f;
             }
             if (attacker.Accuracy == 0)
             {
-                return AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
+                return 1;
             }
             if (target.IsHardToHit == true)
             {

@@ -6,12 +6,12 @@ using WhmCalcNew.Models;
 
 
 
-namespace WhmCalcNew.Engine
+namespace WhmCalcNew.Engine.DataProviders
 {
     public class ExcelDataProvider
     {
         // Путь до таблицы юнитов:
-        private static string _dataPath { get { return (string.Concat($"{Path.GetFullPath("../../../Data")}", "\\UnitStats.xlsx")); } }
+        private static string _dataPath { get { return string.Concat($"{Path.GetFullPath("../../../Data")}", "\\UnitStats.xlsx"); } }
 
         public static void FillTargetCollection(ObservableCollection<TargetUnit> collectionToFill)
         {
@@ -34,13 +34,13 @@ namespace WhmCalcNew.Engine
 
                         string tgName = GetCellValue(xlDoc, (Cell)row.ElementAt(1));
 
-                        byte tgTougness = Byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(2)));
+                        byte tgTougness = byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(2)));
 
-                        byte tgSave = Byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(3)));
+                        byte tgSave = byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(3)));
 
-                        byte tgWounds = Byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(4)));
+                        byte tgWounds = byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(4)));
 
-                        collectionToFill.Add(new TargetUnit() { Faction = tgFaction, UnitName = tgName, Thoughness = tgTougness, Save = tgSave, Wounds = tgWounds });
+                        collectionToFill.Add(new TargetUnit() { Faction = tgFaction, UnitName = tgName, Toughness = tgTougness, Save = tgSave, Wounds = tgWounds });
                     }
                 }
             }

@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WhmCalcNew.Engine;
-using WhmCalcNew.Models;
-using WhmCalcNew.ViewModel;
 
-namespace WhmCalcNew.Views
+namespace WhmCalcNew.Views.Components
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для AttackerPartComponent.xaml
     /// </summary>
-    public partial class Main : Window
+    public partial class AttackerPartComponent : UserControl
     {
-        MainViewModel mainViewModel = new MainViewModel();
-        public Main()
+        public AttackerPartComponent()
         {
             InitializeComponent();
-            
-            this.DataContext = mainViewModel;
         }
     }
 }

@@ -1,19 +1,115 @@
-﻿using System.ComponentModel;
-using WhmCalcNew.Engine;
+﻿using WhmCalcNew.Engine.Calculations;
 
 namespace WhmCalcNew.Models
 {
-    public class OutputDataManager : INotifyPropertyChanged
+    // решить, нужен ли ObservableObject тут
+    public class OutputDataManager : ObservableObject
     {
-        public float? HitsNum { get; set; }
-        public float? WoundsNum { get; set; }
-        public float? UnSavedNum { get; set; }
-        public int? DeadModelsNum { get; set; }
-        public float? TotalDamageNum { get; set; }
+        #region Свойства
+        
+        // частые приведения к double
+        // сменить float на double во всех свойствах?
 
-        public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void GetHits(AttackingUnit attacker, TargetUnit target)
+        // Количесвто хитов
+        private float? _hitsNum;
+        public float? HitsNum
+        {
+            get { return _hitsNum; }
+            set 
+            {
+                if (value != null)
+                {
+                    _hitsNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _hitsNum = null;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        // Количесвто вундов
+        private float? _woundsNum;
+        public float? WoundsNum
+        {
+            get { return _woundsNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _woundsNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _woundsNum = null;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        // Количество непрошедших защиту вундов
+        private float? _unSavedNum;
+        public float? UnSavedNum
+        {
+            get { return _unSavedNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _unSavedNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _unSavedNum = null;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        // Количество уничтоженых моделей
+        private int? _deadModelsNum;
+        public int? DeadModelsNum
+        {
+            get { return _deadModelsNum; }
+            set
+            {
+                _deadModelsNum = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // Полный нанесенный урон
+        private float? _totalDamageNum;
+        public float? TotalDamageNum
+        {
+            get { return _totalDamageNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _totalDamageNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _totalDamageNum = null;
+                }
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+
+        public OutputDataManager()
+        {
+
+        }
+
+        #region Методы
+
+        /// <summary>Устанавливает свойство количества хитов произведением количества атак на вероятность попадания каждой атаки.</summary>
+        public void GetHits(AttackingUnit attacker, TargetUnit target)
         {
             float attacks = AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
             float hitProb = AccuracyCalc.ToHitRoll(attacker, target);
@@ -21,21 +117,24 @@ namespace WhmCalcNew.Models
             this.HitsNum = attacks * hitProb;
         }
 
-        private void GetWounds(AttackingUnit attacker, TargetUnit target)
+        /// <summary>Устанавливает свойство количества вундов произведением количества хитов на вероятность провундить каждой атакой.</summary>
+        public void GetWounds(AttackingUnit attacker, TargetUnit target)
         {
             float woundProb = ToWoundCalc.ToWoundRoll(attacker, target);
 
             this.WoundsNum = this.HitsNum * woundProb;
         }
 
-        private void GetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
+        /// <summary>Устанавливает свойство количества непрошедших защиту вундов.</summary>
+        public void GetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
         {
             float saveProp = ArmorSaveCalc.ToSaveRoll(attacker, target);
 
             this.UnSavedNum = this.WoundsNum - (saveProp * this.WoundsNum);
         }
 
-        private void GetDeadModels(AttackingUnit attacker, TargetUnit target)
+        /// <summary>Устанавливает свойство количества уничтоженых моделей.</summary>
+        public void GetDeadModels(AttackingUnit attacker, TargetUnit target)
         {
             float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
             int? deadModels = 0;
@@ -65,18 +164,11 @@ namespace WhmCalcNew.Models
             this.DeadModelsNum = deadModels;
         }
 
-        private void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
+        /// <summary>Устанавливает свойство полного нанесенного урона. </summary>
+        public void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
         {
             this.TotalDamageNum = TotalDamageCalc.GetTotalDamage(attacker, target);
         }
-
-        public void Recalculate(AttackingUnit attacker, TargetUnit target)
-        {
-            this.GetHits(attacker, target);
-            this.GetWounds(attacker, target);
-            this.GetUnsavedWounds(attacker, target);
-            this.GetDeadModels(attacker, target);
-            this.GetTotalDamage(attacker, target);
-        }
+        #endregion
     }
 }

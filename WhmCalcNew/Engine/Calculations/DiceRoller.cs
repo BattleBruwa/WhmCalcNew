@@ -1,4 +1,4 @@
-﻿namespace WhmCalcNew.Engine
+﻿namespace WhmCalcNew.Engine.Calculations
 {
     public static class DiceRoller
     {
