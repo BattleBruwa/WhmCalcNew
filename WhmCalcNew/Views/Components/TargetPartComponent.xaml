@@ -10,9 +10,9 @@
              d:DesignWidth="110">
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0"
@@ -27,7 +27,7 @@
             <Label Content="T"
                    Style="{StaticResource LabelTheme}"
                    VerticalAlignment="Center"
-                   Margin="0 0 0 5"
+                   Margin="0 0 0 0"
                    Width="40"
                    HorizontalContentAlignment="Center"
                    Height="40" />
@@ -38,14 +38,14 @@
             <TextBox x:Name="ArmorSaveTB"
                      Text="{Binding SelectedItem.Save}"
                      HorizontalAlignment="Left"
-                     VerticalAlignment="Center"
+                     VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
                      Height="70"
                      Width="70" />
             <Label Content="Sv"
                    Style="{StaticResource LabelTheme}"
                    VerticalAlignment="Center"
-                   Margin="0 0 0 0"
+                   Margin="0 5 0 0"
                    Width="40"
                    HorizontalContentAlignment="Center"
                    Height="40" />
