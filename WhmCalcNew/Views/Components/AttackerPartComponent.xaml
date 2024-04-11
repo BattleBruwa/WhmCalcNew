@@ -6,7 +6,7 @@
              xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d"
-             d:DesignHeight="390"
+             d:DesignHeight="290"
              d:DesignWidth="110">
     <UserControl.Resources>
         <models:StringToByteDataConverter x:Key="stringToByteConverter" />
@@ -14,11 +14,11 @@
     <Grid HorizontalAlignment="Center"
           DataContext="{Binding AttackingUnit}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0"
@@ -35,7 +35,6 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Center"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -53,7 +52,6 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -71,7 +69,6 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -89,7 +86,6 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -107,7 +103,6 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
     </Grid>

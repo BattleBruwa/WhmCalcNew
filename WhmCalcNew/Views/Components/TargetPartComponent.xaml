@@ -6,13 +6,13 @@
              xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d"
-             d:DesignHeight="230"
+             d:DesignHeight="170"
              d:DesignWidth="110">
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0"
@@ -22,7 +22,6 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
             <Label Content="T"
                    Style="{StaticResource LabelTheme}"
@@ -40,7 +39,6 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
             <Label Content="Sv"
                    Style="{StaticResource LabelTheme}"
@@ -58,7 +56,6 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
             <Label Content="W"
                    Style="{StaticResource LabelTheme}"

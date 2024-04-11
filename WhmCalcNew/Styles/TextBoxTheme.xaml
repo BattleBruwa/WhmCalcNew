@@ -9,10 +9,16 @@
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Border CornerRadius="10"
                                 Background="#292739"
-                                BorderBrush="Transparent"
                                 BorderThickness="1"
                                 Width="70"
-                                Height="70">
+                                Height="50">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="#302840" Offset="0"/>
+                                    <GradientStop Color="#0f1316" Offset="1"/>
+                                    <GradientStop Color="WhiteSmoke" Offset="0.5"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
                             <Grid>
                                 <TextBox Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          BorderThickness="0"

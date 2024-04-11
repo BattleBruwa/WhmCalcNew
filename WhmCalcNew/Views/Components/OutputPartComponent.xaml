@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="110" d:DesignWidth="470">
+             d:DesignHeight="90" d:DesignWidth="470">
     <Grid HorizontalAlignment="Center"
           DataContext="{Binding OutputData}">
         <Grid.ColumnDefinitions>
@@ -31,7 +31,6 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -49,7 +48,6 @@
                      VerticalAlignment="Bottom"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -67,7 +65,6 @@
                      VerticalAlignment="Bottom"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -85,7 +82,6 @@
                      VerticalAlignment="Bottom"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -103,7 +99,6 @@
                      VerticalAlignment="Bottom"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
 
@@ -121,7 +116,6 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Height="70"
                      Width="70" />
         </StackPanel>
     </Grid>
