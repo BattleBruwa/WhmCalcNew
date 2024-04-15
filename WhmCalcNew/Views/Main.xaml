@@ -60,16 +60,9 @@
             
             <components:OutputPartComponent Grid.Row="1" Grid.ColumnSpan="4"/>
 
-            <CheckBox Style="{StaticResource CheckBoxTheme}" Grid.Row="0"
-                      Grid.Column="1" Height="50" Width="50"
-                      Margin="10,100,77,240" />
-            <CheckBox Grid.Row="0"
-                      Grid.Column="2"
-                      Height="50"
-                      Width="50"
-                      Foreground="Wheat"
-                      Content="ButtonNorm"
-                      Margin="35,20,52,320" />
+            <components:ModificatorsPartComponent Grid.Row="0"
+                                                  Grid.Column="1"
+                                                  Grid.ColumnSpan="2" />
 
         </Grid>
     </Border>

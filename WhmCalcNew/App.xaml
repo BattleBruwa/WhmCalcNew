@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Styles\ComboBoxTheme.xaml" />
                 <ResourceDictionary Source="Styles\LabelTheme.xaml" />
                 <ResourceDictionary Source="Styles\CheckBoxTheme.xaml" />
+                <ResourceDictionary Source="Styles\ModificatorsTextBlockTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

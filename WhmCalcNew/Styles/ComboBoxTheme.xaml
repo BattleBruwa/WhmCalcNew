@@ -11,13 +11,13 @@
                     Grid.ColumnSpan="2"
                     CornerRadius="5"
                     Background="#292739"
-                    BorderBrush="Transparent"
-                    BorderThickness="1" />
+                    BorderBrush="Orange"
+                    BorderThickness="2" />
             <Border Grid.Column="0"
                     CornerRadius="5"
                     Margin="1"
                     Background="#292739"
-                    BorderBrush="Transparent"
+                    BorderBrush="Orange"
                     BorderThickness="0,0,1,0" />
             <Path x:Name="Arrow"
                   Grid.Column="1"

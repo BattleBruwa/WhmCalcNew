@@ -3,12 +3,29 @@
 
                   <!--Контент этому чекбоксу задается отдельным текстблоком!-->
 
+    <!--<RadialGradientBrush x:Key="Border.GradientColor.Outer"
+                     Color="#eab676" />
+    <RadialGradientBrush x:Key="Border.GradientColor.Inner"
+                     Color="#0f1316" />
+    <SolidColorBrush x:Key="GlyphColor"
+                     Color="#eab676" />-->
+
 
     <Style BasedOn="{StaticResource {x:Type CheckBox}}"
            TargetType="{x:Type CheckBox}"
            x:Key="CheckBoxTheme">
 
+
         <Style.Setters>
+
+            <Setter Property="Height"
+                    Value="25" />
+            <Setter Property="Width"
+                    Value="25" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Right" />
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
             <Setter Property="IsThreeState"
                     Value="False" />
             <Setter Property="Template">
@@ -17,34 +34,47 @@
                         <Grid Background="Transparent"
                               SnapsToDevicePixels="True">
                             <Border>
+                                <Grid>
                                 <Ellipse Height="{TemplateBinding Height}"
-                                         Width="{TemplateBinding Width}">
-                                    <Ellipse.Fill>
+                                         Width="{TemplateBinding Width}" Fill="Orange">
+                                        <!--<Ellipse.Fill>
                                         <RadialGradientBrush>
                                             <GradientStop Color="#0f1316"
                                                           Offset="0.65" />
-                                            <GradientStop Color="Red"
+                                            <GradientStop Color="Orange"
                                                           Offset="1.5" />
                                         </RadialGradientBrush>
-                                    </Ellipse.Fill>
-                                    <Ellipse.Effect>
-                                        <DropShadowEffect Color="Red"
-                                                          ShadowDepth="0"
-                                                          Direction="0"
-                                                          BlurRadius="10" />
-                                    </Ellipse.Effect>
+                                    </Ellipse.Fill>-->
+                                    
                                 </Ellipse>
+
+                                <Ellipse Height="{TemplateBinding Height}"
+                                         Width="{TemplateBinding Width}"
+                                         Fill="#0f1316">
+                                        <Ellipse.LayoutTransform>
+                                            <ScaleTransform ScaleX="0.75"
+                                                            ScaleY="0.75" />
+                                        </Ellipse.LayoutTransform>
+                                    </Ellipse>
+                                </Grid>
                             </Border>
 
                             <Ellipse x:Name="checkMark"
                                      Opacity="0"
                                      Height="{TemplateBinding Height}"
                                      Width="{TemplateBinding Width}"
-                                     Fill="Red">
+                                     Fill="Orange">
                                 <Ellipse.LayoutTransform>
                                     <ScaleTransform ScaleX="0.4"
                                                     ScaleY="0.4" />
                                 </Ellipse.LayoutTransform>
+
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="Orange"
+                                                      ShadowDepth="0"
+                                                      Direction="0"
+                                                      BlurRadius="100" />
+                                </Ellipse.Effect>
                             </Ellipse>
                         </Grid>
 
