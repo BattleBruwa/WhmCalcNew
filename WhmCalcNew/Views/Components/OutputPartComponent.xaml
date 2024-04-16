@@ -1,120 +1,115 @@
 ﻿<UserControl x:Class="WhmCalcNew.Views.Components.OutputPartComponent"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
-             mc:Ignorable="d" 
-             d:DesignHeight="90" d:DesignWidth="470">
+             mc:Ignorable="d"
+             d:DesignHeight="360"
+             d:DesignWidth="220">
     <Grid HorizontalAlignment="Center"
           DataContext="{Binding OutputData}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="80"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0"
-                    Orientation="Vertical">
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
             <Label Content="Attacks"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Center"
-                   Margin="0 0 0 0"
-                   Width="70"
+                   Width="150"
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <TextBox x:Name="OutAttacksTB"
                      Text="{Binding HitsNum}"
                      HorizontalAlignment="Left"
-                     VerticalAlignment="Bottom"
+                     VerticalAlignment="Top"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70" />
         </StackPanel>
 
-        <StackPanel Grid.Column="1"
-                    Orientation="Vertical">
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
             <Label Content="Hits"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Right"
-                   Margin="0 0 0 0"
-                   Width="70"
+                   Width="150"
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="OutHitsTB"
                      Text="{Binding HitsNum}"
-                     VerticalAlignment="Bottom"
+                     VerticalAlignment="Top"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70" />
         </StackPanel>
 
-        <StackPanel Grid.Column="2"
-                    Orientation="Vertical">
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal">
             <Label Content="Wounds"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Right"
-                   Margin="0 0 0 0"
-                   Width="70"
+                   Width="150"
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="OutWoundsTB"
                      Text="{Binding WoundsNum}"
-                     VerticalAlignment="Bottom"
+                     VerticalAlignment="Top"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70" />
         </StackPanel>
 
-        <StackPanel Grid.Column="3"
-                    Orientation="Vertical">
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal">
             <Label Content="UnSaved"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Right"
-                   Margin="0 0 0 0"
-                   Width="70"
+                   Width="150"
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="UnSavedWoundsTB"
                      Text="{Binding UnSavedNum}"
-                     VerticalAlignment="Bottom"
+                     VerticalAlignment="Top"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70" />
         </StackPanel>
 
-        <StackPanel Grid.Column="4"
-                    Orientation="Vertical">
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal">
             <Label Content="Damage"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Right"
-                   Margin="0 0 0 0"
-                   Width="70"
+                   Width="150"
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="OutDamageTB"
                      Text="{Binding TotalDamageNum}"
-                     VerticalAlignment="Bottom"
+                     VerticalAlignment="Top"
                      HorizontalAlignment="Right"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70" />
         </StackPanel>
 
-        <StackPanel Grid.Column="5"
-                    Orientation="Vertical">
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal">
             <Label Content="DeadModels"
                    Style="{StaticResource LabelTheme}"
                    HorizontalAlignment="Right"
-                   Margin="0 0 0 0"
-                   Width="70"
+                   Width="150"
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="DeadModelsTB"
                      Text="{Binding DeadModelsNum}"
                      HorizontalAlignment="Right"
-                     VerticalAlignment="Bottom"
+                     VerticalAlignment="Top"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70" />
         </StackPanel>

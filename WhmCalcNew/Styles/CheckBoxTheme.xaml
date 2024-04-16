@@ -17,7 +17,7 @@
 
 
         <Style.Setters>
-
+        
             <Setter Property="Height"
                     Value="25" />
             <Setter Property="Width"
@@ -35,8 +35,8 @@
                               SnapsToDevicePixels="True">
                             <Border>
                                 <Grid>
-                                <Ellipse Height="{TemplateBinding Height}"
-                                         Width="{TemplateBinding Width}" Fill="Orange">
+                                <Ellipse Height="{TemplateBinding Height}" SnapsToDevicePixels="True" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                         Width="{TemplateBinding Width}" Fill="{StaticResource MainOutlineColor}">
                                         <!--<Ellipse.Fill>
                                         <RadialGradientBrush>
                                             <GradientStop Color="#0f1316"
@@ -48,32 +48,37 @@
                                     
                                 </Ellipse>
 
-                                <Ellipse Height="{TemplateBinding Height}"
+                                <Ellipse Height="{TemplateBinding Height}" SnapsToDevicePixels="True"
                                          Width="{TemplateBinding Width}"
-                                         Fill="#0f1316">
-                                        <Ellipse.LayoutTransform>
-                                            <ScaleTransform ScaleX="0.75"
-                                                            ScaleY="0.75" />
-                                        </Ellipse.LayoutTransform>
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Fill="{StaticResource MainWindowBackgroundColor}">
+                                        <Ellipse.RenderTransform>
+                                            <ScaleTransform ScaleX="0.9"
+                                                            ScaleY="0.9"
+                                                            CenterX="12.5"
+                                                            CenterY="12.5"/>
+                                        </Ellipse.RenderTransform>
                                     </Ellipse>
                                 </Grid>
                             </Border>
 
                             <Ellipse x:Name="checkMark"
                                      Opacity="0"
+                                     SnapsToDevicePixels="True"
                                      Height="{TemplateBinding Height}"
                                      Width="{TemplateBinding Width}"
-                                     Fill="Orange">
+                                     Fill="{StaticResource MainOutlineColor}">
                                 <Ellipse.LayoutTransform>
-                                    <ScaleTransform ScaleX="0.4"
-                                                    ScaleY="0.4" />
+                                    <ScaleTransform ScaleX="0.45"
+                                                    ScaleY="0.45" />
                                 </Ellipse.LayoutTransform>
 
                                 <Ellipse.Effect>
-                                    <DropShadowEffect Color="Orange"
+                                    <DropShadowEffect Color="White"
                                                       ShadowDepth="0"
                                                       Direction="0"
-                                                      BlurRadius="100" />
+                                                      BlurRadius="10" />
                                 </Ellipse.Effect>
                             </Ellipse>
                         </Grid>

@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Main"
         Height="500"
-        Width="550"
+        Width="840"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -18,29 +18,47 @@
     <Window.Resources>
         <models:StringToByteDataConverter x:Key="stringToByteConverter" />
     </Window.Resources>
-    <Border Background="#0f1316"
+    <Border Background="{StaticResource MainWindowBackgroundColor}"
             CornerRadius="20">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="390"/>
-                <RowDefinition Height="110"/>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="360" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="182" />
+                <ColumnDefinition Width="268" />
+                <ColumnDefinition Width="230" />
             </Grid.ColumnDefinitions>
 
-            <components:AttackerPartComponent Grid.Column="0" Grid.Row="0"/>
 
-            <StackPanel Grid.Row="0" Grid.Column="3" Height="390" Width="110"
-                        Orientation="Vertical">
+            <components:MainWindowControlsPartComponent Grid.Row="0"
+                                                        Grid.Column="4"
+                                                        VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+
+            <components:AttackerPartComponent Grid.Column="0"
+                                              Grid.Row="1"
+                                              HorizontalAlignment="Right"
+                                              Margin="0 0 16 0" />
+
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    Height="290"
+                    Grid.RowSpan="2"
+                    VerticalAlignment="Top"
+                    BorderBrush="{StaticResource MainOutlineColor}"
+                    BorderThickness="1,0,0,0">
+            <StackPanel Orientation="Vertical">
                 <ComboBox x:Name="TargetChoiceBox"
-                          Width="110"
+                          Width="150"
                           Height="50"
-                          Margin="0 0 0 0"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left"
+                          Margin="16 0 0 0"
                           HorizontalContentAlignment="Center"
                           ItemsSource="{Binding Targets}"
                           SelectedItem="{Binding SelectedTarget}">
@@ -52,18 +70,28 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-
-                <components:TargetPartComponent VerticalAlignment="Bottom"
+                <components:TargetPartComponent Margin="16 10 0 0"
+                                                HorizontalAlignment="Left"
                                                 DataContext="{Binding ElementName=TargetChoiceBox}" />
-
             </StackPanel>
-            
-            <components:OutputPartComponent Grid.Row="1" Grid.ColumnSpan="4"/>
+            </Border>
 
-            <components:ModificatorsPartComponent Grid.Row="0"
-                                                  Grid.Column="1"
-                                                  Grid.ColumnSpan="2" />
+            <Border Grid.Row="1"
+                    Grid.Column="2"
+                    Height="370"
+                    BorderBrush="{StaticResource MainOutlineColor}"
+                    BorderThickness="1,0,0,0">
+                <components:ModificatorsPartComponent Margin="6 0 0 0"/>
+            </Border>
 
+            <Border Grid.Row="1"
+                    Grid.Column="4"
+                    Height="370"
+                    VerticalAlignment="Top"
+                    BorderBrush="{StaticResource MainOutlineColor}"
+                    BorderThickness="1,0,0,0">
+                <components:OutputPartComponent />
+            </Border>
         </Grid>
     </Border>
 </Window>

@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="MainWindowBackgroundColor"
+                     Color="#282932" />
+    <SolidColorBrush x:Key="MainOutlineColor"
+                     Color="#b1a2e9" />
+    <SolidColorBrush x:Key="BoxesInnerColor"
+                     Color="#292739" />
+</ResourceDictionary>

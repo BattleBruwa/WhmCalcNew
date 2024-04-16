@@ -7,15 +7,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border CornerRadius="10"
-                                Background="#292739"
-                                BorderThickness="2"
+                        <Border CornerRadius="5"
+                                Background="{StaticResource BoxesInnerColor}"
+                                BorderThickness="1"
                                 Width="70"
-                                Height="50">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="Orange" />
-
-                            </Border.BorderBrush>
+                                Height="50"
+                                BorderBrush="{StaticResource MainOutlineColor}">
                             <Grid>
                                 <TextBox Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          BorderThickness="0"
