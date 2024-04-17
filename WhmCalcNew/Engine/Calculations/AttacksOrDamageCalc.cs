@@ -2,6 +2,9 @@
 {
     public static class AttacksOrDamageCalc
     {
+        /// <summary>
+        /// Расчитывает количество атак или урон каждой атаки.
+        /// </summary>
         public static float CalculateAorD(string? input)
         {
             if (string.IsNullOrEmpty(input))

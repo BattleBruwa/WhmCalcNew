@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d"
              d:DesignHeight="360"
              Width="263">
-    <Grid>
+    <Grid DataContext="{Binding AttackingUnit}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="35" />
             <ColumnDefinition />
@@ -27,6 +28,7 @@
 
         <CheckBox Grid.Row="0"
                   Grid.Column="0"
+                  IsChecked="{Binding HasRerollToHit1, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="RerollToHitOnesCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="0"
@@ -36,6 +38,7 @@
 
         <CheckBox Grid.Row="1"
                   Grid.Column="0"
+                  IsChecked="{Binding HasRerollToHitAll, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="RerollToHitAllCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="1"
@@ -45,6 +48,7 @@
 
         <CheckBox Grid.Row="2"
                   Grid.Column="0"
+                  IsChecked="{Binding HasRerollToWound1, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="RerollToWoundOnesCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="2"
@@ -54,6 +58,7 @@
 
         <CheckBox Grid.Row="3"
                   Grid.Column="0"
+                  IsChecked="{Binding HasRerollToWoundAll, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="RerollToWoundAllCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="3"
@@ -63,6 +68,7 @@
 
         <CheckBox Grid.Row="4"
                   Grid.Column="0"
+                  IsChecked="{Binding HasLethalHits, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="LethalHitsCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="4"
@@ -72,6 +78,7 @@
 
         <CheckBox Grid.Row="5"
                   Grid.Column="0"
+                  IsChecked="{Binding HasSustainedHits, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="SustainedHitsCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="5"
@@ -81,6 +88,7 @@
 
         <CheckBox Grid.Row="6"
                   Grid.Column="0"
+                  IsChecked="{Binding HasDevastatingWounds, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="DevastatingWoundsCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="6"
@@ -90,6 +98,7 @@
 
         <CheckBox Grid.Row="7"
                   Grid.Column="0"
+                  IsChecked="{Binding IsMinusOneToWound, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="MinusOneToWoundCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="7"
@@ -99,6 +108,7 @@
 
         <CheckBox Grid.Row="8"
                   Grid.Column="0"
+                  IsChecked="{Binding HasCritsOn5s, UpdateSourceTrigger=PropertyChanged}"
                   x:Name="CritHitsCheckBox"
                   Style="{StaticResource CheckBoxTheme}" />
         <TextBlock Grid.Row="8"

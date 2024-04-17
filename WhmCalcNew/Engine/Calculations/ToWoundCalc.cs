@@ -4,6 +4,9 @@ namespace WhmCalcNew.Engine.Calculations
 {
     public static class ToWoundCalc
     {
+        /// <summary>
+        /// Расчитывает вунд ролл.
+        /// </summary>
         public static float ToWoundRoll(AttackingUnit? attacker, TargetUnit? target)
         {
             if (attacker == null || target == null || attacker.Strength == null || target.Toughness == null)
@@ -34,7 +37,7 @@ namespace WhmCalcNew.Engine.Calculations
                 resultedRoll = 6;
             }
 
-            if (target.IsHardToWound == true)
+            if (attacker.IsMinusOneToWound == true)
             {
                 return DiceRoller.RollTheDice(resultedRoll - 1);
             }

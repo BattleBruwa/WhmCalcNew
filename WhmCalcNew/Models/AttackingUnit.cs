@@ -64,78 +64,122 @@
             }
         }
 
-        //private bool _hasRerollToHit1;
-        //public bool HasRerollToHit1
-        //{
-        //    get { return _hasRerollToHit1; }
-        //    set
-        //    { 
-        //        _hasRerollToHit1 = value; 
-        //        OnPropertyChanged();
-        //    }
-        //}
+        // Рерол единиц на хит
+        private bool _hasRerollToHit1;
+        public bool HasRerollToHit1
+        {
+            get { return _hasRerollToHit1; }
+            set
+            {
+                _hasRerollToHit1 = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //private bool _hasRerollToWound1;
-        //public bool HasRerollToWound1
-        //{
-        //    get { return _hasRerollToWound1; }
-        //    set
-        //    {
-        //        _hasRerollToWound1 = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        // Рерол единиц на вунд
+        private bool _hasRerollToWound1;
+        public bool HasRerollToWound1
+        {
+            get { return _hasRerollToWound1; }
+            set
+            {
+                _hasRerollToWound1 = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //private bool _hasRerollToHitAll;
-        //public bool HasRerollToHitAll
-        //{
-        //    get { return _hasRerollToHitAll; }
-        //    set
-        //    {
-        //        _hasRerollToHitAll = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        // Рерол хитов
+        private bool _hasRerollToHitAll;
+        public bool HasRerollToHitAll
+        {
+            get { return _hasRerollToHitAll; }
+            set
+            {
+                _hasRerollToHitAll = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //private bool _hasRerollToWoundAll;
-        //public bool HasRerollToWoundAll
-        //{
-        //    get { return _hasRerollToWoundAll; }
-        //    set
-        //    {
-        //        _hasRerollToWoundAll = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        // Рерол вундов
+        private bool _hasRerollToWoundAll;
+        public bool HasRerollToWoundAll
+        {
+            get { return _hasRerollToWoundAll; }
+            set
+            {
+                _hasRerollToWoundAll = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //private LethalHits _hasLethalHits;
+        // Минус 1 на вунд
+        private bool _isMinusOneToWound;
+        public bool IsMinusOneToWound
+        {
+            get { return _isMinusOneToWound; }
+            set { _isMinusOneToWound = value; }
+        }
 
-        //public LethalHits HasLethalHits
-        //{
-        //    get { return _hasLethalHits; }
-        //    set {  }
-        //}
 
+        // Литалки
+        private bool _hasLethalHits;
+        public bool HasLethalHits
+        {
+            get { return _hasLethalHits; }
+            set
+            {
+                _hasLethalHits = value;
+                OnPropertyChanged();
+            }
+        }
 
+        // Sustained!
+        private bool _hasSustainedHits;
+        public bool HasSustainedHits
+        {
+            get { return _hasSustainedHits; }
+            set
+            {
+                _hasSustainedHits = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // Криты на 5
+        private bool _hasCritsOn5s;
+        public bool HasCritsOn5s
+        {
+            get { return _hasCritsOn5s; }
+            set
+            {
+                _hasCritsOn5s = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // Дев вундс
+        private bool _hasDevastatingWounds;
+        public bool HasDevastatingWounds
+        {
+            get { return _hasDevastatingWounds; }
+            set
+            {
+                _hasDevastatingWounds = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
-        //#region Енумы для свойств
-        //private enum LethalHits
-        //{
-        //    False,
-        //    OnSixes,
-        //    OnFives
-        //}
-
-        //private enum DevastatingWounds
-        //{
-        //    False,
-        //    OnSixes,
-        //    OnFives,
-        //    OnFours,
-        //    OnThrees,
-        //    OnTwos
-        //}
-        //#endregion
+        public AttackingUnit()
+        {
+            HasRerollToHit1 = false;
+            HasRerollToHitAll = false;
+            HasRerollToWound1 = false;
+            HasRerollToWoundAll = false;
+            HasSustainedHits = false;
+            HasLethalHits = false;
+            HasCritsOn5s = false;
+            HasDevastatingWounds = false;
+        }
     }
 }

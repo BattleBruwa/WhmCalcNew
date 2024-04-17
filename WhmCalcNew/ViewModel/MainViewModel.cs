@@ -43,15 +43,16 @@ namespace WhmCalcNew.ViewModel
             }
         }
 
-        private OutputDataManager? _outputData;
+        private OutputData? _outputData;
 
-        public OutputDataManager? OutputData
+        public OutputData? OutputData
         {
             get { return _outputData; }
             set
             {
                 _outputData = value;
                 OnPropertyChanged();
+                Recalculate(this.AttackingUnit, this.SelectedTarget);
             }
         }
 
@@ -59,7 +60,7 @@ namespace WhmCalcNew.ViewModel
         {
             this.Targets = TargetManager.GetTargets();
             this.AttackingUnit = new AttackingUnit();
-            this.OutputData = new OutputDataManager();
+            this.OutputData = OutputDataManager.GetOutputData();
 
 
             //TESTING!!!!!!!! ПОТОМ УДАЛИТЬ!!!!!!!!!
@@ -70,7 +71,8 @@ namespace WhmCalcNew.ViewModel
                 {
                     i++;
                     Debug.WriteLine(i.ToString());
-                    Debug.WriteLine($"Attacker: {AttackingUnit?.Attacks}, {AttackingUnit?.Accuracy}, {AttackingUnit?.Strength}, {AttackingUnit?.ArmorPen}, {AttackingUnit?.Damage}");
+                    Debug.WriteLine($"Attacker1: {AttackingUnit?.Attacks}, {AttackingUnit?.Accuracy}, {AttackingUnit?.Strength}, {AttackingUnit?.ArmorPen}, {AttackingUnit?.Damage}");
+                    Debug.WriteLine($"Attacker2: {AttackingUnit?.HasRerollToHit1}, {AttackingUnit?.HasRerollToHitAll}, {AttackingUnit?.HasRerollToWound1}, {AttackingUnit?.HasRerollToWoundAll}, {AttackingUnit?.HasLethalHits}, {AttackingUnit?.HasSustainedHits}, {AttackingUnit?.HasDevastatingWounds}, {AttackingUnit?.IsMinusOneToWound}, {AttackingUnit?.HasCritsOn5s}");
                     Debug.WriteLine($"Target: {SelectedTarget?.Toughness}, {SelectedTarget?.Save}, {SelectedTarget?.Wounds}");
                     Debug.WriteLine($"Output: {OutputData?.HitsNum}, {OutputData?.WoundsNum}, {OutputData?.UnSavedNum}, {OutputData?.DeadModelsNum}, {OutputData?.TotalDamageNum}");
                     Thread.Sleep(1000);
@@ -83,11 +85,11 @@ namespace WhmCalcNew.ViewModel
         {
             if (attacker != null && target != null && this.OutputData != null)
             {
-                this.OutputData.GetHits(attacker, target);
-                this.OutputData.GetWounds(attacker, target);
-                this.OutputData.GetUnsavedWounds(attacker, target);
-                this.OutputData.GetDeadModels(attacker, target);
-                this.OutputData.GetTotalDamage(attacker, target);
+                OutputDataManager.GetHits(attacker);
+                OutputDataManager.GetWounds(attacker, target);
+                OutputDataManager.GetUnsavedWounds(attacker, target);
+                OutputDataManager.GetDeadModels(attacker, target);
+                OutputDataManager.GetTotalDamage(attacker, target);
             }
         }
     }

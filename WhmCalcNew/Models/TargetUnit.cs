@@ -20,11 +20,6 @@
         // Инвуль цели
         public byte? Invuln { get; set; }
 
-        // Имеет ли цель -1 на хит
-        public bool? IsHardToHit { get; set; }
-
-        // Имеет ли цель -1 на вунд
-        public bool? IsHardToWound { get; set; }
 
         public TargetUnit()
         {

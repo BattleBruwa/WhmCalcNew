@@ -11,7 +11,7 @@ namespace WhmCalcNew.Engine.Calculations
                 return 0f;
             }
             float attacks = AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
-            float accuracy = AccuracyCalc.ToHitRoll(attacker, target);
+            float accuracy = AccuracyCalc.ToHitRoll(attacker);
             float wounds = ToWoundCalc.ToWoundRoll(attacker, target);
             float save = ArmorSaveCalc.ToSaveRoll(attacker, target);
             float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);

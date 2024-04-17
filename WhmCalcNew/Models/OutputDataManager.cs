@@ -2,104 +2,14 @@
 
 namespace WhmCalcNew.Models
 {
-    // решить, нужен ли ObservableObject тут
-    public class OutputDataManager : ObservableObject
+    public class OutputDataManager
     {
-        #region Свойства
-        
-        // частые приведения к double
-        // сменить float на double во всех свойствах?
+        public static OutputData _OutputData { get; set; } = new OutputData();
 
-
-        // Количесвто хитов
-        private float? _hitsNum;
-        public float? HitsNum
-        {
-            get { return _hitsNum; }
-            set 
-            {
-                if (value != null)
-                {
-                    _hitsNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _hitsNum = null;
-                }
-                OnPropertyChanged();
-            }
+        public static OutputData GetOutputData()
+        { 
+            return _OutputData;
         }
-
-        // Количесвто вундов
-        private float? _woundsNum;
-        public float? WoundsNum
-        {
-            get { return _woundsNum; }
-            set
-            {
-                if (value != null)
-                {
-                    _woundsNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _woundsNum = null;
-                }
-                OnPropertyChanged();
-            }
-        }
-
-        // Количество непрошедших защиту вундов
-        private float? _unSavedNum;
-        public float? UnSavedNum
-        {
-            get { return _unSavedNum; }
-            set
-            {
-                if (value != null)
-                {
-                    _unSavedNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _unSavedNum = null;
-                }
-                OnPropertyChanged();
-            }
-        }
-
-        // Количество уничтоженых моделей
-        private int? _deadModelsNum;
-        public int? DeadModelsNum
-        {
-            get { return _deadModelsNum; }
-            set
-            {
-                _deadModelsNum = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // Полный нанесенный урон
-        private float? _totalDamageNum;
-        public float? TotalDamageNum
-        {
-            get { return _totalDamageNum; }
-            set
-            {
-                if (value != null)
-                {
-                    _totalDamageNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _totalDamageNum = null;
-                }
-                OnPropertyChanged();
-            }
-        }
-        #endregion
-
 
         public OutputDataManager()
         {
@@ -108,43 +18,68 @@ namespace WhmCalcNew.Models
 
         #region Методы
 
-        /// <summary>Устанавливает свойство количества хитов произведением количества атак на вероятность попадания каждой атаки.</summary>
-        public void GetHits(AttackingUnit attacker, TargetUnit target)
+        /// <summary>Устанавливает свойство количества хитов произведением количества атак на вероятность попадания каждой атаки и количество литалок.</summary>
+        public static void GetHits(AttackingUnit attacker)
         {
             float attacks = AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
-            float hitProb = AccuracyCalc.ToHitRoll(attacker, target);
+            float hitProb = AccuracyCalc.ToHitRoll(attacker);
 
-            this.HitsNum = attacks * hitProb;
+            // Обработка правила Lethal Hits:
+            if (attacker.HasLethalHits == true && attacker.HasCritsOn5s == false)
+            {
+                _OutputData.LethalHitsNum = attacks / 6f;
+            }
+            if (attacker.HasLethalHits == true && attacker.HasCritsOn5s == true)
+            {
+                _OutputData.LethalHitsNum = attacks / 5f;
+            }
+
+            // Обработка правила Sustained Hits:
+            if (attacker.HasSustainedHits == true && attacker.HasCritsOn5s == false)
+            {
+                attacks = attacks + (float)Math.Round((attacks / 6f), 2);
+            }
+            if (attacker.HasSustainedHits == true && attacker.HasCritsOn5s == true)
+            {
+                attacks = attacks + (float)Math.Round((attacks / 5f), 2);
+            }
+
+            _OutputData.HitsNum = attacks * hitProb;
         }
 
         /// <summary>Устанавливает свойство количества вундов произведением количества хитов на вероятность провундить каждой атакой.</summary>
-        public void GetWounds(AttackingUnit attacker, TargetUnit target)
+        public static void GetWounds(AttackingUnit attacker, TargetUnit target)
         {
             float woundProb = ToWoundCalc.ToWoundRoll(attacker, target);
 
-            this.WoundsNum = this.HitsNum * woundProb;
+            if(attacker.HasDevastatingWounds == true)
+            {
+                _OutputData.DevastatingWoundsNum = _OutputData.HitsNum / 6f;
+            }
+
+            _OutputData.WoundsNum = (_OutputData.HitsNum * woundProb) + _OutputData.LethalHitsNum;
         }
 
         /// <summary>Устанавливает свойство количества непрошедших защиту вундов.</summary>
-        public void GetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
+        public static void GetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
         {
-            float saveProp = ArmorSaveCalc.ToSaveRoll(attacker, target);
+            float saveProb = ArmorSaveCalc.ToSaveRoll(attacker, target);
 
-            this.UnSavedNum = this.WoundsNum - (saveProp * this.WoundsNum);
+            _OutputData.UnSavedNum = _OutputData.WoundsNum - ((saveProb * _OutputData.WoundsNum) + _OutputData.DevastatingWoundsNum);
         }
 
         /// <summary>Устанавливает свойство количества уничтоженых моделей.</summary>
-        public void GetDeadModels(AttackingUnit attacker, TargetUnit target)
+        public static void GetDeadModels(AttackingUnit attacker, TargetUnit target)
         {
             float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
             int? deadModels = 0;
 
             if (damage < target.Wounds)
             {
-                for (int i = 1; i < this.UnSavedNum; i++)
+                for (int i = 1; i < _OutputData.UnSavedNum; i++)
                 {
                     float c = damage;
-                    while (c < target.Wounds && i < this.UnSavedNum)
+                    while (c < target.Wounds && i < _OutputData.UnSavedNum)
                     {
                         i++;
                         c = c + damage;
@@ -158,16 +93,16 @@ namespace WhmCalcNew.Models
             }
             if (damage >= target.Wounds)
             {
-                deadModels = (int?)this.UnSavedNum;
+                deadModels = (int?)_OutputData.UnSavedNum;
             }
 
-            this.DeadModelsNum = deadModels;
+            _OutputData.DeadModelsNum = deadModels;
         }
 
         /// <summary>Устанавливает свойство полного нанесенного урона. </summary>
-        public void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
+        public static void GetTotalDamage(AttackingUnit attacker, TargetUnit target)
         {
-            this.TotalDamageNum = TotalDamageCalc.GetTotalDamage(attacker, target);
+            _OutputData.TotalDamageNum = TotalDamageCalc.GetTotalDamage(attacker, target);
         }
         #endregion
     }
