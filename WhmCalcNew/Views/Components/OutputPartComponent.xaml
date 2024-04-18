@@ -27,7 +27,7 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <TextBox x:Name="OutAttacksTB"
-                     Text="{Binding HitsNum}"
+                     Text="{Binding AttacksNum}"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
                      Style="{StaticResource TextBoxTheme}"

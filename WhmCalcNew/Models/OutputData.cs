@@ -8,6 +8,24 @@
         // сменить float на double во всех свойствах?
 
 
+        private float? _attacksNum;
+        public float? AttacksNum
+        {
+            get { return _attacksNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _attacksNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _attacksNum = null;
+                }
+                OnPropertyChanged();
+            }
+        }
+
         // Количесвто хитов
         private float? _hitsNum;
         public float? HitsNum
@@ -22,6 +40,25 @@
                 else
                 {
                     _hitsNum = null;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        // Количество доп хитов от sustained
+        private float? _sustainedHitsNum;
+        public float? SustainedHitsNum
+        {
+            get { return _sustainedHitsNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _sustainedHitsNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _sustainedHitsNum = null;
                 }
                 OnPropertyChanged();
             }

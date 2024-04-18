@@ -13,7 +13,7 @@ namespace WhmCalcNew.Engine.Calculations
             {
                 return 0f;
             }
-
+            
             byte resultedRoll = 0;
 
             if (attacker.Strength == target.Toughness)

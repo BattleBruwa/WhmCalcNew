@@ -85,11 +85,11 @@ namespace WhmCalcNew.ViewModel
         {
             if (attacker != null && target != null && this.OutputData != null)
             {
-                OutputDataManager.GetHits(attacker);
-                OutputDataManager.GetWounds(attacker, target);
-                OutputDataManager.GetUnsavedWounds(attacker, target);
-                OutputDataManager.GetDeadModels(attacker, target);
-                OutputDataManager.GetTotalDamage(attacker, target);
+                OutputDataManager.SetHits(attacker);
+                OutputDataManager.SetWounds(attacker, target);
+                OutputDataManager.SetUnsavedWounds(attacker, target);
+                OutputDataManager.SetDeadModels(attacker, target);
+                OutputDataManager.SetTotalDamage(attacker, target);
             }
         }
     }
