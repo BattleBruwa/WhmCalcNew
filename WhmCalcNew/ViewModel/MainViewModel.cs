@@ -27,7 +27,7 @@ namespace WhmCalcNew.ViewModel
             {
                 _selectedTarget = value;
                 OnPropertyChanged();
-                Recalculate(this.AttackingUnit, this.SelectedTarget);
+                Recalculate(AttackingUnit, SelectedTarget);
             }
         }
 
@@ -39,7 +39,6 @@ namespace WhmCalcNew.ViewModel
             {
                 _attackingUnit = value;
                 OnPropertyChanged();
-                Recalculate(this.AttackingUnit, this.SelectedTarget);
             }
         }
 
@@ -52,7 +51,6 @@ namespace WhmCalcNew.ViewModel
             {
                 _outputData = value;
                 OnPropertyChanged();
-                Recalculate(this.AttackingUnit, this.SelectedTarget);
             }
         }
 
@@ -60,6 +58,7 @@ namespace WhmCalcNew.ViewModel
         {
             this.Targets = TargetManager.GetTargets();
             this.AttackingUnit = new AttackingUnit();
+            this.AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
             this.OutputData = OutputDataManager.GetOutputData();
 
 
@@ -73,12 +72,18 @@ namespace WhmCalcNew.ViewModel
                     Debug.WriteLine(i.ToString());
                     Debug.WriteLine($"Attacker1: {AttackingUnit?.Attacks}, {AttackingUnit?.Accuracy}, {AttackingUnit?.Strength}, {AttackingUnit?.ArmorPen}, {AttackingUnit?.Damage}");
                     Debug.WriteLine($"Attacker2: {AttackingUnit?.HasRerollToHit1}, {AttackingUnit?.HasRerollToHitAll}, {AttackingUnit?.HasRerollToWound1}, {AttackingUnit?.HasRerollToWoundAll}, {AttackingUnit?.HasLethalHits}, {AttackingUnit?.HasSustainedHits}, {AttackingUnit?.HasDevastatingWounds}, {AttackingUnit?.IsMinusOneToWound}, {AttackingUnit?.HasCritsOn5s}");
+                    Debug.WriteLine($"Attacker3: {AttackingUnit?.LethalHitsNum}, {AttackingUnit?.SustainedHitsNum}, {AttackingUnit?.DevastatingWoundsNum}");
                     Debug.WriteLine($"Target: {SelectedTarget?.Toughness}, {SelectedTarget?.Save}, {SelectedTarget?.Wounds}");
                     Debug.WriteLine($"Output: {OutputData?.HitsNum}, {OutputData?.WoundsNum}, {OutputData?.UnSavedNum}, {OutputData?.DeadModelsNum}, {OutputData?.TotalDamageNum}");
                     Thread.Sleep(1000);
                 }
             });
 
+        }
+
+        private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            Recalculate(AttackingUnit, SelectedTarget);
         }
 
         private void Recalculate(AttackingUnit? attacker, TargetUnit? target)

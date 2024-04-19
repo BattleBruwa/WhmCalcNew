@@ -7,7 +7,6 @@
         // частые приведения к double
         // сменить float на double во всех свойствах?
 
-
         private float? _attacksNum;
         public float? AttacksNum
         {
@@ -44,64 +43,6 @@
                 OnPropertyChanged();
             }
         }
-
-        // Количество доп хитов от sustained
-        private float? _sustainedHitsNum;
-        public float? SustainedHitsNum
-        {
-            get { return _sustainedHitsNum; }
-            set
-            {
-                if (value != null)
-                {
-                    _sustainedHitsNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _sustainedHitsNum = null;
-                }
-                OnPropertyChanged();
-            }
-        }
-
-        // Количесвто литалок
-        private float? _lethalHitsNum;
-        public float? LethalHitsNum
-        {
-            get { return _lethalHitsNum; }
-            set
-            {
-                if (value != null)
-                {
-                    _lethalHitsNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _lethalHitsNum = null;
-                }
-                OnPropertyChanged();
-            }
-        }
-
-        // Количесвто дев вунд
-        private float? _devastatingWoundsNum;
-        public float? DevastatingWoundsNum
-        {
-            get { return _devastatingWoundsNum; }
-            set
-            {
-                if (value != null)
-                {
-                    _devastatingWoundsNum = (float)Math.Round((double)value, 2);
-                }
-                else
-                {
-                    _devastatingWoundsNum = null;
-                }
-                OnPropertyChanged();
-            }
-        }
-
 
         // Количесвто вундов
         private float? _woundsNum;
@@ -176,8 +117,6 @@
         public OutputData()
         {
 
-            DevastatingWoundsNum = 0;
-            LethalHitsNum = 0;
         }
     }
 }

@@ -29,38 +29,37 @@ namespace WhmCalcNew.Models
         public static void SetHits(AttackingUnit attacker)
         {
             SetAttacks(attacker);
-
             // Вероятность попасть атакой:
             float hitProb = AccuracyCalc.ToHitRoll(attacker);
 
             // Обработка правила Lethal Hits:
             if (attacker.HasLethalHits == true && attacker.HasCritsOn5s == false)
             {
-                _OutputData.LethalHitsNum = _OutputData.AttacksNum / 6f;
+                attacker.LethalHitsNum = _OutputData.AttacksNum / 6f;
             }
             if (attacker.HasLethalHits == true && attacker.HasCritsOn5s == true)
             {
-                _OutputData.LethalHitsNum = _OutputData.AttacksNum / 3f;
+                attacker.LethalHitsNum = _OutputData.AttacksNum / 3f;
             }
 
             // Обработка правила Sustained Hits:
             if (attacker.HasSustainedHits == true && attacker.HasCritsOn5s == false)
             {
-                _OutputData.SustainedHitsNum = _OutputData.AttacksNum / 6f;
+                attacker.SustainedHitsNum = _OutputData.AttacksNum / 6f;
             }
             if (attacker.HasSustainedHits == true && attacker.HasCritsOn5s == true)
             {
-                _OutputData.SustainedHitsNum = _OutputData.AttacksNum / 3f;
+                attacker.SustainedHitsNum = _OutputData.AttacksNum / 3f;
             }
 
             // Заполнение свойства HitsNum:
-            if (_OutputData.SustainedHitsNum == 0 || _OutputData.SustainedHitsNum == null)
+            if (attacker.SustainedHitsNum == 0 || attacker.SustainedHitsNum == null)
             {
                 _OutputData.HitsNum = _OutputData.AttacksNum * hitProb;
             }
             else
             {
-                _OutputData.HitsNum = (_OutputData.AttacksNum * hitProb) + _OutputData.SustainedHitsNum;
+                _OutputData.HitsNum = (_OutputData.AttacksNum * hitProb) + attacker.SustainedHitsNum;
             }
         }
 
@@ -68,38 +67,37 @@ namespace WhmCalcNew.Models
         public static void SetWounds(AttackingUnit attacker, TargetUnit target)
         {
             SetHits(attacker);
-
             // Вероятность провундить:
             float woundProb = ToWoundCalc.ToWoundRoll(attacker, target);
 
             // Обработка правила Devastating Wounds:
             if(attacker.HasDevastatingWounds == true)
             {
-                _OutputData.DevastatingWoundsNum = _OutputData.HitsNum / 6f;
+                attacker.DevastatingWoundsNum = _OutputData.HitsNum / 6f;
             }
 
             // Заполнение свойсвта WoundsNum:
             // Если есть дев вунды, их надо вычесть из общего пула вундов:
-            if (_OutputData.LethalHitsNum == 0 || _OutputData.LethalHitsNum == null)
+            if (attacker.HasLethalHits == false)
             {
-                if (_OutputData.DevastatingWoundsNum == null || _OutputData.DevastatingWoundsNum == 0)
+                if (attacker.HasDevastatingWounds == false)
                 {
                     _OutputData.WoundsNum = _OutputData.HitsNum * woundProb;
                 }
-                else
+                if (attacker.HasDevastatingWounds == true)
                 {
-                    _OutputData.WoundsNum = (_OutputData.HitsNum * woundProb) - _OutputData.DevastatingWoundsNum;
+                    _OutputData.WoundsNum = (_OutputData.HitsNum * woundProb) - attacker.DevastatingWoundsNum;
                 }
             }
-            else
+            if (attacker.HasLethalHits == true)
             {
-                if (_OutputData.DevastatingWoundsNum == null || _OutputData.DevastatingWoundsNum == 0)
+                if (attacker.HasDevastatingWounds == false)
                 {
-                    _OutputData.WoundsNum = ((_OutputData.HitsNum - _OutputData.LethalHitsNum) * woundProb) + _OutputData.LethalHitsNum;
+                    _OutputData.WoundsNum = ((_OutputData.HitsNum - attacker.LethalHitsNum) * woundProb) + attacker.LethalHitsNum;
                 }
-                else
+                if (attacker.HasDevastatingWounds == true)
                 {
-                    _OutputData.WoundsNum = ((_OutputData.HitsNum - _OutputData.LethalHitsNum)* woundProb) + _OutputData.LethalHitsNum - _OutputData.DevastatingWoundsNum;
+                    _OutputData.WoundsNum = ((_OutputData.HitsNum - attacker.LethalHitsNum) * woundProb) + attacker.LethalHitsNum - attacker.DevastatingWoundsNum;
                 }
             }
         }
@@ -108,18 +106,17 @@ namespace WhmCalcNew.Models
         public static void SetUnsavedWounds(AttackingUnit attacker, TargetUnit target)
         {
             SetWounds(attacker, target);
-
             // Вероятность засейвить:
             float saveProb = ArmorSaveCalc.ToSaveRoll(attacker, target);
 
             // Заполнение свойства UnSavedNum:
-            if (_OutputData.DevastatingWoundsNum == null || _OutputData.DevastatingWoundsNum == 0)
+            if (attacker.HasDevastatingWounds == false)
             {
                 _OutputData.UnSavedNum = _OutputData.WoundsNum - (saveProb * _OutputData.WoundsNum);
             }
             else
             {
-                _OutputData.UnSavedNum = _OutputData.WoundsNum - ((saveProb * _OutputData.WoundsNum) + _OutputData.DevastatingWoundsNum);
+                _OutputData.UnSavedNum = _OutputData.WoundsNum - ((saveProb * _OutputData.WoundsNum) + attacker.DevastatingWoundsNum);
             }
         }
 
@@ -160,7 +157,6 @@ namespace WhmCalcNew.Models
         public static void SetTotalDamage(AttackingUnit attacker, TargetUnit target)
         {
             SetUnsavedWounds(attacker, target);
-
             float damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
 
             // Заполнение свойства TotalDamageNum:

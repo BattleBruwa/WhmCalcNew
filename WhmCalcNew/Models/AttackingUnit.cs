@@ -1,4 +1,7 @@
-﻿namespace WhmCalcNew.Models
+﻿using System.Runtime.CompilerServices;
+using WhmCalcNew.ViewModel;
+
+namespace WhmCalcNew.Models
 {
     public class AttackingUnit : ObservableObject
     {
@@ -65,7 +68,7 @@
         }
 
         // Рерол единиц на хит
-        private bool _hasRerollToHit1;
+        private bool _hasRerollToHit1 = false;
         public bool HasRerollToHit1
         {
             get { return _hasRerollToHit1; }
@@ -77,7 +80,7 @@
         }
 
         // Рерол единиц на вунд
-        private bool _hasRerollToWound1;
+        private bool _hasRerollToWound1 = false;
         public bool HasRerollToWound1
         {
             get { return _hasRerollToWound1; }
@@ -89,7 +92,7 @@
         }
 
         // Рерол хитов
-        private bool _hasRerollToHitAll;
+        private bool _hasRerollToHitAll = false;
         public bool HasRerollToHitAll
         {
             get { return _hasRerollToHitAll; }
@@ -101,7 +104,7 @@
         }
 
         // Рерол вундов
-        private bool _hasRerollToWoundAll;
+        private bool _hasRerollToWoundAll = false;
         public bool HasRerollToWoundAll
         {
             get { return _hasRerollToWoundAll; }
@@ -113,7 +116,7 @@
         }
 
         // Минус 1 на вунд
-        private bool _isMinusOneToWound;
+        private bool _isMinusOneToWound = false;
         public bool IsMinusOneToWound
         {
             get { return _isMinusOneToWound; }
@@ -122,31 +125,83 @@
 
 
         // Литалки
-        private bool _hasLethalHits;
+        private bool _hasLethalHits = false;
         public bool HasLethalHits
         {
             get { return _hasLethalHits; }
             set
             {
-                _hasLethalHits = value;
+                if (value == true)
+                {
+                    _hasLethalHits = value;
+                }
+                else
+                {
+                    LethalHitsNum = null;
+                    _hasLethalHits = value;
+                }
                 OnPropertyChanged();
             }
         }
 
+        // Количесвто литалок
+        private float? _lethalHitsNum;
+        public float? LethalHitsNum
+        {
+            get { return _lethalHitsNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _lethalHitsNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _lethalHitsNum = null;
+                }
+            }
+        }
+
         // Sustained!
-        private bool _hasSustainedHits;
+        private bool _hasSustainedHits = false;
         public bool HasSustainedHits
         {
             get { return _hasSustainedHits; }
             set
             {
-                _hasSustainedHits = value;
+                if (value == true)
+                {
+                    _hasSustainedHits = value;
+                }
+                else
+                {
+                    SustainedHitsNum = null;
+                    _hasSustainedHits = value;
+                }
                 OnPropertyChanged();
             }
         }
 
+        // Количество доп хитов от sustained
+        private float? _sustainedHitsNum;
+        public float? SustainedHitsNum
+        {
+            get { return _sustainedHitsNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _sustainedHitsNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _sustainedHitsNum = null;
+                }
+            }
+        }
+
         // Криты на 5
-        private bool _hasCritsOn5s;
+        private bool _hasCritsOn5s = false;
         public bool HasCritsOn5s
         {
             get { return _hasCritsOn5s; }
@@ -158,28 +213,49 @@
         }
 
         // Дев вундс
-        private bool _hasDevastatingWounds;
+        private bool _hasDevastatingWounds = false;
         public bool HasDevastatingWounds
         {
             get { return _hasDevastatingWounds; }
             set
             {
-                _hasDevastatingWounds = value;
+                if (value == true)
+                {
+                    _hasDevastatingWounds = value;
+                }
+                else
+                {
+                    DevastatingWoundsNum = null;
+                    _hasDevastatingWounds = value;
+                }
                 OnPropertyChanged();
+            }
+        }
+
+        // Количесвто дев вунд
+        private float? _devastatingWoundsNum;
+        public float? DevastatingWoundsNum
+        {
+            get { return _devastatingWoundsNum; }
+            set
+            {
+                if (value != null)
+                {
+                    _devastatingWoundsNum = (float)Math.Round((double)value, 2);
+                }
+                else
+                {
+                    _devastatingWoundsNum = null;
+                }
             }
         }
         #endregion
 
         public AttackingUnit()
         {
-            HasRerollToHit1 = false;
-            HasRerollToHitAll = false;
-            HasRerollToWound1 = false;
-            HasRerollToWoundAll = false;
-            HasSustainedHits = false;
-            HasLethalHits = false;
-            HasCritsOn5s = false;
-            HasDevastatingWounds = false;
+
         }
+
+        
     }
 }
