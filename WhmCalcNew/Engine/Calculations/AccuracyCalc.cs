@@ -16,14 +16,34 @@ namespace WhmCalcNew.Engine.Calculations
             // 0 = автохиты
             if (attacker.Accuracy == 0)
             {
-                return 1;
+                return 1f;
             }
-            // Криты на 5
-            if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
+            // Рерол 1
+            if (attacker.HasRerollToHit1 == true)
             {
-                return DiceRoller.RollTheDice(5);
+                // Криты на 5
+                if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
+                {
+                    return DiceRoller.RollTheDiceWithReroll1s(5);
+                }
+                else
+                {
+                    return DiceRoller.RollTheDiceWithReroll1s((byte)attacker.Accuracy);
+                }
             }
-
+            // Рерол промахов
+            if (attacker.HasRerollToHitAll == true)
+            {
+                // Криты на 5
+                if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
+                {
+                    return DiceRoller.RollTheDiceWithReroll(5);
+                }
+                else
+                {
+                    return DiceRoller.RollTheDiceWithReroll((byte)attacker.Accuracy);
+                }
+            }
             return DiceRoller.RollTheDice((byte)attacker.Accuracy);
         }
     }
