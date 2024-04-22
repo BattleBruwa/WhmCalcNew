@@ -2,17 +2,31 @@
 {
     public static class DiceRoller
     {
+        // Примерно равно 0.17
+        private const float DiceRollSixPlus = (1f / 6f);
+
+        // Примерно равно 0.33
+        private const float DiceRollFivePlus = (2f / 6f);
+
+        // Равно 0.5
+        private const float DiceRollFourPlus = (3f / 6f);
+
+        // Примерно равно 0.67
+        private const float DiceRollThreePlus = (4f / 6f);
+
+        // Примерно равно 0.83
+        private const float DiceRollTwoPlus = (5f / 6f);
+
         /// <summary> Вероятность выбросить нужное значение на кубе.</summary>
-        /// <returns>0.83 для 2+ 0.67 для 3+ 0.5 для 4+ 0.33 для 5+ 0.17 для 6+</returns>
         public static float RollTheDice(int input)
         {
             switch (input)
             {
-                case <= 2: return 0.83f;
-                case 3: return 0.67f;
-                case 4: return 0.5f;
-                case 5: return 0.33f;
-                case >= 6: return 0.17f;
+                case <= 2: return DiceRollTwoPlus;
+                case 3: return DiceRollThreePlus;
+                case 4: return DiceRollFourPlus;
+                case 5: return DiceRollFivePlus;
+                case >= 6: return DiceRollSixPlus;
             }
         }
 
@@ -23,11 +37,11 @@
         {
             switch (input)
             {
-                case <= 2: return (float)Math.Round(0.83f + (0.17f * 0.83f), 2);
-                case 3: return (float)Math.Round(0.67f + (0.17f * 0.67f), 2);
-                case 4: return (float)Math.Round(0.5f + (0.17f * 0.5f), 2);
-                case 5: return (float)Math.Round(0.33f + (0.17f * 0.33f), 2);
-                case >= 6: return (float)Math.Round(0.17f + (0.17f * 0.17f), 2);
+                case <= 2: return DiceRollTwoPlus + (DiceRollSixPlus * DiceRollTwoPlus);
+                case 3: return DiceRollThreePlus + (DiceRollSixPlus * DiceRollThreePlus);
+                case 4: return DiceRollFourPlus + (DiceRollSixPlus * DiceRollFourPlus);
+                case 5: return DiceRollFivePlus + (DiceRollSixPlus * DiceRollFivePlus);
+                case >= 6: return DiceRollSixPlus + (DiceRollSixPlus * DiceRollSixPlus);
             }
         }
 
@@ -38,11 +52,11 @@
         {
             switch (input)
             {
-                case <= 2: return (float)Math.Round(0.83f + (0.17f * 0.83f), 2);
-                case 3: return (float)Math.Round(0.67f + (0.33f * 0.67f), 2);
-                case 4: return (float)Math.Round(0.5f + (0.5f * 0.5f), 2);
-                case 5: return (float)Math.Round(0.33f + (0.67f * 0.33f), 2);
-                case >= 6: return (float)Math.Round(0.17f + (0.83f * 0.17f), 2);
+                case <= 2: return DiceRollTwoPlus + (DiceRollSixPlus * DiceRollTwoPlus);
+                case 3: return DiceRollThreePlus + (DiceRollFivePlus * DiceRollThreePlus);
+                case 4: return DiceRollFourPlus + (DiceRollFourPlus * DiceRollFourPlus);
+                case 5: return DiceRollFivePlus + (DiceRollThreePlus * DiceRollFivePlus);
+                case >= 6: return DiceRollSixPlus + (DiceRollTwoPlus * DiceRollSixPlus);
             }
         }
     }

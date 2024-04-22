@@ -44,6 +44,13 @@ namespace WhmCalcNew.Engine.Calculations
                     return DiceRoller.RollTheDiceWithReroll((byte)attacker.Accuracy);
                 }
             }
+
+            // Криты на 5 без реролов
+            if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
+            {
+                return DiceRoller.RollTheDice(5);
+            }
+
             return DiceRoller.RollTheDice((byte)attacker.Accuracy);
         }
     }

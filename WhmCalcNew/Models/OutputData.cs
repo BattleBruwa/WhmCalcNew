@@ -15,7 +15,7 @@
             {
                 if (value != null)
                 {
-                    _attacksNum = (float)Math.Round((double)value, 2);
+                    _attacksNum = (float)Math.Round((double)value, 1);
                 }
                 else
                 {
@@ -34,7 +34,7 @@
             {
                 if (value != null)
                 {
-                    _hitsNum = (float)Math.Round((double)value, 2);
+                    _hitsNum = (float)Math.Round((double)value, 1);
                 }
                 else
                 {
@@ -53,7 +53,7 @@
             {
                 if (value != null)
                 {
-                    _woundsNum = (float)Math.Round((double)value, 2);
+                    _woundsNum = (float)Math.Round((double)value, 1);
                 }
                 else
                 {
@@ -72,7 +72,7 @@
             {
                 if (value != null)
                 {
-                    _unSavedNum = (float)Math.Round((double)value, 2);
+                    _unSavedNum = (float)Math.Round((double)value, 1);
                 }
                 else
                 {
@@ -103,7 +103,7 @@
             {
                 if (value != null)
                 {
-                    _totalDamageNum = (float)Math.Round((double)value, 2);
+                    _totalDamageNum = (float)Math.Round((double)value, 1);
                 }
                 else
                 {
