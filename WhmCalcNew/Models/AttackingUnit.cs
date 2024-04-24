@@ -3,7 +3,7 @@ using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Models
 {
-    public class AttackingUnit : ObservableObject
+    public partial class AttackingUnit : ObservableObject
     {
         #region Свойства
 
