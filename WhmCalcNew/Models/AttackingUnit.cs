@@ -3,7 +3,7 @@ using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Models
 {
-    public class AttackingUnit : ObservableObject
+    public partial class AttackingUnit : ObservableObject
     {
         #region Свойства
 
@@ -120,7 +120,11 @@ namespace WhmCalcNew.Models
         public bool IsMinusOneToWound
         {
             get { return _isMinusOneToWound; }
-            set { _isMinusOneToWound = value; }
+            set
+            {
+                _isMinusOneToWound = value;
+                OnPropertyChanged();
+            }
         }
 
 
@@ -256,6 +260,6 @@ namespace WhmCalcNew.Models
 
         }
 
-        
+
     }
 }
