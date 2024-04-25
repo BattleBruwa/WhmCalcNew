@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
+             xmlns:validation="clr-namespace:WhmCalcNew.Engine.Validations"
              mc:Ignorable="d"
              d:DesignHeight="290"
              d:DesignWidth="110">
@@ -48,11 +49,20 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="AccuracyTB"
-                     Text="{Binding Accuracy, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
-                     Style="{StaticResource TextBoxTheme}"
-                     Width="70" />
+                     Width="70"
+                     Style="{StaticResource TextBoxTheme}">
+                <TextBox.Text>
+                    <Binding Path="Accuracy"
+                             Converter="{StaticResource stringToByteConverter}"
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:DigitInputValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2"
