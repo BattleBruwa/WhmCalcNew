@@ -12,8 +12,8 @@ namespace WhmCalcNew.Models
     {
         private string _error;
         public string Error => _error;
-        
 
+        // https://learn.microsoft.com/en-us/archive/msdn-magazine/2010/june/msdn-magazine-input-validation-enforcing-complex-business-data-rules-with-wpf
         public string this[string columnName]
         {
             get
