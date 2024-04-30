@@ -6,9 +6,10 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class DigitInputValidationRule : ValidationRule
     {
+        private const string _digitPattern = @"\d{2}";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            Regex regex = new Regex(@"\d{2}");
+            Regex regex = new Regex(_digitPattern);
             string? input = value.ToString();
 
             if (regex.IsMatch(input) == false)

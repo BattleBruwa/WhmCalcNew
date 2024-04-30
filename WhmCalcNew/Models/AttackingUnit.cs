@@ -27,6 +27,10 @@ namespace WhmCalcNew.Models
             set
             {
                 _accuracy = value;
+                if (_accuracy < 0 || _accuracy > 24)
+                {
+                    
+                }
                 OnPropertyChanged();
             }
         }

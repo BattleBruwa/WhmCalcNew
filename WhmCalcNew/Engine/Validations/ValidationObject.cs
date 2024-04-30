@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 namespace WhmCalcNew.Engine.Validations
 {
     // 5.35
-    public class ValidationViewModel : INotifyDataErrorInfo
+    public class ValidationObject : INotifyDataErrorInfo
     {
         private readonly Dictionary<string, List<string>> _propertyErrors = new Dictionary<string, List<string>>();
+
         public bool HasErrors => _propertyErrors.Any();
+
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
         public IEnumerable GetErrors(string? propertyName)
@@ -22,12 +24,20 @@ namespace WhmCalcNew.Engine.Validations
 
         public void AddError(string propertyName, string errorMessage)
         {
-            if(_propertyErrors.ContainsKey(propertyName) == false)
+            if (_propertyErrors.ContainsKey(propertyName) == false)
             {
                 _propertyErrors.Add(propertyName, new List<string>());
 
                 _propertyErrors[propertyName].Add(errorMessage);
 
+                OnErrorsChanged(propertyName);
+            }
+        }
+
+        public void ClearErrors(string propertyName)
+        {
+            if(_propertyErrors.Remove(propertyName) == true)
+            {
                 OnErrorsChanged(propertyName);
             }
         }
