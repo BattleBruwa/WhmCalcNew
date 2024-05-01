@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class DigitInputValidationRule : ValidationRule
     {
-        private const string _digitPattern = @"\d{2}";
+        private const string _digitPattern = @"^([0-9]|[1-2]{1}[0-9]{1})$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_digitPattern);
@@ -14,11 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (regex.IsMatch(input) == false)
             {
-                if (input.Length > 2 || input.Length < 0)
-                {
-                    return new ValidationResult(false, "Поле должно содержать до 2 чисел");
-                }
-                return new ValidationResult(false, "Поле должно содержать число");
+                return new ValidationResult(false, "Некорректное число");
             }
             else
             {

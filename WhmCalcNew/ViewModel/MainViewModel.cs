@@ -7,7 +7,7 @@ using WhmCalcNew.Models;
 
 namespace WhmCalcNew.ViewModel
 {
-    public partial class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         private ObservableCollection<TargetUnit>? _targets;
         public ObservableCollection<TargetUnit>? Targets
