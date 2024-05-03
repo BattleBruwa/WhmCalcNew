@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class AccuracyValidationRule : ValidationRule
     {
-        private const string _wsPattern = @"^([0-9]|[1-2]{1}[0-9]{1})$";
+        private const string _wsPattern = @"^[0-6]{1}$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_wsPattern);

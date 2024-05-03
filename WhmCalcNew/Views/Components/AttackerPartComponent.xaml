@@ -58,7 +58,7 @@
                              Converter="{StaticResource stringToByteConverter}"
                              UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validation:DigitInputValidationRule />
+                            <validation:AccuracyValidationRule />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
