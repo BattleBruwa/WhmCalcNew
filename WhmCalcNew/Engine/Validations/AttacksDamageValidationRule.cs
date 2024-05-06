@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class AttacksDamageValidationRule : ValidationRule
     {
-        private const string _attacksOrDamagePattern = @"^([0-9]|[1-2]{1}[0-9]{1})$";
+        private const string _attacksOrDamagePattern = @"^([1-9]|[1-9][0-9]|(D|d)[36]|[1-9](D|d)[36]|[1-9][0-9](D|d)[36])$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_attacksOrDamagePattern);
@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Некорректное число");
+                return new ValidationResult(false, "Количество атак должно иметь значение от 1 до 99 или значение в формате 5d6.");
             }
             else
             {

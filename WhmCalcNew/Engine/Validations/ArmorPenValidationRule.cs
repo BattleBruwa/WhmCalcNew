@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class ArmorPenValidationRule : ValidationRule
     {
-        private const string _armorPenPattern = @"^([0-9]|[1-2]{1}[0-9]{1})$";
+        private const string _armorPenPattern = @"^[0-5]$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_armorPenPattern);
@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Некорректное число");
+                return new ValidationResult(false, "Пробивание брони должно иметь значение от 0 до 5.");
             }
             else
             {

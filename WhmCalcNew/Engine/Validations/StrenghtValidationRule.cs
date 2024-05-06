@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class StrenghtValidationRule : ValidationRule
     {
-        private const string _strPattern = @"^([0-9]|[1-2]{1}[0-9]{1})$";
+        private const string _strPattern = @"^([0-9]|[1-2][0-9])$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_strPattern);
@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Некорректное число");
+                return new ValidationResult(false, "Сила должна иметь значение от 1 до 29.");
             }
             else
             {

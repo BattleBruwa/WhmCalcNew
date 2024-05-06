@@ -32,11 +32,19 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <TextBox x:Name="AttacksTB"
-                     Text="{Binding Attacks, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Center"
                      Style="{StaticResource TextBoxTheme}"
-                     Width="70" />
+                     Width="70">
+                <TextBox.Text>
+                    <Binding Path="Attacks"
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:AttacksDamageValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1"
@@ -75,11 +83,20 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="StrengthTB"
-                     Text="{Binding Strength, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Width="70" />
+                     Width="70">
+                <TextBox.Text>
+                    <Binding Path="Strength"
+                             Converter="{StaticResource stringToByteConverter}"
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:StrenghtValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="3"
@@ -92,11 +109,20 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="ArmorPenTB"
-                     Text="{Binding ArmorPen, Converter={StaticResource stringToByteConverter}, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Width="70" />
+                     Width="70">
+                <TextBox.Text>
+                    <Binding Path="ArmorPen"
+                             Converter="{StaticResource stringToByteConverter}"
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:ArmorPenValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="4"
@@ -109,11 +135,19 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="DamageTB"
-                     Text="{Binding Damage, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
-                     Width="70" />
+                     Width="70">
+                <TextBox.Text>
+                    <Binding Path="Damage"
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:AttacksDamageValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
     </Grid>
 </UserControl>
