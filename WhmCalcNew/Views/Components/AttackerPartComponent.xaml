@@ -15,11 +15,11 @@
     <Grid HorizontalAlignment="Center"
           DataContext="{Binding AttackingUnit}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0"
@@ -38,7 +38,8 @@
                      Width="70">
                 <TextBox.Text>
                     <Binding Path="Attacks"
-                             UpdateSourceTrigger="PropertyChanged">
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:AttacksDamageValidationRule />
                         </Binding.ValidationRules>
@@ -64,7 +65,8 @@
                 <TextBox.Text>
                     <Binding Path="Accuracy"
                              Converter="{StaticResource stringToByteConverter}"
-                             UpdateSourceTrigger="PropertyChanged">
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:AccuracyValidationRule />
                         </Binding.ValidationRules>
@@ -90,7 +92,8 @@
                 <TextBox.Text>
                     <Binding Path="Strength"
                              Converter="{StaticResource stringToByteConverter}"
-                             UpdateSourceTrigger="PropertyChanged">
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:StrenghtValidationRule />
                         </Binding.ValidationRules>
@@ -116,7 +119,8 @@
                 <TextBox.Text>
                     <Binding Path="ArmorPen"
                              Converter="{StaticResource stringToByteConverter}"
-                             UpdateSourceTrigger="PropertyChanged">
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:ArmorPenValidationRule />
                         </Binding.ValidationRules>
@@ -141,7 +145,8 @@
                      Width="70">
                 <TextBox.Text>
                     <Binding Path="Damage"
-                             UpdateSourceTrigger="PropertyChanged">
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:AttacksDamageValidationRule />
                         </Binding.ValidationRules>
