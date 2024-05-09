@@ -20,7 +20,7 @@
             else
             {
                 float amount = 0;
-                int indexOfD = input.IndexOf('D');
+                int indexOfD = input.IndexOf('D', StringComparison.CurrentCultureIgnoreCase);
 
                 float numBeforeD = 0;
                 if (indexOfD == 0 || input[indexOfD - 1].Equals(' ') || input[indexOfD - 1].Equals('1'))
