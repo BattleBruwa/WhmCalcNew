@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles\Colors\ProjectColors.xaml" />
+                <ResourceDictionary Source="Styles\ValidationErrorTheme.xaml" />
                 <ResourceDictionary Source="Styles\TextBoxTheme.xaml" />
                 <ResourceDictionary Source="Styles\ComboBoxTheme.xaml" />
                 <ResourceDictionary Source="Styles\LabelTheme.xaml" />
