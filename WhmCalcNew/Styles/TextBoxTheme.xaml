@@ -33,8 +33,6 @@
         <Style.Triggers>
             <Trigger Property="Validation.HasError"
                      Value="True">
-                <Setter Property="Background"
-                        Value="Red" />
                 <Setter Property="ToolTip"
                         Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
             </Trigger>
