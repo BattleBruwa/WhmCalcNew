@@ -78,8 +78,17 @@ namespace WhmCalcNew.Models
             get { return _hasRerollToHit1; }
             set
             {
-                _hasRerollToHit1 = value;
-                OnPropertyChanged();
+                if (HasRerollToHitAll == true)
+                {
+                    HasRerollToHitAll = false;
+                    _hasRerollToHit1 = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    _hasRerollToHit1 = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -90,8 +99,17 @@ namespace WhmCalcNew.Models
             get { return _hasRerollToWound1; }
             set
             {
-                _hasRerollToWound1 = value;
-                OnPropertyChanged();
+                if (HasRerollToWoundAll == true)
+                {
+                    HasRerollToWoundAll = false;
+                    _hasRerollToWound1 = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    _hasRerollToWound1 = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -102,8 +120,17 @@ namespace WhmCalcNew.Models
             get { return _hasRerollToHitAll; }
             set
             {
-                _hasRerollToHitAll = value;
-                OnPropertyChanged();
+                if (HasRerollToHit1 == true)
+                {
+                    HasRerollToHit1 = false;
+                    _hasRerollToHitAll = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    _hasRerollToHitAll = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -114,8 +141,17 @@ namespace WhmCalcNew.Models
             get { return _hasRerollToWoundAll; }
             set
             {
-                _hasRerollToWoundAll = value;
-                OnPropertyChanged();
+                if (HasRerollToWound1 == true)
+                {
+                    HasRerollToWound1 = false;
+                    _hasRerollToWoundAll = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    _hasRerollToWoundAll = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
