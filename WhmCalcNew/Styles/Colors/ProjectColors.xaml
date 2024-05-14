@@ -6,4 +6,6 @@
                      Color="#b1a2e9" />
     <SolidColorBrush x:Key="BoxesInnerColor"
                      Color="#292739" />
+    <SolidColorBrush x:Key="TextMainColor"
+                     Color="WhiteSmoke" />
 </ResourceDictionary>

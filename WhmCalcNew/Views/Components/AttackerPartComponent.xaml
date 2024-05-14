@@ -47,6 +47,12 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Количество аттак.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
         </StackPanel>
 
         <StackPanel Grid.Row="1"

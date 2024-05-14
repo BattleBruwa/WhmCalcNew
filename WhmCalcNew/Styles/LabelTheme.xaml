@@ -4,7 +4,7 @@
            TargetType="{x:Type Label}"
            x:Key="LabelTheme">
         <Setter Property="Foreground"
-                Value="White" />
+                Value="{StaticResource TextMainColor}" />
         <Setter Property="HorizontalAlignment"
                 Value="Center" />
         <Setter Property="VerticalAlignment"

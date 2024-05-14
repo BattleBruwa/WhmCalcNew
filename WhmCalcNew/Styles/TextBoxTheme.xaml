@@ -20,7 +20,7 @@
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"
                                          FontSize="20"
-                                         Foreground="White"
+                                         Foreground="{StaticResource TextMainColor}"
                                          MaxLength="4"
                                          Padding="5">
                                 </TextBox>
