@@ -8,12 +8,12 @@
         <Setter Property="HorizontalAlignment"
                 Value="Left" />
         <Setter Property="VerticalAlignment"
-                Value="Top" />
+                Value="Bottom" />
         <Setter Property="FontSize"
                 Value="20" />
         <Setter Property="TextAlignment"
                 Value="Center" />
         <Setter Property="Margin"
-                Value="10 0 0 0" />
+                Value="10 0 0 16" />
     </Style>
 </ResourceDictionary>

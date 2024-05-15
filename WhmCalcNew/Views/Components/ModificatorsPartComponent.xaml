@@ -9,13 +9,9 @@
              d:DesignHeight="360"
              Width="263">
     <Grid DataContext="{Binding AttackingUnit}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="35" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
@@ -26,95 +22,131 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <CheckBox Grid.Row="0"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasRerollToHit1, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="RerollToHitOnesCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="0"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Re-Roll 1s to Hit" />
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasRerollToHit1, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="RerollToHitOnesCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Re-Roll 1s to Hit" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Ре-ролл едениц на хит.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="1"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasRerollToHitAll, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="RerollToHitAllCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Re-Roll to Hit" />
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasRerollToHitAll, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="RerollToHitAllCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Re-Roll to Hit" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Ре-ролл едениц на хит.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="2"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasRerollToWound1, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="RerollToWoundOnesCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Re-Roll 1s to Wound" />
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasRerollToWound1, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="RerollToWoundOnesCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Re-Roll 1s to Wound" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Ре-ролл хитов.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="3"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasRerollToWoundAll, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="RerollToWoundAllCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="3"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Re-Roll to Wound" />
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasRerollToWoundAll, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="RerollToWoundAllCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Re-Roll to Wound" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Ре-ролл едениц на вунд.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="4"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasLethalHits, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="LethalHitsCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="4"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Lethal Hits" />
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasLethalHits, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="LethalHitsCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Lethal Hits" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Ре-ролл вундов.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="5"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasSustainedHits, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="SustainedHitsCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="5"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Sustained Hits" />
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasSustainedHits, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="SustainedHitsCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Sustained Hits" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Леталки.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="6"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasDevastatingWounds, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="DevastatingWoundsCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="6"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Devastating Wounds" />
+        <StackPanel Grid.Row="6"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasDevastatingWounds, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="DevastatingWoundsCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Devastating Wounds" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Сустейнед.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="7"
-                  Grid.Column="0"
-                  IsChecked="{Binding IsMinusOneToWound, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="MinusOneToWoundCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="7"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Minus 1 to Wound" />
+        <StackPanel Grid.Row="7"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding IsMinusOneToWound, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="MinusOneToWoundCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Minus 1 to Wound" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Дев. вундс.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
-        <CheckBox Grid.Row="8"
-                  Grid.Column="0"
-                  IsChecked="{Binding HasCritsOn5s, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="CritHitsCheckBox"
-                  Style="{StaticResource CheckBoxTheme}" />
-        <TextBlock Grid.Row="8"
-                   Grid.Column="1"
-                   Style="{StaticResource ModificatorsTextBlockTheme}"
-                   Text="Critical Hits on 5s" />
+        <StackPanel Grid.Row="8"
+                    Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding HasCritsOn5s, UpdateSourceTrigger=PropertyChanged}"
+                      x:Name="CritHitsCheckBox"
+                      Style="{StaticResource CheckBoxTheme}" />
+            <TextBlock Style="{StaticResource ModificatorsTextBlockTheme}"
+                       Text="Critical Hits on 5s" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Ре-ролл едениц на хит.</TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
 
     </Grid>
 </UserControl>

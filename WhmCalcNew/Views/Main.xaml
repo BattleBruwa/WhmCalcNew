@@ -81,7 +81,7 @@
                     Height="370"
                     BorderBrush="{StaticResource MainOutlineColor}"
                     BorderThickness="1,0,0,0">
-                <components:ModificatorsPartComponent Margin="6 0 0 0"/>
+                <components:ModificatorsPartComponent />
             </Border>
 
             <Border Grid.Row="1"
