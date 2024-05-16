@@ -31,7 +31,7 @@
                        Text="Re-Roll 1s to Hit" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Ре-ролл едениц на хит.</TextBlock>
+                    <TextBlock>Each time an attack is made, re-roll a Hit roll of 1.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -45,7 +45,7 @@
                        Text="Re-Roll to Hit" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Ре-ролл едениц на хит.</TextBlock>
+                    <TextBlock>Each time an attack is made, you can re-roll that attack's Hit roll.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -59,7 +59,7 @@
                        Text="Re-Roll 1s to Wound" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Ре-ролл хитов.</TextBlock>
+                    <TextBlock>Each time an attack is made, re-roll a Wound roll of 1.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -73,7 +73,7 @@
                        Text="Re-Roll to Wound" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Ре-ролл едениц на вунд.</TextBlock>
+                    <TextBlock>Each time an attack is made, you can re-roll that attack's Wound roll.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -87,7 +87,7 @@
                        Text="Lethal Hits" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Ре-ролл вундов.</TextBlock>
+                    <TextBlock>Each time an attack is made, a Critical Hit automatically wounds the target.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -101,7 +101,7 @@
                        Text="Sustained Hits" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Леталки.</TextBlock>
+                    <TextBlock>Each Critical Hit scores an additional hit on the target.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -115,7 +115,7 @@
                        Text="Devastating Wounds" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Сустейнед.</TextBlock>
+                    <TextBlock>Saving throws cannot be made against Critical Wounds scored by this attack (including invulnerable saving throws).</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -129,7 +129,7 @@
                        Text="Minus 1 to Wound" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Дев. вундс.</TextBlock>
+                    <TextBlock>Subtract 1 from the Wound roll.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -143,7 +143,7 @@
                        Text="Critical Hits on 5s" />
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Ре-ролл едениц на хит.</TextBlock>
+                    <TextBlock>Each time an attack is made, an unmodified Hit roll of 5+ scores a Critical Hit.</TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
