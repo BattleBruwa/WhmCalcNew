@@ -131,7 +131,7 @@
                     <TextBlock>
                     <Run>S (</Run>
                     <Run Foreground="{StaticResource TextTooltipLabelColor}">Strength</Run>
-                    <Run>): Any attack that hits then needs to be strong enough to wound its target.</Run>
+                    <Run>): How likely the weapon is to wound a foe.</Run>
                     </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
@@ -206,7 +206,7 @@
                     <TextBlock>
                     <Run>D (</Run>
                     <Run Foreground="{StaticResource TextTooltipLabelColor}">Damage</Run>
-                    <Run>): If the enemy unit fails its saving throw, the attack inflicts this much damage.</Run>
+                    <Run>): The amount of damage inflicted by a succesful wound.</Run>
                     </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
