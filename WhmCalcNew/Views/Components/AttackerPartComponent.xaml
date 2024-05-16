@@ -50,7 +50,11 @@
 
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Количество аттак.</TextBlock>
+                    <TextBlock>
+                    <Run>A (</Run>
+                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Attacks</Run>
+                    <Run>): The amount of shots or strikes your weapon gets.</Run>
+                    </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -84,7 +88,13 @@
 
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Меткость.</TextBlock>
+                    <TextBlock>
+                    <Run>WS/BS (</Run>
+                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Weapon Skill</Run>
+                    <Run>/</Run>
+                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Ballistic Skill</Run>
+                    <Run>): How accurate your attacks are.</Run>
+                    </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -118,7 +128,11 @@
 
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Сила атаки.</TextBlock>
+                    <TextBlock>
+                    <Run>S (</Run>
+                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Strength</Run>
+                    <Run>): Any attack that hits then needs to be strong enough to wound its target.</Run>
+                    </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -152,7 +166,11 @@
 
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Пробивание брони.</TextBlock>
+                    <TextBlock>
+                    <Run>AP (</Run>
+                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Armour Penetration</Run>
+                    <Run>): Represents how effective the attack is against armour.</Run>
+                    </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
@@ -185,7 +203,11 @@
 
             <StackPanel.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Урон атаки.</TextBlock>
+                    <TextBlock>
+                    <Run>D (</Run>
+                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Damage</Run>
+                    <Run>): If the enemy unit fails its saving throw, the attack inflicts this much damage.</Run>
+                    </TextBlock>
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>

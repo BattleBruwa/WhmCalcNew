@@ -8,4 +8,6 @@
                      Color="#292739" />
     <SolidColorBrush x:Key="TextMainColor"
                      Color="WhiteSmoke" />
+    <SolidColorBrush x:Key="TextTooltipLabelColor"
+                     Color="Yellow" />
 </ResourceDictionary>
