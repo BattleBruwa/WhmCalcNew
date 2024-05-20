@@ -4,18 +4,132 @@
            BasedOn="{StaticResource {x:Type Button}}"
            TargetType="{x:Type Button}">
         <Style.Setters>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Background="Transparent">
-                            <Path Data="M0,0 L1,1 M0,1 L1,0"
-                                  Stretch="Uniform"
-                                  Stroke="Red" />
-                                  
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}"
+                                Background="Transparent">
+                            <Grid>
+                                <Grid x:Name="_gridState0"
+                                      Opacity="0">
+                                    <Line X1="0"
+                                          Y1="0"
+                                          X2="{TemplateBinding Width}"
+                                          Y2="{TemplateBinding Height}"
+                                          Stroke="{StaticResource TextMainColor}"
+                                          StrokeThickness="3" />
+                                    <Line X1="0"
+                                          Y1="{TemplateBinding Height}"
+                                          X2="{TemplateBinding Width}"
+                                          Y2="0"
+                                          Stroke="{StaticResource TextMainColor}"
+                                          StrokeThickness="4" />
+                                    <Grid.Effect>
+                                        <DropShadowEffect Color="White"
+                                                          ShadowDepth="0"
+                                                          Direction="0"
+                                                          BlurRadius="5" />
+                                    </Grid.Effect>
+                                </Grid>
+
+                                <Grid x:Name="_gridState1"
+                                      Opacity="1">
+                                    <Line X1="0"
+                                          Y1="0"
+                                          X2="{TemplateBinding Width}"
+                                          Y2="{TemplateBinding Height}"
+                                          Stroke="{StaticResource TextMainColor}"
+                                          StrokeThickness="4" />
+                                    <Line X1="0"
+                                          Y1="{TemplateBinding Height}"
+                                          X2="{TemplateBinding Width}"
+                                          Y2="0"
+                                          Stroke="{StaticResource TextMainColor}"
+                                          StrokeThickness="4" />
+                                </Grid>
+
+                            </Grid>
                         </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="_gridState1"
+                                        Property="Opacity"
+                                        Value="0" />
+                                <Setter TargetName="_gridState0"
+                                        Property="Opacity"
+                                        Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+
+
+
+    <Style x:Key="HideWindowBtnTheme"
+           BasedOn="{StaticResource {x:Type Button}}"
+           TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}"
+                                Background="Transparent">
+                            <Grid>
+                                <Grid x:Name="_hideGridState0"
+                                      Opacity="0">
+                                    <Line X1="2"
+                                          Y1="18"
+                                          X2="20"
+                                          Y2="18"
+                                          Stroke="{StaticResource TextMainColor}"
+                                          StrokeThickness="4"
+                                          StrokeEndLineCap="Triangle"
+                                          StrokeStartLineCap="Triangle">
+                                        <Line.Effect>
+                                            <DropShadowEffect Color="White"
+                                                              ShadowDepth="0"
+                                                              Direction="0"
+                                                              BlurRadius="5" />
+                                        </Line.Effect>
+                                    </Line>
+                                </Grid>
+
+                                <Grid x:Name="_hideGridState1"
+                                      Opacity="1">
+                                    <Line X1="2"
+                                          Y1="18"
+                                          X2="20"
+                                          Y2="18"
+                                          Stroke="{StaticResource TextMainColor}"
+                                          StrokeThickness="4"
+                                          StrokeEndLineCap="Triangle"
+                                          StrokeStartLineCap="Triangle" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="_hideGridState1"
+                                        Property="Opacity"
+                                        Value="0" />
+                                <Setter TargetName="_hideGridState0"
+                                        Property="Opacity"
+                                        Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style.Setters>
     </Style>
 </ResourceDictionary>
