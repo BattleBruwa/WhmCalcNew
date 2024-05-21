@@ -35,7 +35,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
         <Run>T (</Run>
-        <Run Foreground="{StaticResource TextTooltipLabelColor}">Toughness</Run>
+        <Run Foreground="{DynamicResource TextTooltipLabelColor}">Toughness</Run>
         <Run>): Reflects the model's resilience against physical harm.</Run>
                     </TextBlock>
                 </ToolTip>
@@ -61,7 +61,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
         <Run>Sv (</Run>
-        <Run Foreground="{StaticResource TextTooltipLabelColor}">Save</Run>
+        <Run Foreground="{DynamicResource TextTooltipLabelColor}">Save</Run>
         <Run>): Indicates the protection a model's armour gives them.</Run>
                     </TextBlock>
                 </ToolTip>
@@ -87,7 +87,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
         <Run>W (</Run>
-        <Run Foreground="{StaticResource TextTooltipLabelColor}">Wounds</Run>
+        <Run Foreground="{DynamicResource TextTooltipLabelColor}">Wounds</Run>
         <Run>): Represent how much damage a model can sustain before it succumbs to its injuries.</Run>
                     </TextBlock>
                 </ToolTip>

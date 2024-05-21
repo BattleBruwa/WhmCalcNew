@@ -52,7 +52,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
                     <Run>A (</Run>
-                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Attacks</Run>
+                    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Attacks</Run>
                     <Run>): The amount of shots or strikes your weapon gets.</Run>
                     </TextBlock>
                 </ToolTip>
@@ -90,9 +90,9 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
                     <Run>WS/BS (</Run>
-                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Weapon Skill</Run>
+                    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Weapon Skill</Run>
                     <Run>/</Run>
-                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Ballistic Skill</Run>
+                    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Ballistic Skill</Run>
                     <Run>): How accurate your attacks are.</Run>
                     </TextBlock>
                 </ToolTip>
@@ -130,7 +130,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
                     <Run>S (</Run>
-                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Strength</Run>
+                    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Strength</Run>
                     <Run>): How likely the weapon is to wound a foe.</Run>
                     </TextBlock>
                 </ToolTip>
@@ -168,7 +168,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
                     <Run>AP (</Run>
-                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Armour Penetration</Run>
+                    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Armour Penetration</Run>
                     <Run>): Represents how effective the attack is against armour.</Run>
                     </TextBlock>
                 </ToolTip>
@@ -205,7 +205,7 @@
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>
                     <Run>D (</Run>
-                    <Run Foreground="{StaticResource TextTooltipLabelColor}">Damage</Run>
+                    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Damage</Run>
                     <Run>): The amount of damage inflicted by a succesful wound.</Run>
                     </TextBlock>
                 </ToolTip>

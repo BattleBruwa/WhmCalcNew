@@ -8,8 +8,8 @@
                 <ControlTemplate TargetType="ToolTip">
                     <Border BorderThickness="1"
                             CornerRadius="5"
-                            Background="{StaticResource MainWindowBackgroundColor}"
-                            BorderBrush="{StaticResource MainOutlineColor}">
+                            Background="{DynamicResource MainWindowBackgroundColor}"
+                            BorderBrush="{DynamicResource MainOutlineColor}">
                         <ContentPresenter HorizontalAlignment="Center"
                                           VerticalAlignment="Center"
                                           Margin="5" />
@@ -20,6 +20,6 @@
         <Setter Property="FontSize"
                 Value="15" />
         <Setter Property="Foreground"
-                Value="{StaticResource TextMainColor}" />
+                Value="{DynamicResource TextMainColor}" />
     </Style>
 </ResourceDictionary>

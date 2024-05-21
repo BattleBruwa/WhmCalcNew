@@ -7,15 +7,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles\Colors\ProjectColors.xaml" />
-                <ResourceDictionary Source="Styles\ValidationErrorTheme.xaml" />
-                <ResourceDictionary Source="Styles\TextBoxTheme.xaml" />
-                <ResourceDictionary Source="Styles\ComboBoxTheme.xaml" />
-                <ResourceDictionary Source="Styles\LabelTheme.xaml" />
-                <ResourceDictionary Source="Styles\CheckBoxTheme.xaml" />
-                <ResourceDictionary Source="Styles\ModificatorsTextBlockTheme.xaml" />
-                <ResourceDictionary Source="Styles\ToolTipTheme.xaml" />
-                <ResourceDictionary Source="Styles\WindowControlsTheme.xaml" />
+                <ResourceDictionary Source="Visual\Themes\DarkTheme.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ValidationErrorStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\TextBoxStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ComboBoxStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\LabelStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\CheckBoxStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ModificatorsTextBlockStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ToolTipStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\WindowControlsStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

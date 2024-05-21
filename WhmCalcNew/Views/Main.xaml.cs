@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WhmCalcNew.Engine;
+using WhmCalcNew.Engine.ThemeChanger;
 using WhmCalcNew.Models;
 using WhmCalcNew.ViewModel;
 
@@ -23,12 +24,19 @@ namespace WhmCalcNew.Views
     /// </summary>
     public partial class Main : Window
     {
+        private bool _isDarkTheme = true;
+
         MainViewModel mainViewModel = new MainViewModel();
         public Main()
         {
             InitializeComponent();
             
             this.DataContext = mainViewModel;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeChanger.ChangeTheme(ref _isDarkTheme);
         }
     }
 }

@@ -4,7 +4,7 @@
            TargetType="{x:Type TextBlock}"
            x:Key="ModificatorsTextBlockTheme">
         <Setter Property="Foreground"
-                Value="{StaticResource TextMainColor}" />
+                Value="{DynamicResource TextMainColor}" />
         <Setter Property="HorizontalAlignment"
                 Value="Left" />
         <Setter Property="VerticalAlignment"

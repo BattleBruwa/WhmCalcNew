@@ -17,13 +17,13 @@
                                           Y1="0"
                                           X2="{TemplateBinding Width}"
                                           Y2="{TemplateBinding Height}"
-                                          Stroke="{StaticResource TextMainColor}"
+                                          Stroke="{DynamicResource TextMainColor}"
                                           StrokeThickness="3" />
                                     <Line X1="0"
                                           Y1="{TemplateBinding Height}"
                                           X2="{TemplateBinding Width}"
                                           Y2="0"
-                                          Stroke="{StaticResource TextMainColor}"
+                                          Stroke="{DynamicResource TextMainColor}"
                                           StrokeThickness="4" />
                                     <Grid.Effect>
                                         <DropShadowEffect Color="White"
@@ -39,13 +39,13 @@
                                           Y1="0"
                                           X2="{TemplateBinding Width}"
                                           Y2="{TemplateBinding Height}"
-                                          Stroke="{StaticResource TextMainColor}"
+                                          Stroke="{DynamicResource TextMainColor}"
                                           StrokeThickness="4" />
                                     <Line X1="0"
                                           Y1="{TemplateBinding Height}"
                                           X2="{TemplateBinding Width}"
                                           Y2="0"
-                                          Stroke="{StaticResource TextMainColor}"
+                                          Stroke="{DynamicResource TextMainColor}"
                                           StrokeThickness="4" />
                                 </Grid>
 
@@ -89,7 +89,7 @@
                                           Y1="18"
                                           X2="20"
                                           Y2="18"
-                                          Stroke="{StaticResource TextMainColor}"
+                                          Stroke="{DynamicResource TextMainColor}"
                                           StrokeThickness="4"
                                           StrokeEndLineCap="Triangle"
                                           StrokeStartLineCap="Triangle">
@@ -108,7 +108,7 @@
                                           Y1="18"
                                           X2="20"
                                           Y2="18"
-                                          Stroke="{StaticResource TextMainColor}"
+                                          Stroke="{DynamicResource TextMainColor}"
                                           StrokeThickness="4"
                                           StrokeEndLineCap="Triangle"
                                           StrokeStartLineCap="Triangle" />

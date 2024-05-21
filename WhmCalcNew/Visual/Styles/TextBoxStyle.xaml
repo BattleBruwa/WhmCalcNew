@@ -8,11 +8,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Border CornerRadius="5"
-                                Background="{StaticResource BoxesInnerColor}"
+                                Background="{DynamicResource BoxesInnerColor}"
                                 BorderThickness="1"
                                 Width="70"
                                 Height="50"
-                                BorderBrush="{StaticResource MainOutlineColor}">
+                                BorderBrush="{DynamicResource MainOutlineColor}">
                             <Grid>
                                 <TextBox Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          BorderThickness="0"
@@ -20,7 +20,7 @@
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"
                                          FontSize="20"
-                                         Foreground="{StaticResource TextMainColor}"
+                                         Foreground="{DynamicResource TextMainColor}"
                                          MaxLength="4"
                                          Padding="5">
                                 </TextBox>

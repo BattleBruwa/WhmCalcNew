@@ -38,7 +38,7 @@
                             <Border>
                                 <Grid>
                                 <Ellipse Height="{TemplateBinding Height}" SnapsToDevicePixels="True" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                         Width="{TemplateBinding Width}" Fill="{StaticResource MainOutlineColor}">
+                                         Width="{TemplateBinding Width}" Fill="{DynamicResource MainOutlineColor}">
                                         <!--<Ellipse.Fill>
                                         <RadialGradientBrush>
                                             <GradientStop Color="#0f1316"
@@ -54,7 +54,7 @@
                                          Width="{TemplateBinding Width}"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
-                                         Fill="{StaticResource MainWindowBackgroundColor}">
+                                         Fill="{DynamicResource MainWindowBackgroundColor}">
                                         <Ellipse.RenderTransform>
                                             <ScaleTransform ScaleX="0.9"
                                                             ScaleY="0.9"
@@ -70,7 +70,7 @@
                                      SnapsToDevicePixels="True"
                                      Height="{TemplateBinding Height}"
                                      Width="{TemplateBinding Width}"
-                                     Fill="{StaticResource MainOutlineColor}">
+                                     Fill="{DynamicResource MainOutlineColor}">
                                 <Ellipse.LayoutTransform>
                                     <ScaleTransform ScaleX="0.45"
                                                     ScaleY="0.45" />
