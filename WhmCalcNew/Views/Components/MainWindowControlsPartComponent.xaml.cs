@@ -24,5 +24,6 @@ namespace WhmCalcNew.Views.Components
         {
             InitializeComponent();
         }
+
     }
 }

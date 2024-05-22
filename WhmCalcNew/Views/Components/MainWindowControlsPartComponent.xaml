@@ -5,12 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="35" d:DesignWidth="65">
+             d:DesignHeight="35" d:DesignWidth="85">
     <StackPanel Orientation="Horizontal"
                 Margin="0 10 5 0"
                 HorizontalAlignment="Right"
                 Height="25"
-                Width="60">
+                Width="80">
+
+                <!--Смена темы-->
+        <CheckBox Height="20"
+                  Width="20"
+                  Margin="0 0 5 0"
+                  Style="{StaticResource ChangeThemeCheckBox}">
+        </CheckBox>
+
+                <!--Скрыть окно-->
         <Button Height="20"
                 Width="22"
                 Style="{StaticResource HideWindowBtnTheme}">
@@ -21,7 +30,8 @@
             </Button.ToolTip>
         </Button>
 
-        <Button Margin="10 0 0 0"
+        <!--Закрыть окно-->
+        <Button Margin="5 0 11 0"
                 Height="20"
                 Width="20"
                 Style="{StaticResource CloseWindowBtnTheme}">

@@ -34,9 +34,6 @@
                 <ColumnDefinition Width="230" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="2"
-                    Grid.Column="0" Content="Тест" Click="Button_Click"/>
-
             <components:MainWindowControlsPartComponent Grid.Row="0"
                                                         Grid.Column="4"
                                                         VerticalAlignment="Top" HorizontalAlignment="Right"/>

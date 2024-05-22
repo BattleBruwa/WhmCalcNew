@@ -33,10 +33,5 @@ namespace WhmCalcNew.Views
             
             this.DataContext = mainViewModel;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ThemeChanger.ChangeTheme(ref _isDarkTheme);
-        }
     }
 }
