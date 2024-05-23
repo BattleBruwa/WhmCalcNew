@@ -36,7 +36,8 @@
 
             <components:MainWindowControlsPartComponent Grid.Row="0"
                                                         Grid.Column="4"
-                                                        VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                                                        VerticalAlignment="Top"
+                                                        HorizontalAlignment="Right" />
 
 
             <components:AttackerPartComponent Grid.Column="0"

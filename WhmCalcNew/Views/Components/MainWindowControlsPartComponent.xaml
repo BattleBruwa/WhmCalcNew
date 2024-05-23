@@ -16,13 +16,15 @@
         <CheckBox Height="20"
                   Width="20"
                   Margin="0 0 5 0"
-                  Style="{StaticResource ChangeThemeCheckBox}">
+                  Style="{StaticResource ChangeThemeCheckBox}"
+                  Command="{Binding ChangeThemeCommand}">
         </CheckBox>
 
                 <!--Скрыть окно-->
         <Button Height="20"
                 Width="22"
-                Style="{StaticResource HideWindowBtnTheme}">
+                Style="{StaticResource HideWindowBtnTheme}"
+                Command="{Binding HideWindowCommand}">
             <Button.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>Свернуть</TextBlock>
@@ -34,7 +36,8 @@
         <Button Margin="5 0 11 0"
                 Height="20"
                 Width="20"
-                Style="{StaticResource CloseWindowBtnTheme}">
+                Style="{StaticResource CloseWindowBtnTheme}"
+                Command="{Binding CloseWindowCommand}">
             <Button.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}">
                     <TextBlock>Закрыть</TextBlock>

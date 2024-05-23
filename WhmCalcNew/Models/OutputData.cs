@@ -1,4 +1,6 @@
-﻿namespace WhmCalcNew.Models
+﻿using WhmCalcNew.Bases;
+
+namespace WhmCalcNew.Models
 {
     public class OutputData: ObservableObject
     {

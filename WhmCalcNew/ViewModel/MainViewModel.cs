@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using WhmCalcNew.Engine.Calculations;
+using System.Windows;
+using System.Windows.Input;
+using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
 
 namespace WhmCalcNew.ViewModel
@@ -54,12 +55,28 @@ namespace WhmCalcNew.ViewModel
             }
         }
 
+        // Комманды для контроля окна
+
+        public ICommand HideWindowCommand { get; private set; }
+
+        public ICommand CloseWindowCommand { get; private set; }
+
+        public ICommand ChangeThemeCommand { get; private set; }
+        
+
         public MainViewModel()
         {
             this.Targets = TargetManager.GetTargets();
             this.AttackingUnit = new AttackingUnit();
             this.AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
             this.OutputData = OutputDataManager.GetOutputData();
+
+            // RelayCommand ставит CanExecute в null, если не передаем метод аргументом
+            HideWindowCommand = new RelayCommand(HideWindow);
+
+            CloseWindowCommand = new RelayCommand(CloseWindow);
+
+            ChangeThemeCommand = new RelayCommand(ChangeTheme);
 
 
             //TESTING!!!!!!!! ПОТОМ УДАЛИТЬ!!!!!!!!!
@@ -79,6 +96,39 @@ namespace WhmCalcNew.ViewModel
                 }
             });
 
+        }
+
+        private void ChangeTheme(object obj)
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.DataContext == this && item is IThemedWindow)
+                {
+                    (item as IThemedWindow).ChangeTheme();
+                }
+            }
+        }
+
+        private void CloseWindow(object obj)
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.DataContext == this)
+                {
+                    item.Close();
+                }
+            }
+        }
+
+        private void HideWindow(object obj)
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.DataContext == this)
+                {
+                    item.Hide();
+                }
+            }
         }
 
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)

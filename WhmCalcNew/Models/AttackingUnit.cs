@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using WhmCalcNew.ViewModel;
+﻿using WhmCalcNew.Bases;
 
 namespace WhmCalcNew.Models
 {
