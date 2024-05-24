@@ -34,7 +34,7 @@
                                 <Setter TargetName="_closeWindowGrid"
                                         Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="White"
+                                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
                                                           ShadowDepth="0"
                                                           Direction="0"
                                                           BlurRadius="5" />
@@ -79,7 +79,7 @@
                                 <Setter TargetName="_hideWindowGrid"
                                         Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="White"
+                                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
                                                           ShadowDepth="0"
                                                           Direction="0"
                                                           BlurRadius="5" />
@@ -211,15 +211,17 @@
                                 <Grid Opacity="0"
                                       IsHitTestVisible="False"
                                       x:Name="_changeToDarkThemeGrid">
-                                    <Ellipse x:Name="_darkThemeEllipse"
-                                             Width="16"
-                                             Height="16"
-                                             Fill="{DynamicResource TextMainColor}" />
-                                    <Path Fill="{DynamicResource MainWindowBackgroundColor}">
+
+                                    <Path Fill="{DynamicResource TextMainColor}">
                                         <Path.Data>
-                                            <EllipseGeometry RadiusX="9"
-                                                             RadiusY="9"
-                                                             Center="14, 6" />
+                                            <PathGeometry>
+                                                <PathFigure StartPoint="5, 3" IsClosed="False">
+                                                    <ArcSegment Point="17, 15"
+                                                                Size="8, 8" />
+                                                    <ArcSegment Point="5, 3"
+                                                                Size="12, 12" SweepDirection="Clockwise" />
+                                                </PathFigure>
+                                            </PathGeometry>
                                         </Path.Data>
                                     </Path>
                                 </Grid>
@@ -233,20 +235,20 @@
                                 <Setter TargetName="_changeToLightThemeGrid"
                                         Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="White"
+                                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
                                                           ShadowDepth="0"
                                                           Direction="0"
                                                           BlurRadius="5" />
                                     </Setter.Value>
                                 </Setter>
 
-                                <Setter TargetName="_darkThemeEllipse"
+                                <Setter TargetName="_changeToDarkThemeGrid"
                                         Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="White"
+                                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
                                                           ShadowDepth="0"
                                                           Direction="0"
-                                                          BlurRadius="4" />
+                                                          BlurRadius="5" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>

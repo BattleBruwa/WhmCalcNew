@@ -8,6 +8,13 @@
                      Color="#fff" />
     <SolidColorBrush x:Key="TextMainColor"
                      Color="Black" />
+    <SolidColorBrush x:Key="ComboBoxContentColor"
+                     Color="#808080" />
     <SolidColorBrush x:Key="TextTooltipLabelColor"
-                     Color="Yellow" />
+                     Color="Orange" />
+    <Color x:Key="DropShadowColor"
+           A="255"
+           R="50"
+           G="50"
+           B="50" />
 </ResourceDictionary>

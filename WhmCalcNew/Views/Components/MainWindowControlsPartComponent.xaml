@@ -18,6 +18,11 @@
                   Margin="0 0 5 0"
                   Style="{StaticResource ChangeThemeCheckBox}"
                   Command="{Binding ChangeThemeCommand}">
+            <CheckBox.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>Сменить тему</TextBlock>
+                </ToolTip>
+            </CheckBox.ToolTip>
         </CheckBox>
 
                 <!--Скрыть окно-->

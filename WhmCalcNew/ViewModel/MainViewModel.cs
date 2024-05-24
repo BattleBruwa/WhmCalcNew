@@ -126,7 +126,7 @@ namespace WhmCalcNew.ViewModel
             {
                 if (item.DataContext == this)
                 {
-                    item.Hide();
+                    item.WindowState = WindowState.Minimized;
                 }
             }
         }

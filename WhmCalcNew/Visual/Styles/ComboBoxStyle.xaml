@@ -199,7 +199,7 @@
                                  Value="true">
                             <Setter TargetName="Border"
                                     Property="Background"
-                                    Value="#303050" />
+                                    Value="{DynamicResource ComboBoxContentColor}" />
                         </Trigger>
                         <Trigger Property="IsEnabled"
                                  Value="false">
