@@ -40,7 +40,9 @@ namespace WhmCalcNew.Engine.DataProviders
 
                         byte tgWounds = byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(4)));
 
-                        collectionToFill.Add(new TargetUnit() { Faction = tgFaction, UnitName = tgName, Toughness = tgTougness, Save = tgSave, Wounds = tgWounds });
+                        byte? tgInvuln = byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(5)));
+
+                        collectionToFill.Add(new TargetUnit() { Faction = tgFaction, UnitName = tgName, Toughness = tgTougness, Save = tgSave, Wounds = tgWounds , Invuln = tgInvuln});
                     }
                 }
             }

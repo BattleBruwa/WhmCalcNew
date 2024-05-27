@@ -97,7 +97,7 @@
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal">
             <TextBox x:Name="invulTB"
-                     Text="{Binding SelectedItem.Wounds}"
+                     Text="{Binding SelectedItem.Invuln}"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
