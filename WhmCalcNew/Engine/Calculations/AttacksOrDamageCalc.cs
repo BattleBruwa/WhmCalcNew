@@ -13,10 +13,13 @@
             }
 
             bool result = float.TryParse(input, out var number);
+
+            // Если result запарсился успешно, возвращаем number,
             if (result == true)
             {
                 return number;
             }
+            // если нет, ищем D
             else
             {
                 float amount = 0;
@@ -32,8 +35,8 @@
                     numBeforeD = (float)char.GetNumericValue(input[indexOfD - 1]);
                     if (numBeforeD == 0)
                     {
-                        string _newString = string.Concat(input[indexOfD - 2], input[indexOfD - 1]);
-                        numBeforeD = (float)Convert.ToDouble(_newString);
+                        string _concatStringD = string.Concat(input[indexOfD - 2], input[indexOfD - 1]);
+                        numBeforeD = (float)Convert.ToDouble(_concatStringD);
                     }
                 }
 
@@ -47,7 +50,33 @@
                     numAfterD = 3.5f;
                 }
 
-                amount = numBeforeD * numAfterD;
+                // Проверка на наличие в строке выражения
+                int indexOfPlus = input.IndexOf('+');
+
+                if (indexOfPlus != -1)
+                {
+                    // Число после плюса
+                    float numAfterPlus = (float)char.GetNumericValue(input[indexOfPlus + 1]);
+                    if (numAfterPlus == 1)
+                    {
+                        if((indexOfPlus + 2) == input.Length)
+                        {
+                            numAfterPlus = 1;
+                        }
+                        else
+                        {
+                            string _concatStringP = string.Concat(input[indexOfPlus + 1], input[indexOfPlus + 2]);
+                            numAfterPlus = (float)Convert.ToDouble(_concatStringP);
+                        }
+                    }
+
+                    amount = (numBeforeD * numAfterD) + numAfterPlus;
+                }
+                else
+                {
+                    amount = numBeforeD * numAfterD;
+                }
+
                 return amount;
             }
         }

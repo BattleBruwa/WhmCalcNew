@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="MainWindowBackgroundColor"
-                     Color="#282932" />
+                     Color="#121212" />
     <SolidColorBrush x:Key="MainOutlineColor"
-                     Color="#b1a2e9" />
+                     Color="#ffaf49" />
     <SolidColorBrush x:Key="BoxesInnerColor"
-                     Color="#292739" />
+                     Color="#1e1e1e" />
     <SolidColorBrush x:Key="TextMainColor"
                      Color="WhiteSmoke" />
     <SolidColorBrush x:Key="ComboBoxContentColor"

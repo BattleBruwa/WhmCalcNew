@@ -32,6 +32,7 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <TextBox x:Name="AttacksTB"
+                     MaxLength="7"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Center"
                      Style="{StaticResource TextBoxTheme}"
@@ -185,6 +186,7 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="DamageTB"
+                     MaxLength="7"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"

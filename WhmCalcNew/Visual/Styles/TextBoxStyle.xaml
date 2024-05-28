@@ -21,7 +21,6 @@
                                          HorizontalAlignment="Center"
                                          FontSize="20"
                                          Foreground="{DynamicResource TextMainColor}"
-                                         MaxLength="4"
                                          Padding="5">
                                 </TextBox>
                             </Grid>
