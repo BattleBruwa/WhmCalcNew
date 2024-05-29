@@ -20,6 +20,7 @@
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"
                                          FontSize="20"
+                                         MaxLength="{TemplateBinding MaxLength}"
                                          Foreground="{DynamicResource TextMainColor}"
                                          Padding="5" TextWrapping="Wrap">
                                 </TextBox>

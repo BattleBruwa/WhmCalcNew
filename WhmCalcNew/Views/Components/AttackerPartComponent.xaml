@@ -73,6 +73,7 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Width="70"
+                     MaxLength="1"
                      Style="{StaticResource TextBoxTheme}"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
                 <TextBox.Text>
