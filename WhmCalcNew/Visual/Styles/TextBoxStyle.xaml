@@ -21,7 +21,7 @@
                                          HorizontalAlignment="Center"
                                          FontSize="20"
                                          Foreground="{DynamicResource TextMainColor}"
-                                         Padding="5">
+                                         Padding="5" TextWrapping="Wrap">
                                 </TextBox>
                             </Grid>
                         </Border>
