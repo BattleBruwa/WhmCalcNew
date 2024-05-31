@@ -19,10 +19,10 @@
                                          Background="Transparent"
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"
-                                         FontSize="20"
+                                         FontSize="19"
                                          MaxLength="{TemplateBinding MaxLength}"
                                          Foreground="{DynamicResource TextMainColor}"
-                                         Padding="5" TextWrapping="Wrap">
+                                         Padding="5" TextWrapping="NoWrap">
                                 </TextBox>
                             </Grid>
                         </Border>

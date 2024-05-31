@@ -32,7 +32,7 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <TextBox x:Name="AttacksTB"
-                     MaxLength="7"
+                     MaxLength="5"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Center"
                      Style="{StaticResource TextBoxTheme}"
@@ -115,6 +115,7 @@
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70"
+                     MaxLength="2"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
                 <TextBox.Text>
                     <Binding Path="Strength"
@@ -153,6 +154,7 @@
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
                      Width="70"
+                     MaxLength="1"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
                 <TextBox.Text>
                     <Binding Path="ArmorPen"
@@ -187,7 +189,7 @@
                    Height="40"
                    HorizontalContentAlignment="Center" />
             <TextBox x:Name="DamageTB"
-                     MaxLength="7"
+                     MaxLength="5"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
