@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using WhmCalcNew.Bases;
@@ -10,6 +11,9 @@ namespace WhmCalcNew.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
+        //test
+        public string PathToApp = Path.GetFullPath("../../../Data");
+
         private ObservableCollection<TargetUnit>? _targets;
         public ObservableCollection<TargetUnit>? Targets
         {

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WhmCalcNew.Views.Main"
+﻿<Window x:Class="WhmCalcNew.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -44,6 +44,13 @@
                                               Grid.Row="1"
                                               HorizontalAlignment="Right"
                                               Margin="0 0 16 0" />
+
+                                              <!--test-->
+            <TextBlock Grid.Row="2"
+            Name="testTextBlock"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Foreground="White"/>
 
             <Border Grid.Row="1"
                     Grid.Column="1"

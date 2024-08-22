@@ -1,29 +1,29 @@
-﻿namespace WhmCalcNew.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhmCalcNew.Models
 {
+    [Table("Targets")]
     public class TargetUnit
     {
-        // Фракция цели
-        public string? Faction { get; set; }
+        [Key, StringLength(20, ErrorMessage = "Ошибка имени цели")]
+        public string UnitName { get; set; } = null!;
 
-        // Имя цели
-        public string? UnitName { get; set; }
+        [MaxLength(3)]
+        public byte Toughness { get; set; }
 
-        // Стойкость цели
-        public byte? Toughness { get; set; }
+        [MaxLength(1)]
+        public byte Save { get; set; }
 
-        // Защита цели
-        public byte? Save { get; set; }
+        [MaxLength(3)]
+        public byte Wounds { get; set; }
 
-        // Вунды/ХП цели
-        public byte? Wounds { get; set; }
+        [NotMapped]
+        public string TargetProps { get => this.ToString(); }
 
-        // Инвуль цели
-        public byte? Invuln { get; set; }
-
-
-        public TargetUnit()
+        public override string ToString()
         {
-            
+            return $"{this.UnitName}\nT: {this.Toughness} Sv: {this.Save} W: {this.Wounds}";
         }
     }
 }
