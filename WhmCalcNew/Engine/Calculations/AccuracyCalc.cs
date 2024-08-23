@@ -1,4 +1,6 @@
-﻿using WhmCalcNew.Models;
+﻿using System.Collections.ObjectModel;
+using WhmCalcNew.Models;
+using WhmCalcNew.Services.Calculations;
 
 namespace WhmCalcNew.Engine.Calculations
 {
@@ -7,9 +9,9 @@ namespace WhmCalcNew.Engine.Calculations
         /// <summary>
         /// Расчитывает вероятность попасть атакой по цели.
         /// </summary>
-        public static float ToHitRoll(AttackingUnit? attacker)
+        public static float ToHitRoll(AttackingUnit attacker, ObservableCollection<Modificator> mods)
         {
-            if (attacker == null || attacker.Accuracy == null)
+            if (attacker == null || mods == null)
             {
                 return 0f;
             }
@@ -19,34 +21,17 @@ namespace WhmCalcNew.Engine.Calculations
                 return 1f;
             }
             // Рерол 1
-            if (attacker.HasRerollToHit1 == true)
+            if (mods.Any(m => m.Id == 1))
             {
-                // Криты на 5
-                if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
-                {
-                    return DiceRoller.RollTheDiceWithReroll1s(5);
-                }
-                else
-                {
-                    return DiceRoller.RollTheDiceWithReroll1s((byte)attacker.Accuracy);
-                }
+
             }
             // Рерол промахов
-            if (attacker.HasRerollToHitAll == true)
+            if (mods.Any(m => m.Id == 2))
             {
-                // Криты на 5
-                if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
-                {
-                    return DiceRoller.RollTheDiceWithReroll(5);
-                }
-                else
-                {
-                    return DiceRoller.RollTheDiceWithReroll((byte)attacker.Accuracy);
-                }
+                
             }
-
-            // Криты на 5 без реролов
-            if (attacker.HasCritsOn5s == true && attacker.Accuracy > 5f)
+            // Криты без реролов
+            if (mods.Any(m => m.Id == ))
             {
                 return DiceRoller.RollTheDice(5);
             }

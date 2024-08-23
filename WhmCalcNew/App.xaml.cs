@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WhmCalcNew.Services;
+using WhmCalcNew.Services.DataAccess;
 using WhmCalcNew.Views;
 
 namespace WhmCalcNew
@@ -14,6 +16,9 @@ namespace WhmCalcNew
             AppHost = Host.CreateDefaultBuilder().ConfigureServices((hostContext, services) =>
             {
                 // Сервисы
+                services.AddSingleton<IWhmDbService, WhmDbService>();
+                services.AddSingleton<IModListService, ModListService>();
+                services.AddSingleton<ITargetsListService, TargetsListService>();
                 services.AddSingleton<MainWindow>();
 
             }).Build();

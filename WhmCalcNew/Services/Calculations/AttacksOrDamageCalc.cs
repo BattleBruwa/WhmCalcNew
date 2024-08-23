@@ -1,4 +1,4 @@
-﻿namespace WhmCalcNew.Engine.Calculations
+﻿namespace WhmCalcNew.Services.Calculations
 {
     public static class AttacksOrDamageCalc
     {
@@ -59,7 +59,7 @@
                     float numAfterPlus = (float)char.GetNumericValue(input[indexOfPlus + 1]);
                     if (numAfterPlus == 1)
                     {
-                        if((indexOfPlus + 2) == input.Length)
+                        if (indexOfPlus + 2 == input.Length)
                         {
                             numAfterPlus = 1;
                         }
@@ -70,7 +70,7 @@
                         }
                     }
 
-                    amount = (numBeforeD * numAfterD) + numAfterPlus;
+                    amount = numBeforeD * numAfterD + numAfterPlus;
                 }
                 else
                 {

@@ -6,23 +6,13 @@ using System.Windows;
 using System.Windows.Input;
 using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
+using WhmCalcNew.Services;
 
 namespace WhmCalcNew.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
-        //test
-        public string PathToApp = Path.GetFullPath("../../../Data");
-
-        private ObservableCollection<TargetUnit>? _targets;
-        public ObservableCollection<TargetUnit>? Targets
-        {
-            get { return _targets; }
-            set
-            {
-                _targets = value;
-            }
-        }
+        public ITargetsListService TargetsList { get; }
 
         private TargetUnit? _selectedTarget;
         public TargetUnit? SelectedTarget
@@ -66,11 +56,12 @@ namespace WhmCalcNew.ViewModel
         public ICommand CloseWindowCommand { get; private set; }
 
         public ICommand ChangeThemeCommand { get; private set; }
+
         
 
-        public MainViewModel()
+        public MainViewModel(ITargetsListService targetsList)
         {
-            this.Targets = TargetManager.GetTargets();
+            TargetsList = targetsList;
             this.AttackingUnit = new AttackingUnit();
             this.AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
             this.OutputData = OutputDataManager.GetOutputData();
@@ -99,7 +90,7 @@ namespace WhmCalcNew.ViewModel
                     Thread.Sleep(1000);
                 }
             });
-
+            
         }
 
         private void ChangeTheme(object obj)
