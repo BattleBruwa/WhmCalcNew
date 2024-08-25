@@ -1,4 +1,5 @@
-﻿using WhmCalcNew.Models;
+﻿using System.Collections.ObjectModel;
+using WhmCalcNew.Models;
 using WhmCalcNew.Services.Calculations;
 
 namespace WhmCalcNew.Engine.Calculations
@@ -8,13 +9,13 @@ namespace WhmCalcNew.Engine.Calculations
         /// <summary>
         /// Расчитывает вунд ролл.
         /// </summary>
-        public static float ToWoundRoll(AttackingUnit? attacker, TargetUnit? target)
+        public static float ToWoundRoll(AttackingUnit? attacker, TargetUnit? target, ObservableCollection<Modificator> mods)
         {
-            if (attacker == null || target == null || attacker.Strength == null || target.Toughness == null)
+            if (attacker == null || target == null)
             {
                 return 0f;
             }
-            
+
             byte resultedRoll = 0;
 
             if (attacker.Strength == target.Toughness)
@@ -37,17 +38,17 @@ namespace WhmCalcNew.Engine.Calculations
             {
                 resultedRoll = 6;
             }
-
-
-            if (attacker.HasRerollToWound1 == false && attacker.HasRerollToWoundAll == false)
+            // Есть минус 1 ту вунд
+            if (mods.Any(m => m.Id == 8))
             {
-                if (attacker.IsMinusOneToWound == true)
+                // Рерол 1
+                if (mods.Any(m => m.Id == 3))
                 {
-                    return DiceRoller.RollTheDice(resultedRoll + 1);
-                }
-                else if (attacker.IsMinusOneToWound == false)
-                {
-                    return DiceRoller.RollTheDice(resultedRoll);
+                    // Анти х
+                    if (mods.Any(m => m.Id == 9 && m.Condition != null))
+                    {
+
+                    }
                 }
             }
             else
@@ -76,7 +77,7 @@ namespace WhmCalcNew.Engine.Calculations
                     {
                         return DiceRoller.RollTheDiceWithReroll(resultedRoll);
                     }
-                } 
+                }
             }
 
             return DiceRoller.RollTheDice(resultedRoll);

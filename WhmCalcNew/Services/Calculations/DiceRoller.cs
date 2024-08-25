@@ -18,7 +18,7 @@
         private const float DiceRollTwoPlus = 5f / 6f;
 
         /// <summary> Вероятность выбросить нужное значение на кубе.</summary>
-        public static float RollTheDice(int input)
+        public static float RollTheDice(byte input)
         {
             switch (input)
             {
@@ -33,7 +33,7 @@
         /// <summary>
         /// Вероятность выбросить нужное значение на кубе с перебросом результата 1.
         /// </summary>
-        public static float RollTheDiceWithReroll1s(int input)
+        public static float RollTheDiceWithReroll1s(byte input)
         {
             switch (input)
             {
@@ -48,7 +48,7 @@
         /// <summary>
         /// Вероятность выбросить нужное значение на кубе с перебросом провалов.
         /// </summary>
-        public static float RollTheDiceWithReroll(int input)
+        public static float RollTheDiceWithReroll(byte input)
         {
             switch (input)
             {

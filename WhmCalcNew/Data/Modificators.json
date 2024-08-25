@@ -41,17 +41,17 @@
   },
   {
     "Id": 9,
-    "Name": "Anti - X+",
+    "Name": "Anti - X",
     "ToolTip": "An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound"
   },
   {
     "Id": 10,
-    "Name": "Feel No Pain X+",
+    "Name": "Feel No Pain X",
     "ToolTip": "Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost"
   },
   {
     "Id": 11,
-    "Name": "Invulnerable Save X+",
+    "Name": "Invulnerable Save X",
     "ToolTip": "Never modified by an attack's AP"
   },
   {
@@ -63,5 +63,10 @@
     "Id": 13,
     "Name": "Half Damage",
     "ToolTip": "Each time an attack is allocated to this model, halve the Damage characteristic of that attack"
+  },
+  {
+    "Id": 14,
+    "Name": "Crit X",
+    "ToolTip": "An unmodified Hit roll of X+ is called a Critical Hit and is always successful."
   }
 ]

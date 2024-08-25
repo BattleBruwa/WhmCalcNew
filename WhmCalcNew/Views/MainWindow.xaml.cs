@@ -20,8 +20,6 @@ namespace WhmCalcNew.Views
             
             this.DataContext = mainViewModel;
 
-            //test
-            testTextBlock.Text = mainViewModel.PathToApp;
         }
 
 
