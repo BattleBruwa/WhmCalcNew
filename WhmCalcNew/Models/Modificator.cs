@@ -11,6 +11,6 @@ namespace WhmCalcNew.Models
         public string ToolTip { get; set; }
 
         [JsonIgnore]
-        public int? Condition { get; set; } = null;
+        public byte? Condition { get; set; } = null;
     }
 }

@@ -1,5 +1,4 @@
-﻿using WhmCalcNew.Engine.Calculations;
-using WhmCalcNew.Services.Calculations;
+﻿using WhmCalcNew.Services.Calculations;
 
 namespace WhmCalcNew.Models
 {
