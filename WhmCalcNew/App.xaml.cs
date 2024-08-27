@@ -2,7 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WhmCalcNew.Services;
+using WhmCalcNew.Services.Calculations;
 using WhmCalcNew.Services.DataAccess;
+using WhmCalcNew.ViewModel;
 using WhmCalcNew.Views;
 
 namespace WhmCalcNew
@@ -19,6 +21,8 @@ namespace WhmCalcNew
                 services.AddSingleton<IWhmDbService, WhmDbService>();
                 services.AddSingleton<IModListService, ModListService>();
                 services.AddSingleton<ITargetsListService, TargetsListService>();
+                services.AddSingleton<ICalcOutputService, CalcOutputService>();
+                services.AddSingleton<MainViewModel>();
                 services.AddSingleton<MainWindow>();
 
             }).Build();

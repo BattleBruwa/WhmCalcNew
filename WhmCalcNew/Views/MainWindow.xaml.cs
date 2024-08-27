@@ -13,13 +13,12 @@ namespace WhmCalcNew.Views
         private bool _isDarkThemed = true;
 
 
-        MainViewModel mainViewModel = new MainViewModel();
-        public MainWindow()
+        MainViewModel viewModel;
+        public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
-            
-            this.DataContext = mainViewModel;
-
+            this.viewModel = viewModel;
+            DataContext = viewModel;
         }
 
 

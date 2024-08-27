@@ -1,124 +1,74 @@
-﻿using WhmCalcNew.Bases;
+﻿using MvvmHelpers;
 
 namespace WhmCalcNew.Models
 {
     public class OutputData: ObservableObject
     {
         #region Свойства
-
-        // частые приведения к double
-        // сменить float на double во всех свойствах?
-
-        private float? _attacksNum;
-        public float? AttacksNum
+        private double _attacksNum;
+        public double AttacksNum
         {
             get { return _attacksNum; }
             set
             {
-                if (value != null)
-                {
-                    _attacksNum = (float)Math.Round((double)value, 1);
-                }
-                else
-                {
-                    _attacksNum = null;
-                }
-                OnPropertyChanged();
+                SetProperty(ref _attacksNum, value);
             }
         }
 
         // Количесвто хитов
-        private float? _hitsNum;
-        public float? HitsNum
+        private double _hitsNum;
+        public double HitsNum
         {
             get { return _hitsNum; }
             set
             {
-                if (value != null)
-                {
-                    _hitsNum = (float)Math.Round((double)value, 1);
-                }
-                else
-                {
-                    _hitsNum = null;
-                }
-                OnPropertyChanged();
+                SetProperty(ref _hitsNum, value);
             }
         }
 
         // Количесвто вундов
-        private float? _woundsNum;
-        public float? WoundsNum
+        private double _woundsNum;
+        public double WoundsNum
         {
             get { return _woundsNum; }
             set
             {
-                if (value != null)
-                {
-                    _woundsNum = (float)Math.Round((double)value, 1);
-                }
-                else
-                {
-                    _woundsNum = null;
-                }
-                OnPropertyChanged();
+                SetProperty(ref _woundsNum, value);
             }
         }
 
         // Количество непрошедших защиту вундов
-        private float? _unSavedNum;
-        public float? UnSavedNum
+        private double _unSavedNum;
+        public double UnSavedNum
         {
             get { return _unSavedNum; }
             set
             {
-                if (value != null)
-                {
-                    _unSavedNum = (float)Math.Round((double)value, 1);
-                }
-                else
-                {
-                    _unSavedNum = null;
-                }
-                OnPropertyChanged();
+                SetProperty(ref _unSavedNum, value);
             }
         }
 
         // Количество уничтоженых моделей
-        private int? _deadModelsNum;
-        public int? DeadModelsNum
+        private double _deadModelsNum;
+        public double DeadModelsNum
         {
             get { return _deadModelsNum; }
             set
             {
-                _deadModelsNum = value;
-                OnPropertyChanged();
+                SetProperty(ref _deadModelsNum, value);
             }
         }
 
         // Полный нанесенный урон
-        private float? _totalDamageNum;
-        public float? TotalDamageNum
+        private double _totalDamageNum;
+        public double TotalDamageNum
         {
             get { return _totalDamageNum; }
             set
             {
-                if (value != null)
-                {
-                    _totalDamageNum = (float)Math.Round((double)value, 1);
-                }
-                else
-                {
-                    _totalDamageNum = null;
-                }
-                OnPropertyChanged();
+                SetProperty(ref _totalDamageNum, value);
             }
         }
         #endregion
-
-        public OutputData()
-        {
-
-        }
     }
 }

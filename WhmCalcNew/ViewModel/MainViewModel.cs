@@ -1,18 +1,20 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using MvvmHelpers;
 using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services;
+using WhmCalcNew.Services.Calculations;
 
 namespace WhmCalcNew.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
         public ITargetsListService TargetsList { get; }
+        public IModListService ModsList { get; }
+        public ICalcOutputService Calc { get; }
 
         private TargetUnit? _selectedTarget;
         public TargetUnit? SelectedTarget
@@ -20,32 +22,28 @@ namespace WhmCalcNew.ViewModel
             get { return _selectedTarget; }
             set
             {
-                _selectedTarget = value;
-                OnPropertyChanged();
-                Recalculate(AttackingUnit, SelectedTarget);
+                SetProperty(ref _selectedTarget, value);
+                Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedModificators);
             }
         }
 
-        private AttackingUnit? _attackingUnit;
-        public AttackingUnit? AttackingUnit
+        private AttackingUnit _attackingUnit;
+        public AttackingUnit AttackingUnit
         {
             get { return _attackingUnit; }
             set
             {
-                _attackingUnit = value;
-                OnPropertyChanged();
+                SetProperty(ref _attackingUnit, value);
             }
         }
 
-        private OutputData? _outputData;
-
-        public OutputData? OutputData
+        private OutputData _outputData;
+        public OutputData OutputData
         {
             get { return _outputData; }
             set
             {
                 _outputData = value;
-                OnPropertyChanged();
             }
         }
 
@@ -59,12 +57,14 @@ namespace WhmCalcNew.ViewModel
 
         
 
-        public MainViewModel(ITargetsListService targetsList)
+        public MainViewModel(ITargetsListService targetsList, IModListService modsList, ICalcOutputService calc)
         {
             TargetsList = targetsList;
-            this.AttackingUnit = new AttackingUnit();
-            this.AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
-            this.OutputData = OutputDataManager.GetOutputData();
+            ModsList = modsList;
+            Calc = calc;
+            OutputData = new OutputData();
+            AttackingUnit = new AttackingUnit();
+            AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
 
             // RelayCommand ставит CanExecute в null, если не передаем метод аргументом
             HideWindowCommand = new RelayCommand(HideWindow);
@@ -72,23 +72,6 @@ namespace WhmCalcNew.ViewModel
             CloseWindowCommand = new RelayCommand(CloseWindow);
 
             ChangeThemeCommand = new RelayCommand(ChangeTheme);
-
-
-            //TESTING!!!!!!!! ПОТОМ УДАЛИТЬ!!!!!!!!!
-            Task.Run(() =>
-            {
-                int i = 0;
-                while (true)
-                {
-                    i++;
-                    Debug.WriteLine(i.ToString());
-                    Debug.WriteLine($"Attacker1: {AttackingUnit?.Attacks}, {AttackingUnit?.Accuracy}, {AttackingUnit?.Strength}, {AttackingUnit?.ArmorPen}, {AttackingUnit?.Damage}");
-                    Debug.WriteLine($"Target: {SelectedTarget?.Toughness}, {SelectedTarget?.Save}, {SelectedTarget?.Wounds}");
-                    Debug.WriteLine($"Output: {OutputData?.HitsNum}, {OutputData?.WoundsNum}, {OutputData?.UnSavedNum}, {OutputData?.DeadModelsNum}, {OutputData?.TotalDamageNum}");
-                    Thread.Sleep(1000);
-                }
-            });
-            
         }
 
         private void ChangeTheme(object obj)
@@ -126,18 +109,19 @@ namespace WhmCalcNew.ViewModel
 
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            Recalculate(AttackingUnit, SelectedTarget);
+            Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedModificators);
         }
 
-        private void Recalculate(AttackingUnit? attacker, TargetUnit? target)
+        private void Recalculate(AttackingUnit attacker, TargetUnit? target, ObservableCollection<Modificator> mods)
         {
-            if (attacker != null && target != null && this.OutputData != null)
+            if (attacker != null && target != null && OutputData != null)
             {
-                OutputDataManager.SetHits(attacker);
-                OutputDataManager.SetWounds(attacker, target);
-                OutputDataManager.SetUnsavedWounds(attacker, target);
-                OutputDataManager.SetDeadModels(attacker, target);
-                OutputDataManager.SetTotalDamage(attacker, target);
+                OutputData.AttacksNum = Calc.TotalAttacks(attacker);
+                OutputData.HitsNum = Calc.TotalHits(attacker, mods);
+                OutputData.WoundsNum = Calc.TotalWounds(attacker, target, mods);
+                OutputData.UnSavedNum = Calc.TotalUnSaved(attacker, target, mods);
+                OutputData.DeadModelsNum = Calc.TotalDeadModels(attacker, target, mods);
+                OutputData.TotalDamageNum = Calc.TotalDamage(attacker, target, mods);
             }
         }
     }
