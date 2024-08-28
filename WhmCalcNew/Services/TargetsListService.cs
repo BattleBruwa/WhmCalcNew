@@ -1,10 +1,11 @@
-﻿using MvvmHelpers;
+﻿using CommunityToolkit.Mvvm.Input;
+using MvvmHelpers;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services.DataAccess;
 
 namespace WhmCalcNew.Services
 {
-    public class TargetsListService : ITargetsListService
+    public partial class TargetsListService : ITargetsListService
     {
         public ObservableRangeCollection<TargetUnit> Targets { get; set; } = new();
         public IWhmDbService DbService { get; }
@@ -12,12 +13,12 @@ namespace WhmCalcNew.Services
         public TargetsListService(IWhmDbService dbService)
         {
             DbService = dbService;
-            Initialize();
+            InitializeCommand.ExecuteAsync(null);
         }
-
+        [RelayCommand]
         private async Task Initialize()
         {
-            Targets = new ObservableRangeCollection<TargetUnit>(await this.DbService.GetTargetsAsync());
+            Targets = new ObservableRangeCollection<TargetUnit>(await DbService.GetTargetsAsync());
         }
     }
 }

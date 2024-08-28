@@ -12,7 +12,7 @@ namespace WhmCalcNew.Services.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Data Source={dbPath}");
+            optionsBuilder.UseSqlite("Data Source=WhmUnitStatsDb.db3");
         }
     }
 }

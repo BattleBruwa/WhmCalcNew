@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.Json;
+using CommunityToolkit.Mvvm.Input;
 using WhmCalcNew.Models;
 
 namespace WhmCalcNew.Services
 {
-    public class ModListService : IModListService
+    public partial class ModListService : IModListService
     {
         // Путь до файла с модификаторами
         private readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
@@ -16,9 +17,9 @@ namespace WhmCalcNew.Services
 
         public ModListService()
         {
-            Initialize();
+            InitializeCommand.ExecuteAsync(null);
         }
-
+        [RelayCommand]
         private async Task Initialize()
         {
             using (FileStream fs = new FileStream($"{jsonPath}", FileMode.Open, FileAccess.Read))

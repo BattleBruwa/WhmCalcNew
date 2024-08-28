@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
@@ -10,8 +10,9 @@ using WhmCalcNew.Services.Calculations;
 
 namespace WhmCalcNew.ViewModel
 {
-    public class MainViewModel : ObservableObject
+    public partial class MainViewModel : ObservableObject
     {
+        #region Свойства, сервисы
         public ITargetsListService TargetsList { get; }
         public IModListService ModsList { get; }
         public ICalcOutputService Calc { get; }
@@ -46,17 +47,8 @@ namespace WhmCalcNew.ViewModel
                 _outputData = value;
             }
         }
-
-        // Комманды для контроля окна
-
-        public ICommand HideWindowCommand { get; private set; }
-
-        public ICommand CloseWindowCommand { get; private set; }
-
-        public ICommand ChangeThemeCommand { get; private set; }
-
-        
-
+        #endregion
+        #region Конструкторы
         public MainViewModel(ITargetsListService targetsList, IModListService modsList, ICalcOutputService calc)
         {
             TargetsList = targetsList;
@@ -65,15 +57,10 @@ namespace WhmCalcNew.ViewModel
             OutputData = new OutputData();
             AttackingUnit = new AttackingUnit();
             AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
-
-            // RelayCommand ставит CanExecute в null, если не передаем метод аргументом
-            HideWindowCommand = new RelayCommand(HideWindow);
-
-            CloseWindowCommand = new RelayCommand(CloseWindow);
-
-            ChangeThemeCommand = new RelayCommand(ChangeTheme);
         }
-
+        #endregion
+        #region Комманды
+        [RelayCommand]
         private void ChangeTheme(object obj)
         {
             foreach (Window item in Application.Current.Windows)
@@ -84,7 +71,7 @@ namespace WhmCalcNew.ViewModel
                 }
             }
         }
-
+        [RelayCommand]
         private void CloseWindow(object obj)
         {
             foreach (Window item in Application.Current.Windows)
@@ -95,7 +82,7 @@ namespace WhmCalcNew.ViewModel
                 }
             }
         }
-
+        [RelayCommand]
         private void HideWindow(object obj)
         {
             foreach (Window item in Application.Current.Windows)
@@ -106,7 +93,8 @@ namespace WhmCalcNew.ViewModel
                 }
             }
         }
-
+        #endregion
+        #region Вспомогательные методы
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedModificators);
@@ -124,5 +112,6 @@ namespace WhmCalcNew.ViewModel
                 OutputData.TotalDamageNum = Calc.TotalDamage(attacker, target, mods);
             }
         }
+        #endregion
     }
 }

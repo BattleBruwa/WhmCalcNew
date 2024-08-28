@@ -3,6 +3,8 @@ using WhmCalcNew.Engine.DataProviders;
 
 namespace WhmCalcNew.Models
 {
+    // Больше не используется
+    [Obsolete]
     public class TargetManager
     {
         public static ObservableCollection<TargetUnit> _TargetsCollection { get; set; } = new ObservableCollection<TargetUnit>();

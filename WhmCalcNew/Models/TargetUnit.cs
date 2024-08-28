@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WhmCalcNew.Models
 {
-    [Table("Targets")]
     public class TargetUnit
     {
         [Key, StringLength(20, ErrorMessage = "Ошибка имени цели")]

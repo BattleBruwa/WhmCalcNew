@@ -5,9 +5,10 @@ using System.IO;
 using WhmCalcNew.Models;
 
 
-
 namespace WhmCalcNew.Engine.DataProviders
 {
+    // Больше не используется
+    [Obsolete]
     public class ExcelDataProvider
     {
         // Путь до таблицы юнитов:
@@ -42,7 +43,7 @@ namespace WhmCalcNew.Engine.DataProviders
 
                         byte? tgInvuln = byte.Parse(GetCellValue(xlDoc, (Cell)row.ElementAt(5)));
 
-                        collectionToFill.Add(new TargetUnit() { Faction = tgFaction, UnitName = tgName, Toughness = tgTougness, Save = tgSave, Wounds = tgWounds , Invuln = tgInvuln});
+                        collectionToFill.Add(new TargetUnit() { UnitName = tgName, Toughness = tgTougness, Save = tgSave, Wounds = tgWounds});
                     }
                 }
             }
