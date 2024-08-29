@@ -32,6 +32,7 @@ namespace WhmCalcNew
         {
             await AppHost!.StartAsync();
             base.OnStartup(e);
+            await ModListService.Initialize();
 
             var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
             startupForm.Show();

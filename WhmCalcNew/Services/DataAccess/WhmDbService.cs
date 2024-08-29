@@ -13,6 +13,18 @@ namespace WhmCalcNew.Services.DataAccess
             }
         }
 
+        public async Task<TargetUnit?> GetTargetByName(string name)
+        {
+            using (var db = new DataContext())
+            {
+                if (await db.Targets.AnyAsync(t => t.UnitName == name))
+                {
+                    return await db.Targets.SingleAsync(t => t.UnitName == name);
+                }
+                return null;
+            }
+        }
+
         public async Task AddTargetAsync(TargetUnit target)
         {
             using (var db = new DataContext())

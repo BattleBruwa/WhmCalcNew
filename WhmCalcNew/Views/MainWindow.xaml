@@ -45,13 +45,6 @@
                                               HorizontalAlignment="Right"
                                               Margin="0 0 16 0" />
 
-                                              <!--test-->
-            <TextBlock Grid.Row="2"
-            Name="testTextBlock"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="4"
-                       Foreground="White"/>
-
             <Border Grid.Row="1"
                     Grid.Column="1"
                     Height="290"
@@ -88,7 +81,21 @@
                     Height="370"
                     BorderBrush="{DynamicResource MainOutlineColor}"
                     BorderThickness="1,0,0,0">
-                <components:ModificatorsPartComponent />
+                <!--<components:ModificatorsPartComponent DataContext="{Binding ModsList}"/>-->
+                <DataGrid Name="TestDataGrid"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width="*"
+                                            Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Name"
+                                            Width="*"
+                                            Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="ToolTip"
+                                            Width="*"
+                                            Binding="{Binding ToolTip}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Border>
 
             <Border Grid.Row="1"

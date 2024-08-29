@@ -6,21 +6,16 @@ using WhmCalcNew.Models;
 
 namespace WhmCalcNew.Services
 {
-    public partial class ModListService : IModListService
+    public class ModListService : IModListService
     {
         // Путь до файла с модификаторами
-        private readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
+        private static readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
         // Выбранные модификаторы
         public ObservableCollection<Modificator> PickedModificators { get; set; } = new();
         // Все модификаторы
-        public List<Modificator> ModificatorsList { get; set; } = new();
-
-        public ModListService()
-        {
-            InitializeCommand.ExecuteAsync(null);
-        }
-        [RelayCommand]
-        private async Task Initialize()
+        public static List<Modificator> ModificatorsList { get; set; } = new();
+        // Этот метод вызывается в OnStartup
+        public static async Task Initialize()
         {
             using (FileStream fs = new FileStream($"{jsonPath}", FileMode.Open, FileAccess.Read))
             {
