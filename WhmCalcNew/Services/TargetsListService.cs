@@ -13,7 +13,6 @@ namespace WhmCalcNew.Services
         public TargetsListService(IWhmDbService dbService)
         {
             DbService = dbService;
-            InitializeCommand.ExecuteAsync(null);
         }
         [RelayCommand]
         private async Task Initialize()
