@@ -21,6 +21,7 @@ namespace WhmCalcNew.ViewModel
         [RelayCommand]
         public async Task AddTarget()
         {
+            // TODO: Оформить новое окно с подтверждением, если цель с таким именем уже существует
             if (await DbService.GetTargetByName(NewTarget.UnitName) == null)
             {
                 await DbService.AddTargetAsync(NewTarget);

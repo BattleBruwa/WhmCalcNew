@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="WhmCalcNew.Views.Components.AddTargetComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
+             mc:Ignorable="d"
+             d:DesignHeight="230"
+             d:DesignWidth="360">
+    <Grid HorizontalAlignment="Center" Margin="55 0 0 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <TextBox x:Name="NameTB"
+                     Text="{Binding NewTarget.UnitName}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Bottom"
+                     Style="{StaticResource TextBoxTheme}"
+                     Width="180" />
+            <Label Content="Name"
+                   Style="{StaticResource LabelTheme}"
+                   VerticalAlignment="Center"
+                   Margin="0 5 0 0"
+                   Width="70"
+                   HorizontalContentAlignment="Center"
+                   Height="40" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Width="110"
+                    Margin="0 0 30 0">
+            <TextBox x:Name="ToughnessTB"
+                     Text="{Binding NewTarget.Toughness}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Bottom"
+                     Style="{StaticResource TextBoxTheme}"
+                     Width="70" />
+            <Label Content="T"
+                   Style="{StaticResource LabelTheme}"
+                   VerticalAlignment="Center"
+                   Margin="0 0 0 0"
+                   Width="40"
+                   HorizontalContentAlignment="Center"
+                   Height="40" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>
+    <Run>T (</Run>
+    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Toughness</Run>
+    <Run>): Reflects the model's resilience against physical harm.</Run>
+                    </TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Width="110"
+                    Margin="0 0 30 0">
+            <TextBox x:Name="ArmorSaveTB"
+                     Text="{Binding NewTarget.Save}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Bottom"
+                     Style="{StaticResource TextBoxTheme}"
+                     Width="70" />
+            <Label Content="Sv"
+                   Style="{StaticResource LabelTheme}"
+                   VerticalAlignment="Center"
+                   Margin="0 5 0 0"
+                   Width="40"
+                   HorizontalContentAlignment="Center"
+                   Height="40" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>
+    <Run>Sv (</Run>
+    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Save</Run>
+    <Run>): Indicates the protection a model's armour gives them.</Run>
+                    </TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    Width="110"
+                    Margin="0 0 30 0">
+            <TextBox x:Name="WoundsTB"
+                     Text="{Binding NewTarget.Wounds}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Bottom"
+                     Style="{StaticResource TextBoxTheme}"
+                     Width="70" />
+            <Label Content="W"
+                   Style="{StaticResource LabelTheme}"
+                   VerticalAlignment="Center"
+                   Margin="0 5 0 0"
+                   Width="40"
+                   HorizontalContentAlignment="Center"
+                   Height="40" />
+            <StackPanel.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <TextBlock>
+    <Run>W (</Run>
+    <Run Foreground="{DynamicResource TextTooltipLabelColor}">Wounds</Run>
+    <Run>): Represent how much damage a model can sustain before it succumbs to its injuries.</Run>
+                    </TextBlock>
+                </ToolTip>
+            </StackPanel.ToolTip>
+        </StackPanel>
+    </Grid>
+</UserControl>

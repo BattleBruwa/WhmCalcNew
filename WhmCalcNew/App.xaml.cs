@@ -24,6 +24,7 @@ namespace WhmCalcNew
                 services.AddSingleton<ICalcOutputService, CalcOutputService>();
                 services.AddSingleton<MainViewModel>();
                 services.AddSingleton<MainWindow>();
+                services.AddSingleton<AddTargetWindow>();
 
             }).Build();
         }

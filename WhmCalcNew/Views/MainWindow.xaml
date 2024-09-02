@@ -47,33 +47,39 @@
 
             <Border Grid.Row="1"
                     Grid.Column="1"
-                    Height="290"
+                    Height="360"
                     Grid.RowSpan="2"
                     VerticalAlignment="Top"
                     BorderBrush="{DynamicResource MainOutlineColor}"
                     BorderThickness="1,0,0,0">
-            <StackPanel Orientation="Vertical">
-                <ComboBox x:Name="TargetChoiceBox"
-                          Width="150"
-                          Height="50"
-                          VerticalAlignment="Top"
-                          HorizontalAlignment="Left"
-                          Margin="16 0 0 0"
-                          HorizontalContentAlignment="Center"
-                          ItemsSource="{Binding Targets}"
-                          SelectedItem="{Binding SelectedTarget}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock FontSize="20"
-                                       Text="{Binding UnitName}"
-                                       TextAlignment="Center" />
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <components:TargetPartComponent Margin="16 10 0 0"
-                                                HorizontalAlignment="Left"
-                                                DataContext="{Binding ElementName=TargetChoiceBox}" />
-            </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <ComboBox x:Name="TargetChoiceBox"
+                              Width="150"
+                              Height="50"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Left"
+                              Margin="16 0 0 0"
+                              HorizontalContentAlignment="Center"
+                              ItemsSource="{Binding Targets}"
+                              SelectedItem="{Binding SelectedTarget}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="20"
+                                           Text="{Binding UnitName}"
+                                           TextAlignment="Center" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <components:TargetPartComponent Margin="16 10 0 0"
+                                                    HorizontalAlignment="Left"
+                                                    DataContext="{Binding ElementName=TargetChoiceBox}" />
+                    <Button Width="100"
+                            Height="40"
+                            Margin="0 20 0 0"
+                            Style="{StaticResource ButtonTheme}"
+                            Content="OK"
+                            Command="{Binding ShowAddTargetCommand}"/>
+                </StackPanel>
             </Border>
 
             <Border Grid.Row="1"

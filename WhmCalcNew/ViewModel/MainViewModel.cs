@@ -7,6 +7,7 @@ using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services;
 using WhmCalcNew.Services.Calculations;
+using WhmCalcNew.Views;
 
 namespace WhmCalcNew.ViewModel
 {
@@ -93,6 +94,13 @@ namespace WhmCalcNew.ViewModel
                 }
             }
         }
+        [RelayCommand]
+        public void ShowAddTarget(object obj)
+        {
+            AddTargetWindow addTargetWindow = new AddTargetWindow();
+            addTargetWindow.Show();
+        }
+
         #endregion
         #region Вспомогательные методы
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)

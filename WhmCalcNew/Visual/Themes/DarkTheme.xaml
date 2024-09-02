@@ -12,6 +12,8 @@
                      Color="#303050" />
     <SolidColorBrush x:Key="TextTooltipLabelColor"
                      Color="Yellow" />
+    <SolidColorBrush x:Key="ButtonMainColor"
+                     Color="#969696" />
     <Color x:Key="DropShadowColor"
            A="255"
            R="255"
