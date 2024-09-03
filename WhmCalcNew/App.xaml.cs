@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WhmCalcNew.Services;
@@ -35,7 +36,12 @@ namespace WhmCalcNew
             base.OnStartup(e);
             await ModListService.Initialize();
 
-            var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
+            using (DataContext dbContext = new DataContext())
+            {
+                dbContext.Database.Migrate();
+            }
+
+                var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
             startupForm.Show();
         }
 
