@@ -1,4 +1,5 @@
-﻿using WhmCalcNew.Models;
+﻿using System.Collections.ObjectModel;
+using WhmCalcNew.Models;
 
 namespace WhmCalcNew.Services.DataAccess
 {
@@ -6,7 +7,7 @@ namespace WhmCalcNew.Services.DataAccess
     {
         Task AddTargetAsync(TargetUnit target);
         Task DeleteTargetAsync(TargetUnit target);
-        Task<List<TargetUnit>> GetTargetsAsync();
+        Task<IEnumerable<TargetUnit>> GetTargetsAsync();
         Task<TargetUnit?> GetTargetByName(string name);
         Task UpdateTargetAsync(TargetUnit target);
     }

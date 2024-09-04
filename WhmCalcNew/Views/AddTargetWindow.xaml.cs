@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
 {
@@ -19,9 +20,12 @@ namespace WhmCalcNew.Views
     /// </summary>
     public partial class AddTargetWindow : Window
     {
-        public AddTargetWindow()
+        AddTargetViewModel viewModel;
+        public AddTargetWindow(AddTargetViewModel viewModel)
         {
             InitializeComponent();
+            this.viewModel = viewModel;
+            DataContext = this.viewModel;
         }
     }
 }

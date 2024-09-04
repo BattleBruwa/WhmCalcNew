@@ -15,7 +15,7 @@ namespace WhmCalcNew.Services
             DbService = dbService;
         }
         [RelayCommand]
-        private async Task Initialize()
+        public async Task FillCollectionAsync()
         {
             Targets = new ObservableRangeCollection<TargetUnit>(await DbService.GetTargetsAsync());
         }

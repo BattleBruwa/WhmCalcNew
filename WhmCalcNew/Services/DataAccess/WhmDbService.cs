@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.ObjectModel;
+using Microsoft.EntityFrameworkCore;
 using WhmCalcNew.Models;
 
 namespace WhmCalcNew.Services.DataAccess
 {
     public class WhmDbService : IWhmDbService
     {
-        public async Task<List<TargetUnit>> GetTargetsAsync()
+        public async Task<IEnumerable<TargetUnit>> GetTargetsAsync()
         {
             using (var db = new DataContext())
             {

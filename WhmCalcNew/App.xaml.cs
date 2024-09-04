@@ -19,13 +19,14 @@ namespace WhmCalcNew
             AppHost = Host.CreateDefaultBuilder().ConfigureServices((hostContext, services) =>
             {
                 // Сервисы
-                services.AddSingleton<IWhmDbService, WhmDbService>();
+                services.AddTransient<IWhmDbService, WhmDbService>();
                 services.AddSingleton<IModListService, ModListService>();
                 services.AddSingleton<ITargetsListService, TargetsListService>();
                 services.AddSingleton<ICalcOutputService, CalcOutputService>();
                 services.AddSingleton<MainViewModel>();
+                services.AddTransient<AddTargetViewModel>();
                 services.AddSingleton<MainWindow>();
-                services.AddSingleton<AddTargetWindow>();
+                services.AddTransient<AddTargetWindow>();
 
             }).Build();
         }
@@ -40,8 +41,9 @@ namespace WhmCalcNew
             {
                 dbContext.Database.Migrate();
             }
+            var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
+            await startupForm.FillCollection(AppHost.Services.GetRequiredService<IWhmDbService>());
 
-                var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
             startupForm.Show();
         }
 

@@ -36,12 +36,13 @@
                         Height="40"
                         Margin="50 0 0 0"
                         Style="{StaticResource ButtonTheme}"
-                        Content="NYE OK"/>
+                        Content="Отмена"
+                        Command="{Binding CloseWindowCommand}"/>
                 <Button Width="100"
                         Height="40"
                         Margin="70 0 0 0"
                         Style="{StaticResource ButtonTheme}"
-                        Content="OK"/>
+                        Content="OK" Command="{Binding AddTargetCommand}"/>
             </StackPanel>
         </Grid>
     </Border>

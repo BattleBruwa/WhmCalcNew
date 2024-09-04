@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using WhmCalcNew.Bases;
 using WhmCalcNew.Engine.ThemeChanger;
+using WhmCalcNew.Models;
 using WhmCalcNew.Services;
+using WhmCalcNew.Services.DataAccess;
 using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
@@ -19,10 +21,14 @@ namespace WhmCalcNew.Views
         {
             InitializeComponent();
             this.viewModel = viewModel;
-            this.DataContext = this.viewModel;
+            DataContext = this.viewModel;
             TestDataGrid.ItemsSource = ModListService.ModificatorsList;
         }
 
+        public async Task FillCollection(IWhmDbService dbService)
+        {
+            viewModel.TargetsList = new(await dbService.GetTargetsAsync());
+        }
 
         public void ChangeTheme()
         {

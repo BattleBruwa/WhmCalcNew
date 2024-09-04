@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using MvvmHelpers;
 using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
@@ -14,9 +15,11 @@ namespace WhmCalcNew.ViewModel
     public partial class MainViewModel : ObservableObject
     {
         #region Свойства, сервисы
-        public ITargetsListService TargetsList { get; }
+        //public ITargetsListService TargetsList { get; }
         public IModListService ModsList { get; }
         public ICalcOutputService Calc { get; }
+
+        public ObservableCollection<TargetUnit> TargetsList { get; set; }
 
         private TargetUnit? _selectedTarget;
         public TargetUnit? SelectedTarget
@@ -50,9 +53,9 @@ namespace WhmCalcNew.ViewModel
         }
         #endregion
         #region Конструкторы
-        public MainViewModel(ITargetsListService targetsList, IModListService modsList, ICalcOutputService calc)
+        public MainViewModel(/*ITargetsListService targetsList,*/ IModListService modsList, ICalcOutputService calc)
         {
-            TargetsList = targetsList;
+            //TargetsList = targetsList;
             ModsList = modsList;
             Calc = calc;
             OutputData = new OutputData();
@@ -77,10 +80,11 @@ namespace WhmCalcNew.ViewModel
         {
             foreach (Window item in Application.Current.Windows)
             {
-                if (item.DataContext == this)
-                {
-                    item.Close();
-                }
+                //if (item.DataContext == this)
+                //{
+                //    item.Close();
+                //}
+                item.Close();
             }
         }
         [RelayCommand]
@@ -97,7 +101,7 @@ namespace WhmCalcNew.ViewModel
         [RelayCommand]
         public void ShowAddTarget(object obj)
         {
-            AddTargetWindow addTargetWindow = new AddTargetWindow();
+            AddTargetWindow addTargetWindow = App.AppHost.Services.GetService<AddTargetWindow>();
             addTargetWindow.Show();
         }
 

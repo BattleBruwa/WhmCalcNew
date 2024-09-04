@@ -7,7 +7,9 @@
              mc:Ignorable="d"
              d:DesignHeight="230"
              d:DesignWidth="360">
-    <Grid HorizontalAlignment="Center" Margin="55 0 0 0">
+    <Grid HorizontalAlignment="Center"
+          Margin="55 0 0 0"
+          DataContext="{Binding NewTarget}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="60" />
@@ -18,7 +20,7 @@
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal">
             <TextBox x:Name="NameTB"
-                     Text="{Binding NewTarget.UnitName}"
+                     Text="{Binding Path=UnitName, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
@@ -37,7 +39,7 @@
                     Width="110"
                     Margin="0 0 30 0">
             <TextBox x:Name="ToughnessTB"
-                     Text="{Binding NewTarget.Toughness}"
+                     Text="{Binding Path=Toughness, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
@@ -65,7 +67,7 @@
                     Width="110"
                     Margin="0 0 30 0">
             <TextBox x:Name="ArmorSaveTB"
-                     Text="{Binding NewTarget.Save}"
+                     Text="{Binding Path=Save, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"
@@ -93,7 +95,7 @@
                     Width="110"
                     Margin="0 0 30 0">
             <TextBox x:Name="WoundsTB"
-                     Text="{Binding NewTarget.Wounds}"
+                     Text="{Binding Path=Wounds, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Bottom"
                      Style="{StaticResource TextBoxTheme}"

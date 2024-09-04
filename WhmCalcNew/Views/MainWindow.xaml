@@ -60,7 +60,7 @@
                               HorizontalAlignment="Left"
                               Margin="16 0 0 0"
                               HorizontalContentAlignment="Center"
-                              ItemsSource="{Binding Targets}"
+                              ItemsSource="{Binding TargetsList}"
                               SelectedItem="{Binding SelectedTarget}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -77,7 +77,7 @@
                             Height="40"
                             Margin="0 20 0 0"
                             Style="{StaticResource ButtonTheme}"
-                            Content="OK"
+                            Content="Добавить"
                             Command="{Binding ShowAddTargetCommand}"/>
                 </StackPanel>
             </Border>
