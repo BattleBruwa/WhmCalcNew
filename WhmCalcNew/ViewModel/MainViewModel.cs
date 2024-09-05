@@ -8,6 +8,7 @@ using WhmCalcNew.Bases;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services;
 using WhmCalcNew.Services.Calculations;
+using WhmCalcNew.Services.DataAccess;
 using WhmCalcNew.Views;
 
 namespace WhmCalcNew.ViewModel
@@ -15,11 +16,12 @@ namespace WhmCalcNew.ViewModel
     public partial class MainViewModel : ObservableObject
     {
         #region Свойства, сервисы
-        //public ITargetsListService TargetsList { get; }
         public IModListService ModsList { get; }
         public ICalcOutputService Calc { get; }
 
         public ObservableCollection<TargetUnit> TargetsList { get; set; }
+
+        public ObservableCollection<Modificator> PickedMods { get; set; } = new();
 
         private TargetUnit? _selectedTarget;
         public TargetUnit? SelectedTarget
@@ -28,7 +30,7 @@ namespace WhmCalcNew.ViewModel
             set
             {
                 SetProperty(ref _selectedTarget, value);
-                Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedModificators);
+                Recalculate(AttackingUnit, SelectedTarget, PickedMods);
             }
         }
 
@@ -53,9 +55,8 @@ namespace WhmCalcNew.ViewModel
         }
         #endregion
         #region Конструкторы
-        public MainViewModel(/*ITargetsListService targetsList,*/ IModListService modsList, ICalcOutputService calc)
+        public MainViewModel(IModListService modsList, ICalcOutputService calc)
         {
-            //TargetsList = targetsList;
             ModsList = modsList;
             Calc = calc;
             OutputData = new OutputData();
@@ -107,9 +108,15 @@ namespace WhmCalcNew.ViewModel
 
         #endregion
         #region Вспомогательные методы
+        // Загрузка коллекции целей
+        public async Task FillTargetsCollectionAsync(IWhmDbService dbService)
+        {
+            TargetsList = new(await dbService.GetTargetsAsync());
+        }
+
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedModificators);
+            Recalculate(AttackingUnit, SelectedTarget, PickedMods);
         }
 
         private void Recalculate(AttackingUnit attacker, TargetUnit? target, ObservableCollection<Modificator> mods)

@@ -15,17 +15,25 @@ namespace WhmCalcNew.ViewModel
         public TargetUnit NewTarget { get; set; } = new();
         public IWhmDbService DbService { get; }
 
-        public AddTargetViewModel(IWhmDbService dbService)
+        private MainViewModel mainViewModel;
+
+        public AddTargetViewModel(IWhmDbService dbService, MainViewModel mainViewModel)
         {
             DbService = dbService;
+            this.mainViewModel = mainViewModel;
         }
         [RelayCommand]
         public async Task AddTarget()
         {
+            if (String.IsNullOrEmpty(NewTarget.UnitName))
+            {
+                return;
+            }
             // TODO: Оформить новое окно с подтверждением, если цель с таким именем уже существует
             if (await DbService.GetTargetByName(NewTarget.UnitName) == null)
             {
                 await DbService.AddTargetAsync(NewTarget);
+                mainViewModel.TargetsList.Add(NewTarget);
             }
             await DbService.UpdateTargetAsync(NewTarget);
         }

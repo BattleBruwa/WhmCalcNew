@@ -21,7 +21,6 @@ namespace WhmCalcNew
                 // Сервисы
                 services.AddTransient<IWhmDbService, WhmDbService>();
                 services.AddSingleton<IModListService, ModListService>();
-                services.AddSingleton<ITargetsListService, TargetsListService>();
                 services.AddSingleton<ICalcOutputService, CalcOutputService>();
                 services.AddSingleton<MainViewModel>();
                 services.AddTransient<AddTargetViewModel>();
@@ -35,15 +34,19 @@ namespace WhmCalcNew
         {
             await AppHost!.StartAsync();
             base.OnStartup(e);
-            await ModListService.Initialize();
 
             using (DataContext dbContext = new DataContext())
             {
                 dbContext.Database.Migrate();
             }
-            var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
-            await startupForm.FillCollection(AppHost.Services.GetRequiredService<IWhmDbService>());
 
+            var modsList = AppHost.Services.GetRequiredService<IModListService>();
+            await modsList.InitializeModListAsync();
+
+            var viewModel = AppHost.Services.GetRequiredService<MainViewModel>();
+            await viewModel.FillTargetsCollectionAsync(AppHost.Services.GetRequiredService<IWhmDbService>());
+
+            var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
             startupForm.Show();
         }
 

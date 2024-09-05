@@ -87,21 +87,7 @@
                     Height="370"
                     BorderBrush="{DynamicResource MainOutlineColor}"
                     BorderThickness="1,0,0,0">
-                <!--<components:ModificatorsPartComponent DataContext="{Binding ModsList}"/>-->
-                <DataGrid Name="TestDataGrid"
-                          AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id"
-                                            Width="*"
-                                            Binding="{Binding Id}" />
-                        <DataGridTextColumn Header="Name"
-                                            Width="*"
-                                            Binding="{Binding Name}" />
-                        <DataGridTextColumn Header="ToolTip"
-                                            Width="*"
-                                            Binding="{Binding ToolTip}" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <components:ModificatorsPartComponent />
             </Border>
 
             <Border Grid.Row="1"

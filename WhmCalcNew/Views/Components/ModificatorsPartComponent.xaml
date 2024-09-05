@@ -5,22 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
+             xmlns:viewmodel="clr-namespace:WhmCalcNew.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="360"
              Width="263">
     <Grid>
-        <DataGrid ItemsSource="{Binding ModificatorsList}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"
-                                    Width="*" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Name"
-                                    Width="*"
-                                    Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="ToolTip"
-                                    Width="*" Binding="{Binding ToolTip}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <!--<Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="72" />
             <RowDefinition Height="72" />
             <RowDefinition Height="72" />
@@ -29,22 +20,25 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="87"/>
-            <ColumnDefinition Width="87"/>
+            <ColumnDefinition Width="87" />
+            <ColumnDefinition Width="87" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <CheckBox Grid.Column="0"
-                  DataContext="{Binding ModsList.ModificatorsList}"
-                      Grid.Row="0" ToolTip="{Binding Modificator.Tooltip}"
-                      Style="{StaticResource CheckBoxTheme}"/>
-        <CheckBox Grid.Column="1"
+                  DataContext="{Binding ModsList.ModificatorsList[0]}"
                   Grid.Row="0"
-                  ToolTip="{Binding Modificator.Tooltip}"
+                  Style="{StaticResource CheckBoxTheme}"
+                  ToolTip="{Binding Path=ToolTip}" />
+        <CheckBox Grid.Column="1"
+                  DataContext="{Binding ModsList.ModificatorsList[1]}"
+                  Grid.Row="0"
+                  ToolTip="{Binding Path=ToolTip}"
                   Style="{StaticResource CheckBoxTheme}" />
         <CheckBox Grid.Column="2"
+                  DataContext="{Binding ModsList.ModificatorsList[2]}"
                   Grid.Row="0"
-                  ToolTip="{Binding Modificator.Tooltip}"
-                  Style="{StaticResource CheckBoxTheme}" />-->
+                  ToolTip="{Binding Path=ToolTip}"
+                  Style="{StaticResource CheckBoxTheme}" />
     </Grid>
 </UserControl>

@@ -23,7 +23,7 @@ namespace WhmCalcNew.Services.Calculations
                 var critMod = mods.Single(m => m.Id == 14);
                 sustainedHits = totalHits * ((7f - (float)critMod.Condition) / 6f) * (float)susMod.Condition;
                 totalHits += sustainedHits;
-                return Math.Round(totalHits, 1);
+                return Math.Round(totalHits, 2);
             }
             // Сус хитс без критов
             if (mods.Any(m => m.Id == 6 && m.Condition != null))
@@ -31,10 +31,10 @@ namespace WhmCalcNew.Services.Calculations
                 var susMod = mods.Single(m => m.Id == 6);
                 sustainedHits = totalHits * (1f / 6f) * (float)susMod.Condition;
                 totalHits += sustainedHits;
-                return Math.Round(totalHits, 1);
+                return Math.Round(totalHits, 2);
             }
             // Без сус хитов (c критом или без - разберется AccuracyCalc)
-            return Math.Round(totalHits, 1);
+            return Math.Round(totalHits, 2);
         }
 
         public double TotalWounds(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
@@ -51,14 +51,14 @@ namespace WhmCalcNew.Services.Calculations
                     var critMod = mods.Single(m => m.Id == 14);
                     lethalHits = TotalHits(attacker, mods) * ((7f - (float)critMod.Condition) / 6f);
                     totalWounds = (TotalHits(attacker, mods) - lethalHits) * ToWoundCalc.ToWoundRoll(attacker, target, mods);
-                    return Math.Round(totalWounds, 1);
+                    return Math.Round(totalWounds, 2);
                 }
                 // Без критов
                 lethalHits = TotalHits(attacker, mods) * (1f / 6f);
                 totalWounds = (TotalHits(attacker, mods) - lethalHits) * ToWoundCalc.ToWoundRoll(attacker, target, mods);
             }
             // Без леталок (c критом или без - разберется ToWoundCalc)
-            return Math.Round(totalWounds, 1);
+            return Math.Round(totalWounds, 2);
         }
 
         public double TotalUnSaved(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
@@ -73,17 +73,17 @@ namespace WhmCalcNew.Services.Calculations
                 var critMod = mods.Single(m => m.Id == 9);
                 devWounds = TotalWounds(attacker, target, mods) * ((7f - (float)critMod.Condition) / 6f);
                 totalUnsavedW = (TotalWounds(attacker, target, mods) - devWounds) * ArmorSaveCalc.ToSaveRoll(attacker, target, mods);
-                return Math.Round(totalUnsavedW, 1);
+                return Math.Round(totalUnsavedW, 2);
             }
             // Без анти х
             if (mods.Any(m => m.Id == 7))
             {
                 devWounds = TotalWounds(attacker, target, mods) * (1f / 6f);
                 totalUnsavedW = (TotalWounds(attacker, target, mods) - devWounds) * ArmorSaveCalc.ToSaveRoll(attacker, target, mods);
-                return Math.Round(totalUnsavedW, 1);
+                return Math.Round(totalUnsavedW, 2);
             }
             // Без дев вунд
-            return Math.Round(totalUnsavedW, 1);
+            return Math.Round(totalUnsavedW, 2);
         }
 
         public double TotalDeadModels(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
@@ -176,7 +176,7 @@ namespace WhmCalcNew.Services.Calculations
                     damagePerWound = 1;
                 }
             }
-            return Math.Round(TotalUnSaved(attacker, target, mods) * damagePerWound, 1);
+            return Math.Round(TotalUnSaved(attacker, target, mods) * damagePerWound, 2);
         }
         #endregion
     }

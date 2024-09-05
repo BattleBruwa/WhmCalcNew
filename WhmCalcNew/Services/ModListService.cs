@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
 using WhmCalcNew.Models;
 
@@ -8,17 +7,16 @@ namespace WhmCalcNew.Services
     public class ModListService : IModListService
     {
         // Путь до файла с модификаторами
-        private static readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
-        // Выбранные модификаторы
-        public ObservableCollection<Modificator> PickedModificators { get; set; } = new();
+        private readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
+
         // Все модификаторы
-        public static List<Modificator> ModificatorsList { get; set; } = new();
-        // Этот метод вызывается в OnStartup
-        public static async Task Initialize()
+        public List<Modificator> ModificatorsList { get; set; }
+
+        public async Task InitializeModListAsync()
         {
             using (FileStream fs = new FileStream($"{jsonPath}", FileMode.Open, FileAccess.Read))
             {
-                ModificatorsList = await JsonSerializer.DeserializeAsync<List<Modificator>>(fs);
+                ModificatorsList = new(await JsonSerializer.DeserializeAsync<List<Modificator>>(fs));
             }
         }
     }

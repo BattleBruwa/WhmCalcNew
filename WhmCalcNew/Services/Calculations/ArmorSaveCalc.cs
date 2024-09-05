@@ -29,7 +29,7 @@ namespace WhmCalcNew.Services.Calculations
             }
             // Если нет инвуля
             resultedRoll = (byte)(attacker.ArmorPen + target.Save);
-            return DiceRoller.RollTheDice(resultedRoll);
+            return 1f - DiceRoller.RollTheDice(resultedRoll);
         }
     }
 }
