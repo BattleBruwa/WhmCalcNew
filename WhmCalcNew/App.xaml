@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Visual\Styles\ModificatorsTextBlockStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ToolTipStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\WindowControlsStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ModsBoxStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
