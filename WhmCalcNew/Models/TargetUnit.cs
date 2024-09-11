@@ -22,7 +22,7 @@ namespace WhmCalcNew.Models
 
         public override string ToString()
         {
-            return $"{this.UnitName}\nT: {this.Toughness} Sv: {this.Save} W: {this.Wounds}";
+            return $"{UnitName}\nT: {Toughness} Sv: {Save} W: {Wounds}";
         }
     }
 }

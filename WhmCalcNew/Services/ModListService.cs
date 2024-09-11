@@ -17,7 +17,9 @@ namespace WhmCalcNew.Services
             using (FileStream fs = new FileStream($"{jsonPath}", FileMode.Open, FileAccess.Read))
             {
                 ModificatorsList = new(await JsonSerializer.DeserializeAsync<List<Modificator>>(fs));
+                ModificatorsList = ModificatorsList.OrderBy(x => x.Id).ToList();
             }
+            
         }
     }
 }

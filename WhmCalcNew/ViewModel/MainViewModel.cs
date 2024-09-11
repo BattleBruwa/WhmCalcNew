@@ -62,7 +62,9 @@ namespace WhmCalcNew.ViewModel
             OutputData = new OutputData();
             AttackingUnit = new AttackingUnit();
             AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
+            PickedMods.CollectionChanged += PickedMods_CollectionChanged;
         }
+
         #endregion
         #region Комманды
         [RelayCommand]
@@ -81,10 +83,6 @@ namespace WhmCalcNew.ViewModel
         {
             foreach (Window item in Application.Current.Windows)
             {
-                //if (item.DataContext == this)
-                //{
-                //    item.Close();
-                //}
                 item.Close();
             }
         }
@@ -105,7 +103,22 @@ namespace WhmCalcNew.ViewModel
             AddTargetWindow addTargetWindow = App.AppHost.Services.GetService<AddTargetWindow>();
             addTargetWindow.Show();
         }
-
+        // Комманда для обработки чекбоксов модификаторов
+        [RelayCommand]
+        public void PickMod(object obj)
+        {
+            var parameters = (object[])obj;
+            bool check = (bool)parameters[0];
+            Modificator pickedMod = (Modificator)parameters[1];
+            if (check)
+            {
+                PickedMods.Add(pickedMod);
+            }
+            else
+            {
+                PickedMods.Remove(pickedMod);
+            }
+        }
         #endregion
         #region Вспомогательные методы
         // Загрузка коллекции целей
@@ -115,6 +128,11 @@ namespace WhmCalcNew.ViewModel
         }
 
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            Recalculate(AttackingUnit, SelectedTarget, PickedMods);
+        }
+
+        private void PickedMods_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             Recalculate(AttackingUnit, SelectedTarget, PickedMods);
         }

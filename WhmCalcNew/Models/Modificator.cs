@@ -12,5 +12,13 @@ namespace WhmCalcNew.Models
 
         [JsonIgnore]
         public byte? Condition { get; set; } = null;
+
+        [JsonIgnore]
+        public string ModInfo { get => this.ToString(); }
+
+        public override string ToString()
+        {
+            return $"{Name}: {ToolTip}";
+        }
     }
 }
