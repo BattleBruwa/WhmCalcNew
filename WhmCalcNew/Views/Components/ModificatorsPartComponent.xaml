@@ -247,31 +247,30 @@
             </CheckBox.Template>
         </CheckBox>
         <!--Сустейнед хитс-->
-        <CheckBox Height="70"
+        <ComboBox Template="{DynamicResource ModComboBoxTheme}" Height="70"
+            Width="85"
+            Grid.Column="0"
+            Grid.Row="2">
+            <TextBlock>3+</TextBlock>
+            <TextBlock>4+</TextBlock>
+            <TextBlock>5+</TextBlock>
+            <TextBlock>6+</TextBlock>
+            <TextBlock>Cancel</TextBlock>
+        </ComboBox>
+        <!--<ComboBox Height="70"
                   Width="85"
                   Grid.Column="0"
                   DataContext="{Binding ModsList.ModificatorsList[5]}"
                   Grid.Row="2"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Command="{Binding Path=DataContext.PickModCommand,
-                                RelativeSource={RelativeSource Mode=FindAncestor,
-                                                 AncestorType={x:Type UserControl}}}"
-                  Name="CheckBoxSH">
-            <CheckBox.CommandParameter>
-                <MultiBinding Converter="{StaticResource mvc}">
-                    <Binding ElementName="CheckBoxSH"
-                             Path="IsChecked" />
-                    <Binding ElementName="CheckBoxSH"
-                             Path="DataContext" />
-                </MultiBinding>
-            </CheckBox.CommandParameter>
-            <CheckBox.ToolTip>
+                  Name="ComboBoxSH">
+            <ComboBox.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}"
                          Content="{Binding ModInfo}" />
-            </CheckBox.ToolTip>
-            <CheckBox.Template>
-                <ControlTemplate TargetType="{x:Type CheckBox}">
+            </ComboBox.ToolTip>
+            <ComboBox.Template>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
                     <Border Name="Border"
                             Height="{TemplateBinding Height}"
                             Width="{TemplateBinding Width}"
@@ -295,7 +294,7 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked"
+                        <Trigger Property="IsVisible"
                                  Value="True">
                             <Setter TargetName="Grid"
                                     Property="Effect">
@@ -315,8 +314,8 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-            </CheckBox.Template>
-        </CheckBox>
+            </ComboBox.Template>
+        </ComboBox>-->
         <!--Летал хитс-->
         <CheckBox Height="70"
                   Width="85"
