@@ -1,0 +1,170 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ComboBoxToggleButton"
+           TargetType="{x:Type ToggleButton}">
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="IsTabStop"
+                Value="false" />
+        <Setter Property="Focusable"
+                Value="false" />
+        <Setter Property="ClickMode"
+                Value="Press" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Name="Border1"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}"
+                            SnapsToDevicePixels="True"
+                            BorderBrush="{DynamicResource MainOutlineColor}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                        <Grid Name="Grid">
+                            <Canvas Height="64"
+                                    Width="75"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <Path Fill="{DynamicResource TextMainColor}"
+                                      Data="M44.7378 3.84843L54.9454 0.445892L51.5429 10.6535L20.6989 38.6926L19.6639 37.0978L49.8874 6.87422C50.278 6.48369 50.278 5.85053 49.8874 5.46C49.4969 5.06948 48.8638 5.06948 48.4732 5.46L18.2607 35.6725L16.7179 34.6712L44.7378 3.84843ZM7.1087 31.4211L4.70266 33.8272L11.3969 40.5216L4.11083 48.5378C3.16195 48.4136 2.16841 48.7126 1.43941 49.4416C0.193659 50.6874 0.193659 52.707 1.43941 53.9528C2.68517 55.1985 4.70479 55.1985 5.9505 53.9528C6.6797 53.2233 6.9787 52.2294 6.8541 51.2801L14.8699 43.9944L21.5444 50.6689L23.9504 48.2629L17.3206 38.051L7.1087 31.4211Z" />
+                                <Path Fill="{DynamicResource TextMainColor}"
+                                      Data="M57.532 18.0707L65.8597 15.2947L63.0838 23.6225L37.9201 46.4978L37.0048 45.0875L61.7234 20.3689C62.0163 20.076 62.0163 19.6012 61.7234 19.3083C61.4305 19.0154 60.9556 19.0154 60.6627 19.3083L35.9347 44.0363L34.6723 43.217L57.532 18.0707ZM26.8327 40.5655L24.8698 42.5284L30.3313 47.99L24.387 54.5299C23.6128 54.4286 22.8023 54.6725 22.2075 55.2673C21.1912 56.2836 21.1912 57.9313 22.2075 58.9476C23.2239 59.9639 24.8715 59.9639 25.8879 58.9476C26.4828 58.3525 26.7267 57.5416 26.6251 56.7671L33.1646 50.8232L38.6099 56.2685L40.5728 54.3056L35.164 45.9744L26.8327 40.5655Z" />
+                                <Path Fill="{DynamicResource TextMainColor}"
+                                      Data="M67.9312 30.7354L74.4949 28.5475L72.307 35.1112L52.4738 53.1408L51.7427 52.0143L70.4247 33.3323C70.62 33.1371 70.62 32.8205 70.4247 32.6252C70.2294 32.43 69.9129 32.43 69.7176 32.6252L51.0503 51.2925L49.914 50.555L67.9312 30.7354ZM43.7351 48.4651L42.188 50.0122L46.4925 54.3169L41.8074 59.4714C41.1973 59.3916 40.5584 59.5838 40.0897 60.0526C39.2886 60.8536 39.2886 62.1523 40.0897 62.9533C40.8907 63.7544 42.1894 63.7544 42.9904 62.9533C43.4593 62.4843 43.6516 61.8452 43.5714 61.2347L48.7257 56.5499L53.0175 60.8417L54.5646 59.2946L50.3015 52.7282L43.7351 48.4651Z" />
+                            </Canvas>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}"
+                                           Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background"
+                                    TargetName="Border1"
+                                    Value="{DynamicResource BoxesInnerColor}" />
+                            <Setter Property="BorderThickness"
+                                    TargetName="Border1"
+                                    Value="2" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
+                                           Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background"
+                                    TargetName="Border1"
+                                    Value="{DynamicResource ComboBoxContentColor}" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="SustainedHitsCB"
+                     TargetType="{x:Type ComboBox}">
+        <Grid x:Name="templateRoot"
+              SnapsToDevicePixels="true">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"
+                                  Width="0" />
+            </Grid.ColumnDefinitions>
+            <Popup x:Name="PART_Popup"
+                   AllowsTransparency="true"
+                   Grid.ColumnSpan="2"
+                   IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                   Margin="1"
+                   Placement="Bottom"
+                   PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                <Border x:Name="dropDownBorder"
+                        CornerRadius="5"
+                        Background="{DynamicResource BoxesInnerColor}"
+                        BorderBrush="{DynamicResource MainOutlineColor}"
+                        BorderThickness="1">
+                    <ScrollViewer x:Name="DropDownScrollViewer"
+                                  Margin="4 6 4 6">
+                        <StackPanel x:Name="ItemsPresenter"
+                                    IsItemsHost="True"
+                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+            <ToggleButton x:Name="toggleButton"
+                          Background="{DynamicResource MainWindowBackgroundColor}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          Grid.ColumnSpan="2"
+                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                          Style="{StaticResource ComboBoxToggleButton}" />
+            <ContentPresenter x:Name="contentPresenter"
+                              ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                              Content="{TemplateBinding SelectionBoxItem}"
+                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                              HorizontalAlignment="Left"
+                              IsHitTestVisible="false"
+                              Margin="{TemplateBinding Padding}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                              VerticalAlignment="Top" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="HasItems"
+                     Value="false">
+                <Setter Property="Height"
+                        TargetName="dropDownBorder"
+                        Value="95" />
+            </Trigger>
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                         Value="Cancel">
+                <Setter Property="Background"
+                        TargetName="toggleButton"
+                        Value="{DynamicResource MainWindowBackgroundColor}" />
+                <Setter Property="Visibility"
+                        TargetName="contentPresenter"
+                        Value="Hidden" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+
+    <Style x:Key="{x:Type ComboBoxItem}"
+           TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="true" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextMainColor}" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border Name="Border"
+                            Padding="2"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="true">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted"
+                                 Value="true">
+                            <Setter TargetName="Border"
+                                    Property="Background"
+                                    Value="{DynamicResource ComboBoxContentColor}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Foreground"
+                                    Value="#888888" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

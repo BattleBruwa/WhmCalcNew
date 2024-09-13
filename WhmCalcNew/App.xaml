@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="Visual\Styles\WindowControlsStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModsBoxStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModComboBoxStyle.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\SustainedHitsButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

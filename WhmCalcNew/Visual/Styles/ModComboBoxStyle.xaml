@@ -19,8 +19,7 @@
                                 BorderThickness="1"
                                 CornerRadius="5">
                             <Grid Name="Grid">
-                                <Canvas Height="64"
-                                        Width="75"
+                                <Canvas
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center">
                                     <Path Fill="{DynamicResource TextMainColor}"
@@ -39,9 +38,9 @@
                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                               Content="{TemplateBinding SelectionBoxItem}"
                               ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                              HorizontalAlignment="Center"
+                              HorizontalAlignment="Left"
                               IsHitTestVisible="False"
-                              VerticalAlignment="Center" />
+                              VerticalAlignment="Bottom" />
             <Popup x:Name="Popup"
                    AllowsTransparency="True"
                    Focusable="False"

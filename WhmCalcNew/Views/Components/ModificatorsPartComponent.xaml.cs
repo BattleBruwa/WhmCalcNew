@@ -29,5 +29,10 @@ namespace WhmCalcNew.Views.Components
         {
 
         }
+
+        private void SustainedHitsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

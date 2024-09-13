@@ -247,15 +247,28 @@
             </CheckBox.Template>
         </CheckBox>
         <!--Сустейнед хитс-->
-        <ComboBox Template="{DynamicResource ModComboBoxTheme}" Height="70"
-            Width="85"
-            Grid.Column="0"
-            Grid.Row="2">
-            <TextBlock>3+</TextBlock>
-            <TextBlock>4+</TextBlock>
-            <TextBlock>5+</TextBlock>
-            <TextBlock>6+</TextBlock>
-            <TextBlock>Cancel</TextBlock>
+        <ComboBox Template="{DynamicResource SustainedHitsCB}"
+                  Grid.Column="0"
+                  Grid.Row="2"
+                  Height="70"
+                  Width="85"
+                  Name="SustainedHitsCB"
+                  VerticalAlignment="Top"
+                  MinWidth="85"
+                  SelectionChanged="SustainedHitsCB_SelectionChanged">
+            <ComboBoxItem FontSize="22"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">3</ComboBoxItem>
+            <ComboBoxItem FontSize="22"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">2</ComboBoxItem>
+            <ComboBoxItem FontSize="22"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">1</ComboBoxItem>
+            <ComboBoxItem Tag="Cancel"
+                          FontSize="22"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">Cancel</ComboBoxItem>
         </ComboBox>
         <!--<ComboBox Height="70"
                   Width="85"
