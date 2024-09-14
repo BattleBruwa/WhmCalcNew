@@ -20,11 +20,11 @@
                             SnapsToDevicePixels="True"
                             BorderBrush="{DynamicResource MainOutlineColor}"
                             Background="{TemplateBinding Background}"
-                            BorderThickness="1"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5">
-                        <Grid Name="Grid">
-                            <Canvas Height="64"
-                                    Width="75"
+                        <Grid x:Name="Grid1">
+                            <Canvas Height="62"
+                                    Width="73"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
                                 <Path Fill="{DynamicResource TextMainColor}"
@@ -33,31 +33,61 @@
                                       Data="M57.532 18.0707L65.8597 15.2947L63.0838 23.6225L37.9201 46.4978L37.0048 45.0875L61.7234 20.3689C62.0163 20.076 62.0163 19.6012 61.7234 19.3083C61.4305 19.0154 60.9556 19.0154 60.6627 19.3083L35.9347 44.0363L34.6723 43.217L57.532 18.0707ZM26.8327 40.5655L24.8698 42.5284L30.3313 47.99L24.387 54.5299C23.6128 54.4286 22.8023 54.6725 22.2075 55.2673C21.1912 56.2836 21.1912 57.9313 22.2075 58.9476C23.2239 59.9639 24.8715 59.9639 25.8879 58.9476C26.4828 58.3525 26.7267 57.5416 26.6251 56.7671L33.1646 50.8232L38.6099 56.2685L40.5728 54.3056L35.164 45.9744L26.8327 40.5655Z" />
                                 <Path Fill="{DynamicResource TextMainColor}"
                                       Data="M67.9312 30.7354L74.4949 28.5475L72.307 35.1112L52.4738 53.1408L51.7427 52.0143L70.4247 33.3323C70.62 33.1371 70.62 32.8205 70.4247 32.6252C70.2294 32.43 69.9129 32.43 69.7176 32.6252L51.0503 51.2925L49.914 50.555L67.9312 30.7354ZM43.7351 48.4651L42.188 50.0122L46.4925 54.3169L41.8074 59.4714C41.1973 59.3916 40.5584 59.5838 40.0897 60.0526C39.2886 60.8536 39.2886 62.1523 40.0897 62.9533C40.8907 63.7544 42.1894 63.7544 42.9904 62.9533C43.4593 62.4843 43.6516 61.8452 43.5714 61.2347L48.7257 56.5499L53.0175 60.8417L54.5646 59.2946L50.3015 52.7282L43.7351 48.4651Z" />
-                            </Canvas>
+                                </Canvas>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}"
-                                           Value="true" />
-                            </MultiDataTrigger.Conditions>
+                        <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}"
+                                       Value="true">
                             <Setter Property="Background"
                                     TargetName="Border1"
                                     Value="{DynamicResource BoxesInnerColor}" />
                             <Setter Property="BorderThickness"
                                     TargetName="Border1"
                                     Value="2" />
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
-                                           Value="true" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Background"
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
+                                             Value="true">
+                                    <Setter Property="Background"
                                     TargetName="Border1"
                                     Value="{DynamicResource ComboBoxContentColor}" />
-                        </MultiDataTrigger>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                                     Value="Add3">
+                            <Setter Property="Effect"
+                                    TargetName="Grid1">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                                      ShadowDepth="0"
+                                                      Direction="0"
+                                                      BlurRadius="5" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                                     Value="Add2">
+                            <Setter Property="Effect"
+                                    TargetName="Grid1">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                                      ShadowDepth="0"
+                                                      Direction="0"
+                                                      BlurRadius="5" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                                     Value="Add1">
+                            <Setter Property="Effect"
+                                    TargetName="Grid1">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                                      ShadowDepth="0"
+                                                      Direction="0"
+                                                      BlurRadius="5" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -96,7 +126,7 @@
             <ToggleButton x:Name="toggleButton"
                           Background="{DynamicResource MainWindowBackgroundColor}"
                           BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}"
+                          BorderThickness="1"
                           Grid.ColumnSpan="2"
                           IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                           Style="{StaticResource ComboBoxToggleButton}" />
@@ -107,7 +137,9 @@
                               ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                               HorizontalAlignment="Left"
                               IsHitTestVisible="false"
-                              Margin="{TemplateBinding Padding}"
+                              TextElement.FontSize="22"
+                              TextElement.FontWeight="Bold"
+                              Margin="10 0 0 0"
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                               VerticalAlignment="Top" />
         </Grid>
@@ -126,6 +158,60 @@
                 <Setter Property="Visibility"
                         TargetName="contentPresenter"
                         Value="Hidden" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                         Value="Add3">
+                <Setter Property="Background"
+                        TargetName="toggleButton"
+                        Value="{DynamicResource BoxesInnerColor}" />
+                <Setter Property="BorderThickness"
+                        TargetName="toggleButton"
+                        Value="2" />
+                <Setter Property="Effect"
+                        TargetName="contentPresenter">
+                    <Setter.Value>
+                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                          ShadowDepth="0"
+                                          Direction="0"
+                                          BlurRadius="5" />
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                         Value="Add2">
+                <Setter Property="Background"
+                        TargetName="toggleButton"
+                        Value="{DynamicResource BoxesInnerColor}" />
+                <Setter Property="BorderThickness"
+                        TargetName="toggleButton"
+                        Value="2" />
+                <Setter Property="Effect"
+                        TargetName="contentPresenter">
+                    <Setter.Value>
+                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                          ShadowDepth="0"
+                                          Direction="0"
+                                          BlurRadius="5" />
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+                         Value="Add1">
+                <Setter Property="Background"
+                        TargetName="toggleButton"
+                        Value="{DynamicResource BoxesInnerColor}" />
+                <Setter Property="BorderThickness"
+                        TargetName="toggleButton"
+                        Value="2" />
+                <Setter Property="Effect"
+                        TargetName="contentPresenter">
+                    <Setter.Value>
+                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                          ShadowDepth="0"
+                                          Direction="0"
+                                          BlurRadius="5" />
+                    </Setter.Value>
+                </Setter>
             </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

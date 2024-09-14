@@ -45,7 +45,8 @@
                 <MultiBinding Converter="{StaticResource mvc}">
                     <Binding ElementName="CheckBoxR1"
                              Path="IsChecked" />
-                    <Binding ElementName="CheckBoxR1" Path="DataContext" />
+                    <Binding ElementName="CheckBoxR1"
+                             Path="DataContext" />
                 </MultiBinding>
             </CheckBox.CommandParameter>
             <CheckBox.ToolTip>
@@ -250,25 +251,33 @@
         <ComboBox Template="{DynamicResource SustainedHitsCB}"
                   Grid.Column="0"
                   Grid.Row="2"
+                  DataContext="{Binding ModsList.ModificatorsList[5]}"
                   Height="70"
                   Width="85"
                   Name="SustainedHitsCB"
-                  VerticalAlignment="Top"
+                  VerticalAlignment="Center"
                   MinWidth="85"
                   SelectionChanged="SustainedHitsCB_SelectionChanged">
             <ComboBoxItem FontSize="22"
+                          Tag="Add3"
                           Foreground="{DynamicResource TextMainColor}"
                           FontWeight="Bold">3</ComboBoxItem>
             <ComboBoxItem FontSize="22"
+                          Tag="Add2"
                           Foreground="{DynamicResource TextMainColor}"
                           FontWeight="Bold">2</ComboBoxItem>
             <ComboBoxItem FontSize="22"
+                          Tag="Add1"
                           Foreground="{DynamicResource TextMainColor}"
                           FontWeight="Bold">1</ComboBoxItem>
             <ComboBoxItem Tag="Cancel"
                           FontSize="22"
                           Foreground="{DynamicResource TextMainColor}"
                           FontWeight="Bold">Cancel</ComboBoxItem>
+            <ComboBox.ToolTip>
+                <ToolTip Style="{StaticResource ToolTipTheme}"
+                         Content="{Binding ModInfo}" />
+            </ComboBox.ToolTip>
         </ComboBox>
         <!--<ComboBox Height="70"
                   Width="85"
