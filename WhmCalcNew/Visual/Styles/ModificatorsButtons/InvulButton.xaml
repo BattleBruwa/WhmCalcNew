@@ -23,39 +23,26 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5">
                         <Grid x:Name="Grid1">
-                            <!--<Canvas Height="62"
-                                    Width="73"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                                <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M44.7378 3.84843L54.9454 0.445892L51.5429 10.6535L20.6989 38.6926L19.6639 37.0978L49.8874 6.87422C50.278 6.48369 50.278 5.85053 49.8874 5.46C49.4969 5.06948 48.8638 5.06948 48.4732 5.46L18.2607 35.6725L16.7179 34.6712L44.7378 3.84843ZM7.1087 31.4211L4.70266 33.8272L11.3969 40.5216L4.11083 48.5378C3.16195 48.4136 2.16841 48.7126 1.43941 49.4416C0.193659 50.6874 0.193659 52.707 1.43941 53.9528C2.68517 55.1985 4.70479 55.1985 5.9505 53.9528C6.6797 53.2233 6.9787 52.2294 6.8541 51.2801L14.8699 43.9944L21.5444 50.6689L23.9504 48.2629L17.3206 38.051L7.1087 31.4211Z" />
-                                <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M57.532 18.0707L65.8597 15.2947L63.0838 23.6225L37.9201 46.4978L37.0048 45.0875L61.7234 20.3689C62.0163 20.076 62.0163 19.6012 61.7234 19.3083C61.4305 19.0154 60.9556 19.0154 60.6627 19.3083L35.9347 44.0363L34.6723 43.217L57.532 18.0707ZM26.8327 40.5655L24.8698 42.5284L30.3313 47.99L24.387 54.5299C23.6128 54.4286 22.8023 54.6725 22.2075 55.2673C21.1912 56.2836 21.1912 57.9313 22.2075 58.9476C23.2239 59.9639 24.8715 59.9639 25.8879 58.9476C26.4828 58.3525 26.7267 57.5416 26.6251 56.7671L33.1646 50.8232L38.6099 56.2685L40.5728 54.3056L35.164 45.9744L26.8327 40.5655Z" />
-                                <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M67.9312 30.7354L74.4949 28.5475L72.307 35.1112L52.4738 53.1408L51.7427 52.0143L70.4247 33.3323C70.62 33.1371 70.62 32.8205 70.4247 32.6252C70.2294 32.43 69.9129 32.43 69.7176 32.6252L51.0503 51.2925L49.914 50.555L67.9312 30.7354ZM43.7351 48.4651L42.188 50.0122L46.4925 54.3169L41.8074 59.4714C41.1973 59.3916 40.5584 59.5838 40.0897 60.0526C39.2886 60.8536 39.2886 62.1523 40.0897 62.9533C40.8907 63.7544 42.1894 63.7544 42.9904 62.9533C43.4593 62.4843 43.6516 61.8452 43.5714 61.2347L48.7257 56.5499L53.0175 60.8417L54.5646 59.2946L50.3015 52.7282L43.7351 48.4651Z" />
-                                </Canvas>-->
                             <Canvas HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                                    Height="68"
-                                    Width="71">
+                                    Height="57"
+                                    Width="60">
                                 <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M2.66417 54.5693L7.80016 60.763L12.2934 57.0331L7.15716 50.8396L2.66417 54.5693ZM10.4072 50.9853L12.5991 53.6282C16.9073 51.725 21.5775 47.9221 24.3184 44.2685L21.7921 41.222C17.6175 43.2783 13.0487 47.1937 10.4072 50.9851L10.4072 50.9853ZM17.8415 32.6847L32.6354 50.5244L34.5026 48.9759L19.7087 31.1361L17.8415 32.6847ZM24.1668 32.636L32.8869 43.1515L34.5655 41.7592C34.0027 41.0363 33.7731 40.1548 33.8527 39.3027C33.9353 38.4172 34.3527 37.5636 35.0912 36.9515C36.5392 35.7511 38.6764 35.9254 39.913 37.3248L58.5286 21.8876C63.4552 17.8023 69.6206 10.8337 68.7888 4.50577C65.7777 7.25751 54.12 13.7176 49.1765 11.948L49.6194 17.2547L44.5716 15.7928L45.0039 21.0822L40.0216 19.5697L40.5201 24.8007L35.4718 23.3426L35.9046 28.6279L30.7856 27.1472L24.1672 32.6359L24.1668 32.636Z" />
+                                      Data="M10.9966 5.92257C10.864 5.39206 11.1608 4.84843 11.6789 4.67339L25.5668 0.00210571V16.5103H27.6453V0.00210571L41.5437 4.68389C42.0618 4.85893 42.3587 5.40256 42.226 5.93306C42.2155 5.97505 41.1238 10.5414 43.4647 13.5331C44.9868 15.4751 47.6741 16.3883 51.4951 16.2519C52.0436 16.2502 52.501 16.6709 52.5448 17.2176C52.5544 17.352 53.0027 23.6393 50.9036 31.3436C49.7548 31.0387 48.5481 30.8763 47.3034 30.8763C39.5714 30.8763 33.3034 37.1443 33.3034 44.8763C33.3034 47.8436 34.2265 50.5953 35.8013 52.8598C33.4306 54.4043 30.7274 55.7606 27.6453 56.8553V43.1777H25.5668V56.8763C-0.816895 47.4799 0.586728 18.8769 0.664401 17.2941C0.66621 17.2573 0.667299 17.2351 0.667299 17.2281C0.711125 16.6813 1.16854 16.2607 1.71703 16.2624H2.45184C5.88444 16.2624 8.33031 15.3491 9.79992 13.5226C12.0988 10.5834 10.9966 5.92257 10.9966 5.92257ZM25.1603 19.9554H19.8828L21.876 25.1053L25.739 20.6263L25.1603 19.9554ZM18.676 20.5555L15.4724 25.6813H20.6598L18.676 20.5555ZM21.1792 27.0233H15.5308L25.8565 39.3627L25.9056 39.2357L21.1792 27.0233ZM32.071 27.0233L27.3447 39.2357L27.3938 39.3627L37.7195 27.0233H32.071ZM34.5742 20.5555L32.5905 25.6813H37.7779L34.5742 20.5555ZM26.6252 21.6537L23.1514 25.6813H30.0989L26.6252 21.6537ZM22.6183 27.0233L26.6252 37.3765L30.632 27.0233H22.6183ZM28.09 19.9554L27.5113 20.6263L31.3744 25.1053L33.3675 19.9554H28.09Z" />
                                 <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M25.9074 57.8665L29.2442 61.8905L32.1634 59.4672L28.8264 55.4434L25.9074 57.8665ZM30.9379 55.5381L32.362 57.2551C35.161 56.0186 38.1952 53.5479 39.976 51.1742L38.3346 49.1949C35.6224 50.5309 32.6541 53.0749 30.9379 55.5381ZM35.7679 43.6483L45.3794 55.2386L46.5925 54.2325L36.981 42.6422L35.7679 43.6483ZM39.8774 43.6166L45.5428 50.4485L46.6334 49.5439C46.2678 49.0743 46.1186 48.5016 46.1703 47.948C46.224 47.3726 46.4952 46.8181 46.9749 46.4204C47.9157 45.6405 49.3042 45.7537 50.1076 46.6629L62.202 36.6335C65.4028 33.9793 69.4084 29.4519 68.868 25.3407C66.9117 27.1284 59.3378 31.3255 56.126 30.1758L56.4138 33.6235L53.1343 32.6738L53.4152 36.1102L50.1782 35.1276L50.5021 38.5261L47.2222 37.5788L47.5034 41.0126L44.1776 40.0506L39.8774 43.6166Z" />
-                                <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M44.7683 59.2345L46.6451 61.4978L48.2871 60.1348L46.4102 57.8715L44.7683 59.2345ZM47.5978 57.9248L48.3988 58.8906C49.9732 58.1951 51.6798 56.8054 52.6814 55.4703L51.7582 54.357C50.2327 55.1084 48.5631 56.5392 47.5978 57.9247L47.5978 57.9248ZM50.3146 51.2371L55.7207 57.7563L56.403 57.1905L50.9969 50.6713L50.3146 51.2371ZM52.626 51.2194L55.8126 55.0621L56.426 54.5533C56.2204 54.2891 56.1365 53.967 56.1655 53.6556C56.1957 53.332 56.3483 53.0201 56.6181 52.7964C57.1473 52.3577 57.9283 52.4214 58.3802 52.9328L65.1829 47.2916C66.9832 45.7987 69.2363 43.2521 68.9323 40.9397C67.8319 41.9453 63.5719 44.306 61.7653 43.6593L61.9272 45.5986L60.0826 45.0643L60.2406 46.9972L58.4199 46.4445L58.602 48.3561L56.7572 47.8233L56.9154 49.7547L55.0447 49.2136L52.6261 51.2193L52.626 51.2194Z" />
+                                      Data="M59.3034 44.8763C59.3034 51.5037 53.9308 56.8763 47.3034 56.8763C40.676 56.8763 35.3034 51.5037 35.3034 44.8763C35.3034 38.2489 40.676 32.8763 47.3034 32.8763C53.9308 32.8763 59.3034 38.2489 59.3034 44.8763Z" />
                             </Canvas>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
-                                             Value="true">
-                                    <Setter Property="Background"
+                                     Value="true">
+                            <Setter Property="Background"
                                     TargetName="Border1"
                                     Value="{DynamicResource ComboBoxContentColor}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
-                                     Value="Add3">
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
+                                     Value="Crit3">
                             <Setter Property="Effect"
                                     TargetName="Grid1">
                                 <Setter.Value>
@@ -66,8 +53,8 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
-                                     Value="Add2">
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
+                                     Value="Crit4">
                             <Setter Property="Effect"
                                     TargetName="Grid1">
                                 <Setter.Value>
@@ -78,8 +65,8 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
-                                     Value="Add1">
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
+                                     Value="Crit5">
                             <Setter Property="Effect"
                                     TargetName="Grid1">
                                 <Setter.Value>
@@ -95,7 +82,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <ControlTemplate x:Key="SustainedHitsCB"
+    <ControlTemplate x:Key="InvulCB"
                      TargetType="{x:Type ComboBox}">
         <Grid x:Name="templateRoot"
               SnapsToDevicePixels="true">
@@ -139,11 +126,12 @@
                               ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                               HorizontalAlignment="Left"
                               IsHitTestVisible="false"
+                              TextElement.Foreground="{DynamicResource MainWindowBackgroundColor}"
                               TextElement.FontSize="22"
                               TextElement.FontWeight="Bold"
-                              Margin="10 0 0 0"
+                              Margin="10 0 0 5"
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                              VerticalAlignment="Top" />
+                              VerticalAlignment="Bottom" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems"
@@ -152,7 +140,7 @@
                         TargetName="dropDownBorder"
                         Value="95" />
             </Trigger>
-            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
                          Value="Cancel">
                 <Setter Property="Background"
                         TargetName="toggleButton"
@@ -161,7 +149,7 @@
                         TargetName="contentPresenter"
                         Value="Hidden" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
                          Value="Add3">
                 <Setter Property="Background"
                         TargetName="toggleButton"
@@ -179,7 +167,7 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
                          Value="Add2">
                 <Setter Property="Background"
                         TargetName="toggleButton"
@@ -197,7 +185,7 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=InvulCB}"
                          Value="Add1">
                 <Setter Property="Background"
                         TargetName="toggleButton"

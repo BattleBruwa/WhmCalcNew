@@ -24,15 +24,5 @@ namespace WhmCalcNew.Views.Components
         {
             InitializeComponent();
         }
-
-        private void Rerol1HitBox(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SustainedHitsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

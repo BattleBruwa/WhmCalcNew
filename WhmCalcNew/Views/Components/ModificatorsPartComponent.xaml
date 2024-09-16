@@ -269,9 +269,10 @@
         <ComboBox Template="{DynamicResource SustainedHitsCB}"
                   Grid.Column="0"
                   Grid.Row="2"
-                  DataContext="{Binding ModsList.ModificatorsList[5]}"
+                  DataContext="{Binding ModsList}"
                   Height="70"
                   Width="85"
+                  SelectedItem="{Binding SustainedHitsMod, Mode=OneWayToSource}"
                   Name="SustainedHitsCB"
                   VerticalAlignment="Center"
                   MinWidth="85">
@@ -293,7 +294,7 @@
                           FontWeight="Bold">Cancel</ComboBoxItem>
             <ComboBox.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}"
-                         Content="{Binding ModInfo}" />
+                         Content="{Binding ModificatorsList[5].ModInfo}" />
             </ComboBox.ToolTip>
         </ComboBox>
         <!--<ComboBox Height="70"
@@ -390,7 +391,7 @@
                             BorderThickness="1"
                             CornerRadius="5">
                         <Grid Name="Grid">
-                            <Canvas Height="64"
+                            <!--<Canvas Height="64"
                                     Width="68"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
@@ -400,6 +401,17 @@
                                       Data="M24.4932 48.8722C24.4932 47.2872 25.7027 46.0023 27.1948 46.0023C28.687 46.0023 29.8964 47.2872 29.8964 48.8722C29.8964 50.4574 28.687 51.7421 27.1948 51.7421C25.7027 51.7421 24.4932 50.4574 24.4932 48.8722ZM60.8589 55.7828C60.8589 54.1977 63.5605 47.0275 63.5605 47.0275C63.5605 47.0275 66.2621 54.1977 66.2621 55.7828C66.2621 57.3679 65.0527 58.6526 63.5605 58.6526C62.0684 58.6526 60.8589 57.3679 60.8589 55.7828ZM40.7759 57.6258C40.7759 56.0406 41.9856 54.756 43.4777 54.756C44.9699 54.756 46.1793 56.0406 46.1793 57.6258C46.1793 59.2108 44.9699 60.4957 43.4777 60.4957C41.9857 60.4957 40.7759 59.2108 40.7759 57.6258Z" />
                                 <Path Fill="{DynamicResource TextMainColor}"
                                       Data="M54.7509 54.8088C56.431 48.906 59.1098 45.4173 61.7051 43.3522L66.2621 40.2871H56.2855L24.1377 21.2954C24.8584 23.6687 25.4649 26.683 25.9973 30.0888V40.6107H28.3922V34.8764C30.2726 30.991 33.6401 34.4494 34.8899 42.1641V63.013H37.2849V42.4706C38.9023 40.6751 40.8619 42.9743 42.28 46.8598V51.6485H44.6752V48.1487C46.8613 45.3269 50.6277 47.3744 52.3558 54.8336V63.013H54.7509V54.8088Z" />
+                            </Canvas>-->
+                            <Canvas HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                                    Height="62"
+                                    Width="76">
+                                <Path Fill="{DynamicResource TextMainColor}"
+                                      Data="M4.33365 0.659454L0.310425 7.62752L5.36919 10.5448L9.3921 3.57658L4.33365 0.659454ZM10.3847 6.67475L8.66813 9.64834C11.9497 13.0269 17.1384 16.0847 21.5167 17.3854L23.4955 13.9579C20.1169 10.758 14.8577 7.83433 10.3847 6.67475ZM30.1283 7.28706L18.5404 27.3578L20.6412 28.5706L32.2291 8.49986L30.1283 7.28706ZM32.3717 13.2013L25.5413 25.0319L27.4301 26.1221C27.9124 25.3432 28.6592 24.8217 29.4858 24.6002C30.3449 24.37 31.2903 24.4648 32.1209 24.9446C33.7496 25.8853 34.3288 27.9499 33.4463 29.5956L54.3898 41.6876C59.9324 44.8877 68.609 48.2477 74.2537 45.269C70.6272 43.4016 60.519 34.7149 60.4606 29.4645L55.6385 31.7237L55.2554 26.4824L50.4458 28.7257L50.1328 23.5283L45.401 25.8133L45.0141 20.5729L40.2085 22.8151L39.8183 17.5006L32.3717 13.2013Z" />
+                                <Path Fill="{DynamicResource TextMainColor}"
+                                      Data="M31.7547 51.3947C31.7547 50.0308 33.0578 48.925 34.6654 48.925C36.2731 48.925 37.5761 50.0308 37.5761 51.3947C37.5761 52.7589 36.2731 53.8644 34.6654 53.8644C33.0578 53.8644 31.7547 52.7589 31.7547 51.3947ZM69.9283 58.8016C69.9283 57.4375 72.839 51.2672 72.839 51.2672C72.839 51.2672 75.7497 57.4375 75.7497 58.8016C75.7497 60.1657 74.4466 61.2713 72.839 61.2713C71.2313 61.2713 69.9283 60.1657 69.9283 58.8016ZM49.3625 58.8016C49.3625 57.4374 50.6658 56.3319 52.2735 56.3319C53.8811 56.3319 55.1842 57.4374 55.1842 58.8016C55.1842 60.1655 53.8811 61.2713 52.2735 61.2713C50.666 61.2713 49.3625 60.1655 49.3625 58.8016Z" />
+                                <Path Fill="{DynamicResource TextMainColor}"
+                                      Data="M64.3666 59.5428C66.5457 53.4279 69.6954 50.421 72.839 48.8601C67.2328 50.9519 59.4286 47.8322 54.2262 44.8285L33.4222 32.817C33.4155 34.0669 33.4072 35.1933 33.4004 36.116L33.4004 36.1171L33.4003 36.126L33.4003 36.1331C33.3931 37.1036 33.3876 37.8472 33.3876 38.2698V47.3246H35.9679V42.3899C37.9938 39.0462 41.6219 42.0224 42.9684 48.6613V61.3947H45.5488V48.925C47.2914 47.38 49.4026 49.3585 50.9304 52.7022V55.0412H53.5111V53.8114C55.8663 51.3831 59.9243 53.1451 61.7861 59.5641V61.2713H64.3666V59.5428Z" />
                             </Canvas>
                         </Grid>
                     </Border>
@@ -876,12 +888,12 @@
                             BorderThickness="1"
                             CornerRadius="5">
                         <Grid Name="Grid">
-                            <Canvas Height="56"
-                                    Width="47"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
+                            <Canvas HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                                    Height="57"
+                                    Width="53">
                                 <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M23.4946 0.562378L0.750488 7.5656C0.800588 20.1365 2.01819 30.8432 5.42409 38.9674C6.97139 42.6575 8.94759 45.8205 11.4767 48.4273C11.9477 47.127 12.4465 45.8066 12.9645 44.4719C11.054 42.348 9.54629 39.8208 8.39589 36.9535C5.69629 30.2246 4.83629 21.643 4.83629 11.6733L4.82529 10.8387L5.58729 10.6389L22.3517 5.247C23.0341 3.7903 23.733 2.32791 24.4563 0.856258L23.4946 0.562378ZM29.6087 2.44205L27.5332 6.2882L30.2402 7.1591C30.9253 5.8268 31.6022 4.517 32.2577 3.2585L29.6087 2.44205ZM37.4683 4.8622C36.7712 6.1787 36.0726 7.4943 35.3748 8.8101L38.3067 9.7536C39.0748 8.4504 39.8548 7.1454 40.6506 5.8421L37.4683 4.8622ZM45.7306 7.406L41.8008 13.3859C41.7154 22.6418 40.9048 30.5953 38.4044 36.9209C35.7515 43.633 31.0748 48.4871 23.6216 50.695L23.3132 50.7894L23.0048 50.695C19.2667 49.5876 16.2198 47.758 13.7737 45.3247C13.0256 46.3729 12.2671 47.4128 11.4949 48.4417C14.5888 51.6244 18.5076 53.978 23.4873 55.4376C32.8415 52.7004 38.3988 47.1133 41.7754 38.9383C45.1172 30.8478 46.2052 20.1767 46.2495 7.5654L45.7306 7.406ZM21.1142 7.9212L7.01719 12.457C7.06419 21.954 7.95849 30.0344 10.4101 36.1444C10.4628 36.2762 10.5154 36.4062 10.5696 36.5363C13.4172 26.5253 16.86 17.298 21.1142 7.9212ZM26.4846 8.226L10.849 37.1821C11.6866 39.0624 12.6766 40.7414 13.8535 42.215C18.2875 31.1576 24.0474 19.2808 29.2387 9.1113L26.4846 8.226ZM34.3441 10.7549C28.3429 22.0373 22.2085 33.214 15.0256 43.5506C17.1905 45.7912 19.9027 47.4544 23.3132 48.5145C29.9987 46.443 33.9536 42.2789 36.3871 36.1227C38.4158 30.99 39.2981 24.4483 39.5512 16.8077L21.107 44.8858C25.3847 33.7882 30.7837 22.7266 37.1855 11.6696L34.3441 10.7549Z" />
+                                      Data="M10.9967 6.03012C10.864 5.49962 11.1608 4.95599 11.679 4.78095L25.5669 0.109665V16.6178H27.6454V0.109665L41.5437 4.79145C42.0619 4.96649 42.3587 5.51012 42.2261 6.04062C42.2156 6.08261 41.1239 10.6489 43.4647 13.6406C44.9868 15.5826 47.6741 16.4959 51.4952 16.3594C52.0436 16.3577 52.5011 16.7784 52.5449 17.3252C52.5548 17.4646 53.0374 24.2326 50.6537 32.3337L37.2177 24.934L23.7743 22.4246L16.4252 16.6178L22.3403 27.2642L34.529 31.2076L45.0435 44.0937C41.3352 49.3108 35.8242 54.0578 27.6454 56.9629V43.2853H25.5669V56.9839C-0.81683 47.5875 0.586789 18.9846 0.664462 17.4017C0.666273 17.3648 0.667364 17.3426 0.667364 17.3357C0.71119 16.7889 1.16861 16.3682 1.71709 16.3699H2.4519C5.88451 16.3699 8.33037 15.4567 9.79999 13.6301C12.0989 10.6909 10.9967 6.03012 10.9967 6.03012Z" />
                             </Canvas>
                         </Grid>
                     </Border>
@@ -910,80 +922,36 @@
         </CheckBox>
         <!--Третяя колонка-->
         <!--Инвуль-->
-        <CheckBox Height="70"
-                  Width="85"
+        <ComboBox Template="{DynamicResource InvulCB}"
                   Grid.Column="2"
-                  DataContext="{Binding ModsList.ModificatorsList[10]}"
                   Grid.Row="0"
-                  HorizontalAlignment="Center"
+                  DataContext="{Binding ModsList.ModificatorsList[10]}"
+                  Height="70"
+                  Width="85"
+                  Name="InvulCB"
                   VerticalAlignment="Center"
-                  Command="{Binding Path=DataContext.PickModCommand,
-                                RelativeSource={RelativeSource Mode=FindAncestor,
-                                                 AncestorType={x:Type UserControl}}}"
-                  Name="CheckBoxINV">
-            <CheckBox.CommandParameter>
-                <MultiBinding Converter="{StaticResource mvc}">
-                    <Binding ElementName="CheckBoxINV"
-                             Path="IsChecked" />
-                    <Binding ElementName="CheckBoxINV"
-                             Path="DataContext" />
-                </MultiBinding>
-            </CheckBox.CommandParameter>
-            <CheckBox.ToolTip>
+                  MinWidth="85">
+            <ComboBoxItem FontSize="22"
+                          Tag="Crit3"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">3+</ComboBoxItem>
+            <ComboBoxItem FontSize="22"
+                          Tag="Crit4"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">4+</ComboBoxItem>
+            <ComboBoxItem FontSize="22"
+                          Tag="Crit5"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">5+</ComboBoxItem>
+            <ComboBoxItem Tag="Cancel"
+                          FontSize="22"
+                          Foreground="{DynamicResource TextMainColor}"
+                          FontWeight="Bold">Cancel</ComboBoxItem>
+            <ComboBox.ToolTip>
                 <ToolTip Style="{StaticResource ToolTipTheme}"
                          Content="{Binding ModInfo}" />
-            </CheckBox.ToolTip>
-            <CheckBox.Template>
-                <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <Border Name="Border"
-                            Height="{TemplateBinding Height}"
-                            Width="{TemplateBinding Width}"
-                            SnapsToDevicePixels="True"
-                            BorderBrush="{DynamicResource MainOutlineColor}"
-                            Background="{DynamicResource MainWindowBackgroundColor}"
-                            BorderThickness="1"
-                            CornerRadius="5">
-                        <Grid Name="Grid">
-                            <Canvas Height="56"
-                                    Width="47"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                                <Label VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       FontSize="22"
-                                       FontWeight="Bold"
-                                       Foreground="{DynamicResource TextMainColor}"
-                                       Content="I"
-                                       Canvas.Left="15.5"
-                                       Canvas.Top="4" />
-                                <Path Fill="{DynamicResource TextMainColor}"
-                                      Data="M23.054 0.727708C23.3927 0.604721 23.7646 0.604721 24.1033 0.727708L45.5814 8.52623C46.1805 8.74375 46.5787 9.30782 46.5787 9.93901V28.1355C46.5787 36.6191 40.7642 43.5021 35.3081 48.1248C32.5455 50.4652 29.7903 52.2984 27.7292 53.5458C26.697 54.1704 25.8347 54.6506 25.2269 54.9764C24.923 55.1392 24.6824 55.2637 24.5158 55.3484C24.4325 55.3908 24.3677 55.4232 24.3226 55.4456L24.2699 55.4715L24.2551 55.4788L24.249 55.4817C24.2484 55.482 24.248 55.4822 23.5787 54.1305C22.9095 55.4822 22.9089 55.482 22.9084 55.4817L22.9024 55.4788L22.8874 55.4715L22.8349 55.4456C22.7898 55.4232 22.725 55.3908 22.6417 55.3484C22.4751 55.2637 22.2345 55.1392 21.9305 54.9764C21.3228 54.6506 20.4605 54.1704 19.4283 53.5458C17.3672 52.2984 14.612 50.4652 11.8494 48.1248C6.39327 43.5021 0.578735 36.6191 0.578735 28.1355V9.93901C0.578735 9.30782 0.976897 8.74375 1.57607 8.52623L23.054 0.727708ZM23.5787 54.1305L22.9095 55.4822C23.3317 55.6866 23.8257 55.6866 24.248 55.4822L23.5787 54.1305ZM23.5787 52.4354C23.6407 52.4026 23.7066 52.3675 23.7763 52.3301C24.3432 52.0263 25.1588 51.5723 26.1402 50.9784C28.1061 49.7887 30.7205 48.0476 33.3274 45.839C38.6102 41.3634 43.5347 35.2489 43.5347 28.1355V10.9896L23.5787 3.74366L3.62278 10.9896V28.1355C3.62278 35.2489 8.54724 41.3634 13.83 45.839C16.4369 48.0476 19.0513 49.7887 21.0173 50.9784C21.9987 51.5723 22.8143 52.0263 23.3812 52.3301C23.4509 52.3675 23.5167 52.4026 23.5787 52.4354Z" />
-                            </Canvas>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked"
-                                 Value="True">
-                            <Setter TargetName="Grid"
-                                    Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect Color="{DynamicResource DropShadowColor}"
-                                                      ShadowDepth="0"
-                                                      Direction="0"
-                                                      BlurRadius="5" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter TargetName="Border"
-                                    Property="BorderThickness"
-                                    Value="2" />
-                            <Setter TargetName="Border"
-                                    Property="Background"
-                                    Value="{DynamicResource BoxesInnerColor}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </CheckBox.Template>
-        </CheckBox>
+            </ComboBox.ToolTip>
+        </ComboBox>
         <!--ФНП-->
         <CheckBox Height="70"
                   Width="85"

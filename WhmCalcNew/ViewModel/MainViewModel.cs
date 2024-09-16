@@ -21,7 +21,6 @@ namespace WhmCalcNew.ViewModel
 
         public ObservableCollection<TargetUnit> TargetsList { get; set; }
 
-        public ObservableCollection<Modificator> PickedMods { get; set; } = new();
 
         private TargetUnit? _selectedTarget;
         public TargetUnit? SelectedTarget
@@ -30,7 +29,7 @@ namespace WhmCalcNew.ViewModel
             set
             {
                 SetProperty(ref _selectedTarget, value);
-                Recalculate(AttackingUnit, SelectedTarget, PickedMods);
+                Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedMods);
             }
         }
 
@@ -62,7 +61,7 @@ namespace WhmCalcNew.ViewModel
             OutputData = new OutputData();
             AttackingUnit = new AttackingUnit();
             AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
-            PickedMods.CollectionChanged += PickedMods_CollectionChanged;
+            ModsList.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
         }
 
         #endregion
@@ -112,11 +111,11 @@ namespace WhmCalcNew.ViewModel
             Modificator pickedMod = (Modificator)parameters[1];
             if (check)
             {
-                PickedMods.Add(pickedMod);
+                ModsList.PickedMods.Add(pickedMod);
             }
             else
             {
-                PickedMods.Remove(pickedMod);
+                ModsList.PickedMods.Remove(pickedMod);
             }
         }
         #endregion
@@ -126,15 +125,15 @@ namespace WhmCalcNew.ViewModel
         {
             TargetsList = new(await dbService.GetTargetsAsync());
         }
-
+        // ------------------------
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            Recalculate(AttackingUnit, SelectedTarget, PickedMods);
+            Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedMods);
         }
 
         private void PickedMods_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            Recalculate(AttackingUnit, SelectedTarget, PickedMods);
+            Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedMods);
         }
 
         private void Recalculate(AttackingUnit attacker, TargetUnit? target, ObservableCollection<Modificator> mods)

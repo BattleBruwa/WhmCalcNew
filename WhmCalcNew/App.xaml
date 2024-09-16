@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="Visual\Styles\ModComboBoxStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\SustainedHitsButton.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\CritsButton.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\InvulButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
