@@ -16,10 +16,8 @@ namespace WhmCalcNew.Services
         // Выбранные модификаторы
         public ObservableCollection<Modificator> PickedMods { get; set; } = new();
 
-        private string sustainedHits;
         public string SustainedHitsMod 
-        { 
-            get {  return sustainedHits; }
+        {
             set
             {
                 switch (value)
@@ -27,7 +25,6 @@ namespace WhmCalcNew.Services
                     case "System.Windows.Controls.ComboBoxItem: Cancel": 
                         {
                             PickedMods.Remove(ModificatorsList[5]);
-                            sustainedHits = String.Empty;
                         }; break;
 
                     case "System.Windows.Controls.ComboBoxItem: 1":
@@ -36,7 +33,6 @@ namespace WhmCalcNew.Services
                             mod.Condition = 1;
                             PickedMods.Remove(ModificatorsList[5]);
                             PickedMods.Add(mod);
-                            sustainedHits = "1";
                         }; break;
 
                     case "System.Windows.Controls.ComboBoxItem: 2":
@@ -45,7 +41,6 @@ namespace WhmCalcNew.Services
                             mod.Condition = 2;
                             PickedMods.Remove(ModificatorsList[5]);
                             PickedMods.Add(mod);
-                            sustainedHits = "2";
                         };
                         break;
 
@@ -55,11 +50,9 @@ namespace WhmCalcNew.Services
                             mod.Condition = 3;
                             PickedMods.Remove(ModificatorsList[5]);
                             PickedMods.Add(mod);
-                            sustainedHits = "3";
                         };
                         break;
                     default: break;
-
                 }
             } 
         }

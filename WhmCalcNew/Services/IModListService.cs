@@ -7,7 +7,7 @@ namespace WhmCalcNew.Services
     {
         List<Modificator> ModificatorsList { get; set; }
         ObservableCollection<Modificator> PickedMods { get; set; }
-        string SustainedHitsMod {  get; set; }
+        string SustainedHitsMod { set; }
         Task InitializeModListAsync();
     }
 }

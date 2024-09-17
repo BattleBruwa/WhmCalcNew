@@ -45,15 +45,27 @@
                                 <Path Fill="{DynamicResource TextMainColor}"
                                       Data="M44.7683 59.2345L46.6451 61.4978L48.2871 60.1348L46.4102 57.8715L44.7683 59.2345ZM47.5978 57.9248L48.3988 58.8906C49.9732 58.1951 51.6798 56.8054 52.6814 55.4703L51.7582 54.357C50.2327 55.1084 48.5631 56.5392 47.5978 57.9247L47.5978 57.9248ZM50.3146 51.2371L55.7207 57.7563L56.403 57.1905L50.9969 50.6713L50.3146 51.2371ZM52.626 51.2194L55.8126 55.0621L56.426 54.5533C56.2204 54.2891 56.1365 53.967 56.1655 53.6556C56.1957 53.332 56.3483 53.0201 56.6181 52.7964C57.1473 52.3577 57.9283 52.4214 58.3802 52.9328L65.1829 47.2916C66.9832 45.7987 69.2363 43.2521 68.9323 40.9397C67.8319 41.9453 63.5719 44.306 61.7653 43.6593L61.9272 45.5986L60.0826 45.0643L60.2406 46.9972L58.4199 46.4445L58.602 48.3561L56.7572 47.8233L56.9154 49.7547L55.0447 49.2136L52.6261 51.2193L52.626 51.2194Z" />
                             </Canvas>
+                            <Rectangle Name="ContentRect"
+                                       Height="24"
+                                       Width="20"
+                                       RadiusX="5"
+                                       RadiusY="5"
+                                       Opacity="0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Stroke="{DynamicResource TextMainColor}"
+                                       StrokeThickness="1"
+                                       Margin="4 2 0 0"
+                                       Fill="{TemplateBinding Background}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
+                        <!--<DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
                                              Value="true">
                                     <Setter Property="Background"
                                     TargetName="Border1"
                                     Value="{DynamicResource ComboBoxContentColor}" />
-                        </DataTrigger>
+                        </DataTrigger>-->
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
                                      Value="Add3">
                             <Setter Property="Effect"
@@ -65,6 +77,9 @@
                                                       BlurRadius="5" />
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
                                      Value="Add2">
@@ -77,6 +92,9 @@
                                                       BlurRadius="5" />
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=SustainedHitsCB}"
                                      Value="Add1">
@@ -89,6 +107,9 @@
                                                       BlurRadius="5" />
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

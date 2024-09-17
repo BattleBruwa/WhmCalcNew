@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\SustainedHitsButton.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\CritsButton.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\InvulButton.xaml" />
+                <ResourceDictionary Source="Visual\Styles\ModificatorsButtons\FNPButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

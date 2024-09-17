@@ -55,16 +55,29 @@
                                       Data="M5.57243 0.188416L0.265564 5.49504L4.11898 9.34462L9.42561 4.03775L5.57243 0.188416ZM9.57199 7.06867L7.30757 9.33332C9.44844 13.1694 13.385 17.1769 17.0156 19.4058L19.6259 16.7955C17.3544 13.0968 13.3219 9.19319 9.57199 7.06867ZM27.2121 12.3866L11.9268 27.6719L13.5267 29.2717L28.812 13.9864L27.2121 12.3866ZM27.8055 18.2566L18.7957 27.2664L20.2343 28.7046C20.8568 28.1193 21.6555 27.8297 22.4537 27.8297C23.2833 27.8297 24.1122 28.1434 24.7447 28.7761C25.985 30.0169 26.0084 32.0168 24.816 33.2864L40.7659 49.2366C44.9869 53.4578 51.993 58.5796 57.7977 57.2585C54.9812 54.7007 47.9712 44.4342 49.1861 39.6898L44.2963 40.5611L45.2164 35.7465L40.3417 36.6065L41.3144 31.8484L36.4997 32.7647L37.4161 27.95L32.5453 28.81L33.4767 23.9277L27.8055 18.2566Z" />
                                 <Path Fill="{DynamicResource TextMainColor}"
                                       Data="M6.43532 13.438C7.94658 15.4006 9.79395 17.2755 11.687 18.7932C10.2066 21.0792 8.67141 24.513 7.90953 26.5198C3.09169 42.8621 17.0919 58.5933 33.0587 58.4723C24.6893 59.4221 15.9831 56.688 9.55635 50.2612C-0.479916 40.2247 -1.51915 24.6281 6.43532 13.438ZM13.5636 6.40054C15.4625 7.82418 17.3157 9.58459 18.8627 11.4289C20.5487 10.3384 22.2631 9.64347 23.9562 9.28566L25.5463 9.02425H27.181H27.6975C37.0173 9.69232 45.9177 19.4992 41.9567 29.0359L44.4412 28.563L43.4785 33.2723L43.5404 33.3084L48.3432 32.4611L47.4231 37.2757L52.313 36.4044C51.8052 38.3872 52.734 41.3343 54.1928 44.2802C59.8892 33.7567 59.0637 18.7357 50.073 9.745C44.474 4.14583 37.1444 1.34406 29.8147 1.34406C24.1283 1.34406 18.4417 3.02993 13.5636 6.40054Z" />
+
                             </Canvas>
+
+                            <Rectangle Name="ContentRect" Height="24"
+                                       Width="34"
+                                       RadiusX="5"
+                                       RadiusY="5"
+                                       Opacity="0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Bottom"
+                                       Stroke="{DynamicResource TextMainColor}"
+                                       StrokeThickness="1"
+                                       Margin="4 0 0 3"
+                                       Fill="{TemplateBinding Background}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
+                        <!--<DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
                                      Value="true">
                             <Setter Property="Background"
                                     TargetName="Border1"
                                     Value="{DynamicResource ComboBoxContentColor}" />
-                        </DataTrigger>
+                        </DataTrigger>-->
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=CritsCB}"
                                      Value="Crit3">
                             <Setter Property="Effect"
@@ -76,6 +89,9 @@
                                                       BlurRadius="5" />
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=CritsCB}"
                                      Value="Crit4">
@@ -88,6 +104,9 @@
                                                       BlurRadius="5" />
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=CritsCB}"
                                      Value="Crit5">
@@ -100,6 +119,9 @@
                                                       BlurRadius="5" />
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
