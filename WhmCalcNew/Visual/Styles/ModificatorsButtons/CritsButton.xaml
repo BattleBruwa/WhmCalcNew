@@ -72,12 +72,6 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <!--<DataTrigger Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
-                                     Value="true">
-                            <Setter Property="Background"
-                                    TargetName="Border1"
-                                    Value="{DynamicResource ComboBoxContentColor}" />
-                        </DataTrigger>-->
                         <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=CritsCB}"
                                      Value="Crit3">
                             <Setter Property="Effect"

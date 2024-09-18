@@ -98,6 +98,21 @@
                                     TargetName="ContentRect"
                                     Value="1" />
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=FNPCB}"
+                                     Value="Crit6">
+                            <Setter Property="Effect"
+                                    TargetName="Grid1">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                                      ShadowDepth="0"
+                                                      Direction="0"
+                                                      BlurRadius="5" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Opacity"
+                                    TargetName="ContentRect"
+                                    Value="1" />
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -207,6 +222,24 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=FNPCB}"
                          Value="Crit5">
+                <Setter Property="Background"
+                        TargetName="toggleButton"
+                        Value="{DynamicResource BoxesInnerColor}" />
+                <Setter Property="BorderThickness"
+                        TargetName="toggleButton"
+                        Value="2" />
+                <Setter Property="Effect"
+                        TargetName="contentPresenter">
+                    <Setter.Value>
+                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                          ShadowDepth="0"
+                                          Direction="0"
+                                          BlurRadius="5" />
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=SelectedItem.Tag, ElementName=FNPCB}"
+                         Value="Crit6">
                 <Setter Property="Background"
                         TargetName="toggleButton"
                         Value="{DynamicResource BoxesInnerColor}" />
