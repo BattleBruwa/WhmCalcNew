@@ -93,23 +93,5 @@
                 </ToolTip>
             </StackPanel.ToolTip>
         </StackPanel>
-
-        <StackPanel Grid.Row="3"
-                    Orientation="Horizontal">
-            <TextBox x:Name="invulTB"
-                     Text="{Binding SelectedItem.Invuln}"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Bottom"
-                     Style="{StaticResource TextBoxTheme}"
-                     Width="70" />
-            <Label Content="Invul"
-                   Style="{StaticResource LabelTheme}"
-                   VerticalAlignment="Center"
-                   Margin="0 5 0 0"
-                   Width="60"
-                   HorizontalContentAlignment="Center"
-                   Height="40" />
-        </StackPanel>
-
     </Grid>
 </UserControl>

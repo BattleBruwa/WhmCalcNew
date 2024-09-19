@@ -11,7 +11,7 @@ namespace WhmCalcNew.Models
             get { return _attacksNum; }
             set
             {
-                SetProperty(ref _attacksNum, value);
+                SetProperty(ref _attacksNum, Math.Round(value, 2));
             }
         }
 
@@ -21,8 +21,8 @@ namespace WhmCalcNew.Models
         {
             get { return _hitsNum; }
             set
-            {
-                SetProperty(ref _hitsNum, value);
+            {;
+                SetProperty(ref _hitsNum, Math.Round(value, 2));
             }
         }
 
@@ -33,7 +33,7 @@ namespace WhmCalcNew.Models
             get { return _woundsNum; }
             set
             {
-                SetProperty(ref _woundsNum, value);
+                SetProperty(ref _woundsNum, Math.Round(value, 2));
             }
         }
 
@@ -44,7 +44,7 @@ namespace WhmCalcNew.Models
             get { return _unSavedNum; }
             set
             {
-                SetProperty(ref _unSavedNum, value);
+                SetProperty(ref _unSavedNum, Math.Round(value, 2));
             }
         }
 
@@ -55,7 +55,7 @@ namespace WhmCalcNew.Models
             get { return _deadModelsNum; }
             set
             {
-                SetProperty(ref _deadModelsNum, value);
+                SetProperty(ref _deadModelsNum, Math.Round(value, 0));
             }
         }
 
@@ -66,7 +66,7 @@ namespace WhmCalcNew.Models
             get { return _totalDamageNum; }
             set
             {
-                SetProperty(ref _totalDamageNum, value);
+                SetProperty(ref _totalDamageNum, Math.Round(value, 2));
             }
         }
         #endregion

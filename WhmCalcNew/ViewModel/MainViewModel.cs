@@ -29,7 +29,7 @@ namespace WhmCalcNew.ViewModel
             set
             {
                 SetProperty(ref _selectedTarget, value);
-                Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedMods);
+                Recalculate(AttackingUnit, SelectedTarget, OutputData, ModsList.PickedMods);
             }
         }
 
@@ -128,24 +128,19 @@ namespace WhmCalcNew.ViewModel
         // ------------------------
         private void AttackingUnit_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedMods);
+            Recalculate(AttackingUnit, SelectedTarget, OutputData, ModsList.PickedMods);
         }
 
         private void PickedMods_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            Recalculate(AttackingUnit, SelectedTarget, ModsList.PickedMods);
+            Recalculate(AttackingUnit, SelectedTarget, OutputData, ModsList.PickedMods);
         }
 
-        private void Recalculate(AttackingUnit attacker, TargetUnit? target, ObservableCollection<Modificator> mods)
+        private void Recalculate(AttackingUnit attacker, TargetUnit? target, OutputData output, ObservableCollection<Modificator> mods)
         {
-            if (attacker != null && target != null && OutputData != null)
+            if (attacker != null && target != null && output != null)
             {
-                OutputData.AttacksNum = Calc.TotalAttacks(attacker);
-                OutputData.HitsNum = Calc.TotalHits(attacker, mods);
-                OutputData.WoundsNum = Calc.TotalWounds(attacker, target, mods);
-                OutputData.UnSavedNum = Calc.TotalUnSaved(attacker, target, mods);
-                OutputData.DeadModelsNum = Calc.TotalDeadModels(attacker, target, mods);
-                OutputData.TotalDamageNum = Calc.TotalDamage(attacker, target, mods);
+                Calc.CalculateOutput(attacker, target, output, mods);
             }
         }
         #endregion

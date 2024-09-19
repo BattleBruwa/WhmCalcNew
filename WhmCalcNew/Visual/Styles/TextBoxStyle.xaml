@@ -4,6 +4,10 @@
            TargetType="{x:Type TextBox}"
            x:Key="TextBoxTheme">
         <Style.Setters>
+            <Setter Property="IsReadOnly"
+                    Value="True" />
+            <Setter Property="IsHitTestVisible"
+                    Value="False" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">

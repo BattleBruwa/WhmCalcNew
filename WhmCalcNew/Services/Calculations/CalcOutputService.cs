@@ -5,141 +5,267 @@ namespace WhmCalcNew.Services.Calculations
 {
     public class CalcOutputService : ICalcOutputService
     {
-        #region Методы
-        public float TotalAttacks(AttackingUnit attacker)
-        {
-            return AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
-        }
+        #region Свойства
+        private double sustainedHits = 0d;
+        private double lethalHits = 0d;
+        private double devastatingWounds = 0d;
+        private double damagePerWound = 0d;
+        #endregion
 
-        public double TotalHits(AttackingUnit attacker, ObservableCollection<Modificator> mods)
+        #region Методы частичного расчета
+        private void TotalAttacks(AttackingUnit attacker, OutputData output)
         {
-            float sustainedHits = 0;
-            float totalHits = 0;
-            totalHits = TotalAttacks(attacker) * AccuracyCalc.ToHitRoll(attacker, mods);
-            // Сус хитс и криты
-            if (mods.Any(m => m.Id == 6 && m.Condition != null) && mods.Any(m => m.Id == 14 && m.Condition != null))
+            output.AttacksNum = AttacksOrDamageCalc.CalculateAorD(attacker.Attacks);
+        }
+        // Вычисление SustainedHits
+        private void SustainedHitsCalc(OutputData output, ObservableCollection<Modificator> mods)
+        {
+            var susHitsMod = mods.Single(m => m.Id == 6);
+            byte susHitsCon = (byte)susHitsMod.Condition;
+            // Без критов
+            if (mods.Any(m => m.Id == 14) == false)
             {
-                var susMod = mods.Single(m => m.Id == 6);
+                sustainedHits = output.AttacksNum * AccuracyCalc.ToHitRoll(6, mods) * susHitsCon;
+                return;
+            }
+            // С критами
+            if (mods.Any(m => m.Id == 14))
+            {
                 var critMod = mods.Single(m => m.Id == 14);
-                sustainedHits = totalHits * ((7f - (float)critMod.Condition) / 6f) * (float)susMod.Condition;
-                totalHits += sustainedHits;
-                return Math.Round(totalHits, 2);
-            }
-            // Сус хитс без критов
-            if (mods.Any(m => m.Id == 6 && m.Condition != null))
-            {
-                var susMod = mods.Single(m => m.Id == 6);
-                sustainedHits = totalHits * (1f / 6f) * (float)susMod.Condition;
-                totalHits += sustainedHits;
-                return Math.Round(totalHits, 2);
-            }
-            // Без сус хитов (c критом или без - разберется AccuracyCalc)
-            return Math.Round(totalHits, 2);
-        }
+                byte critCon = (byte)critMod.Condition;
 
-        public double TotalWounds(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
-        {
-            double lethalHits = 0;
-            double totalWounds = 0;
-            totalWounds = TotalHits(attacker, mods) * ToWoundCalc.ToWoundRoll(attacker, target, mods);
-            // Леталки
-            if (mods.Any(m => m.Id == 5))
-            {
-                // С критами
-                if (mods.Any(m => m.Id == 14 && m.Condition != null))
-                {
-                    var critMod = mods.Single(m => m.Id == 14);
-                    lethalHits = TotalHits(attacker, mods) * ((7f - (float)critMod.Condition) / 6f);
-                    totalWounds = (TotalHits(attacker, mods) - lethalHits) * ToWoundCalc.ToWoundRoll(attacker, target, mods);
-                    return Math.Round(totalWounds, 2);
-                }
-                // Без критов
-                lethalHits = TotalHits(attacker, mods) * (1f / 6f);
-                totalWounds = (TotalHits(attacker, mods) - lethalHits) * ToWoundCalc.ToWoundRoll(attacker, target, mods);
+                sustainedHits = output.AttacksNum * AccuracyCalc.ToHitRoll(critCon, mods) * susHitsCon;
+                return;
             }
-            // Без леталок (c критом или без - разберется ToWoundCalc)
-            return Math.Round(totalWounds, 2);
         }
-
-        public double TotalUnSaved(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
+        // Вычисление LethalHits
+        private void LethalHitsCalc(OutputData output, ObservableCollection<Modificator> mods)
         {
-            double devWounds = 0;
-            double totalUnsavedW = 0;
-            totalUnsavedW = TotalWounds(attacker, target, mods) * ArmorSaveCalc.ToSaveRoll(attacker, target, mods);
-            // Дев вунды
-            // C анти х
-            if (mods.Any(m => m.Id == 7) && mods.Any(m => m.Id == 9 && m.Condition != null))
+            // Без критов
+            if (mods.Any(m => m.Id == 14) == false)
+            {
+                lethalHits = output.AttacksNum * AccuracyCalc.ToHitRoll(6, mods);
+                return;
+            }
+            // С критами
+            if (mods.Any(m => m.Id == 14))
+            {
+                var critMod = mods.Single(m => m.Id == 14);
+                byte critCon = (byte)critMod.Condition;
+
+                lethalHits = output.AttacksNum * AccuracyCalc.ToHitRoll(critCon, mods);
+                return;
+            }
+        }
+        // Вычисление DevastatingWounds
+        private void DevWoundsCalc(OutputData output, ObservableCollection<Modificator> mods)
+        {
+            // Без Анти х
+            if (mods.Any(m => m.Id == 9) == false)
+            {
+                devastatingWounds = output.HitsNum * ToWoundCalc.ToWoundRoll(6, mods);
+                return;
+            }
+            // С Анти х
+            if (mods.Any(m => m.Id == 9))
             {
                 var critMod = mods.Single(m => m.Id == 9);
-                devWounds = TotalWounds(attacker, target, mods) * ((7f - (float)critMod.Condition) / 6f);
-                totalUnsavedW = (TotalWounds(attacker, target, mods) - devWounds) * ArmorSaveCalc.ToSaveRoll(attacker, target, mods);
-                return Math.Round(totalUnsavedW, 2);
-            }
-            // Без анти х
-            if (mods.Any(m => m.Id == 7))
-            {
-                devWounds = TotalWounds(attacker, target, mods) * (1f / 6f);
-                totalUnsavedW = (TotalWounds(attacker, target, mods) - devWounds) * ArmorSaveCalc.ToSaveRoll(attacker, target, mods);
-                return Math.Round(totalUnsavedW, 2);
-            }
-            // Без дев вунд
-            return Math.Round(totalUnsavedW, 2);
-        }
+                byte critCon = (byte)critMod.Condition;
 
-        public double TotalDeadModels(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
+                devastatingWounds = output.HitsNum * ToWoundCalc.ToWoundRoll(critCon, mods);
+                return;
+            }
+        }
+        // Вычисление DamagePerWound
+        private void DamagePerWoundCalc(AttackingUnit attacker, ObservableCollection<Modificator> mods)
         {
-            double damagePerWound = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
+            double damage = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
             // Если есть ополовинивание урона
             if (mods.Any(m => m.Id == 13))
             {
-                damagePerWound = damagePerWound / 2;
+                damage = damage / 2;
                 // -1 урон (применяется после деления)
                 if (mods.Any(m => m.Id == 12))
                 {
-                    damagePerWound -= 1;
+                    damage -= 1;
                 }
                 // Урон не может быть меньше 1
-                if (damagePerWound < 1)
+                if (damage < 1)
                 {
-                    damagePerWound = 1;
+                    damage = 1;
                 }
             }
-            double totalUnsavedW = TotalUnSaved(attacker, target, mods);
+            damagePerWound = damage;
+        }
+
+        private void TotalHits(AttackingUnit attacker, OutputData output, ObservableCollection<Modificator> mods)
+        {
+            // Наличие реролов проверяет и обрабатывает AccuracyCalc.ToHitRoll
+            // Если меткость 0, то автохиты
+            if (attacker.Accuracy == 0)
+            {
+                output.HitsNum = output.AttacksNum;
+                return;
+            }
+            // Проверка на SustainedHits
+            if (mods.Any(m => m.Id == 6))
+            {
+                SustainedHitsCalc(output, mods);
+            }
+            else
+            {
+                sustainedHits = 0d;
+            }
+            // Проверка на LethalHits
+            if (mods.Any(m => m.Id == 5))
+            {
+                LethalHitsCalc(output, mods);
+            }
+            else
+            {
+                lethalHits = 0d;
+            }
+            // Без критов
+            if (mods.Any(m => m.Id == 14) == false)
+            {
+                output.HitsNum = output.AttacksNum * AccuracyCalc.ToHitRoll(attacker.Accuracy, mods) + sustainedHits - lethalHits;
+                return;
+            }
+            // C критами
+            if (mods.Any(m => m.Id == 14))
+            {
+                var critMod = mods.Single(m => m.Id == 14);
+                byte critCon = (byte)critMod.Condition;
+                // Если меткость лучше крита
+                if (attacker.Accuracy <= critCon)
+                {
+                    output.HitsNum = output.AttacksNum * AccuracyCalc.ToHitRoll(attacker.Accuracy, mods) + sustainedHits - lethalHits;
+                    return;
+                }
+                // Если меткость хуже крита
+                if (attacker.Accuracy > critCon)
+                {
+                    output.HitsNum = output.AttacksNum * AccuracyCalc.ToHitRoll(critCon, mods) + sustainedHits - lethalHits;
+                    return;
+                }
+            }
+        }
+
+        private void TotalWounds(AttackingUnit attacker, TargetUnit target, OutputData output, ObservableCollection<Modificator> mods)
+        {
+            // -1 ToWound и реролы обрабатываются в ToWoundCalc.ToWoundRoll
+            byte resultedRoll = 0;
+
+            if (attacker.Strength == target.Toughness)
+            {
+                resultedRoll = 4;
+            }
+            if (attacker.Strength > target.Toughness && attacker.Strength < target.Toughness * 2)
+            {
+                resultedRoll = 3;
+            }
+            if (attacker.Strength >= target.Toughness * 2)
+            {
+                resultedRoll = 2;
+            }
+            if (attacker.Strength < target.Toughness && attacker.Strength * 2 > target.Toughness)
+            {
+                resultedRoll = 5;
+            }
+            if (attacker.Strength * 2 <= target.Toughness)
+            {
+                resultedRoll = 6;
+            }
+
+            // Проверка на DevastatingWounds
+            if (mods.Any(m => m.Id == 7))
+            {
+                DevWoundsCalc(output, mods);
+            }
+            else
+            {
+                devastatingWounds = 0d;
+            }
+            
+            // С анти х
+            if (mods.Any(m => m.Id == 9))
+            {
+                var critMod = mods.Single(m => m.Id == 9);
+                byte critCon = (byte)critMod.Condition;
+                // Если анти х лучше resultedRoll
+                if (critCon <= resultedRoll)
+                {
+                    output.WoundsNum = output.HitsNum * ToWoundCalc.ToWoundRoll(critCon, mods) + lethalHits - devastatingWounds;
+                    return;
+                }
+                // Если resultedRoll лучше анти х
+                if (critCon > resultedRoll)
+                {
+                    output.WoundsNum = output.HitsNum * ToWoundCalc.ToWoundRoll(resultedRoll, mods) + lethalHits - devastatingWounds;
+                    return;
+                }
+            }
+            // Без анти х
+            if (mods.Any(m => m.Id == 9) == false)
+            {
+                output.WoundsNum = output.HitsNum * ToWoundCalc.ToWoundRoll(resultedRoll, mods) + lethalHits - devastatingWounds;
+                return;
+            }
+        }
+
+        private void TotalUnSaved(AttackingUnit attacker, TargetUnit target, OutputData output, ObservableCollection<Modificator> mods)
+        {
+            // Инвуль обрабатывается в ArmorSaveCalc.ToSaveRoll
+            double savedWounds = 0d;
+            savedWounds = output.WoundsNum * ArmorSaveCalc.ToSaveRoll(attacker, target, mods);
+            output.UnSavedNum = output.WoundsNum - savedWounds + devastatingWounds;
+        }
+
+        private void TotalDeadModels(AttackingUnit attacker, TargetUnit target, OutputData output, ObservableCollection<Modificator> mods)
+        {
+            DamagePerWoundCalc(attacker, mods);
+
             double deadModels = 0;
             // ФНП
-            if (mods.Any(m => m.Id == 10 && m.Condition != null))
+            if (mods.Any(m => m.Id == 10))
             {
                 var fnpMod = mods.Single(m => m.Id == 10);
-                if (damagePerWound * ((7f - (float)fnpMod.Condition) / 6f) < target.Wounds)
+                byte fnpCon = (byte)fnpMod.Condition;
+                // Если урон с фнп меньше хп цели
+                if (damagePerWound * ((7f - fnpCon) / 6f) < target.Wounds)
                 {
-                    for (int i = 1; i < totalUnsavedW; i++)
+                    for (int i = 1; i < output.UnSavedNum; i++)
                     {
-                        double c = damagePerWound * ((7f - (float)fnpMod.Condition) / 6f);
-                        while (c < target.Wounds && i < totalUnsavedW)
+                        double c = damagePerWound * ((7f - fnpCon) / 6f);
+                        while (c < target.Wounds && i < output.UnSavedNum)
                         {
                             i++;
-                            c += damagePerWound * ((7f - (float)fnpMod.Condition) / 6f);
+                            c += damagePerWound * ((7f - fnpCon) / 6f);
                         }
                         if (c >= target.Wounds)
                         {
                             deadModels++;
                         }
                     }
-                    return Math.Round(deadModels, 0);
+                    output.DeadModelsNum = deadModels;
+                    return;
                 }
-                if (damagePerWound * ((7f - (float)fnpMod.Condition) / 6f) >= target.Wounds)
+                // Если урон с фнп больше или равен хп цели
+                if (damagePerWound * ((7f - fnpCon) / 6f) >= target.Wounds)
                 {
-                    deadModels = totalUnsavedW;
-                    return Math.Round(deadModels, 0);
+                    deadModels = output.UnSavedNum;
+                    output.DeadModelsNum = deadModels;
+                    return;
                 }
             }
             // Без ФНП
+            // Если урон меньше, чем хп цели
             if (damagePerWound < target.Wounds)
             {
-                for (int i = 1; i < totalUnsavedW; i++)
+                for (int i = 1; i < output.UnSavedNum; i++)
                 {
                     double c = damagePerWound;
-                    while (c < target.Wounds && i < totalUnsavedW)
+                    while (c < target.Wounds && i < output.UnSavedNum)
                     {
                         i++;
                         c += damagePerWound;
@@ -149,34 +275,38 @@ namespace WhmCalcNew.Services.Calculations
                         deadModels++;
                     }
                 }
-                return Math.Round(deadModels, 0);
+                output.DeadModelsNum = deadModels;
+                return;
             }
+            // Если урон больше
             if (damagePerWound >= target.Wounds)
             {
-                deadModels = totalUnsavedW;
-                return Math.Round(deadModels, 0);
+                deadModels = output.UnSavedNum;
+                output.DeadModelsNum = deadModels;
+                return;
             }
-            return Math.Round(deadModels, 0);
         }
 
-        public double TotalDamage(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
+        private void TotalDamage(AttackingUnit attacker, OutputData output, ObservableCollection<Modificator> mods)
         {
-            double damagePerWound = AttacksOrDamageCalc.CalculateAorD(attacker.Damage);
-            if (mods.Any(m => m.Id == 13))
-            {
-                damagePerWound = damagePerWound / 2;
-                // -1 урон (применяется после деления)
-                if (mods.Any(m => m.Id == 12))
-                {
-                    damagePerWound -= 1;
-                }
-                // Урон не может быть меньше 1
-                if (damagePerWound < 1)
-                {
-                    damagePerWound = 1;
-                }
-            }
-            return Math.Round(TotalUnSaved(attacker, target, mods) * damagePerWound, 2);
+            DamagePerWoundCalc(attacker, mods);
+
+            output.TotalDamageNum = output.UnSavedNum * damagePerWound;
+        }
+        #endregion
+        #region Главный метод расчета вывода
+        public void CalculateOutput(AttackingUnit attacker, TargetUnit target, OutputData output, ObservableCollection<Modificator> mods)
+        {
+            sustainedHits = 0d;
+            lethalHits = 0d;
+            devastatingWounds = 0d;
+            damagePerWound = 0d;
+            TotalAttacks(attacker, output);
+            TotalHits(attacker, output, mods);
+            TotalWounds(attacker, target, output, mods);
+            TotalUnSaved(attacker, target, output, mods);
+            TotalDeadModels(attacker, target, output, mods);
+            TotalDamage(attacker, output, mods);
         }
         #endregion
     }

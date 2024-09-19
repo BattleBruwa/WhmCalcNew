@@ -5,22 +5,18 @@ namespace WhmCalcNew.Services.Calculations
 {
     public static class ArmorSaveCalc
     {
-        public static float ToSaveRoll(AttackingUnit? attacker, TargetUnit? target, ObservableCollection<Modificator> mods)
+        public static float ToSaveRoll(AttackingUnit attacker, TargetUnit target, ObservableCollection<Modificator> mods)
         {
-            if (attacker == null || target == null)
-            {
-                return 0f;
-            }
-
             byte resultedRoll = 0;
             // Если есть инвуль
-            if (mods.Any(m => m.Id == 11 && m.Condition != null))
+            if (mods.Any(m => m.Id == 11))
             {
                 var modWithInvul = mods.Single(m => m.Id == 11);
+                byte invulCon = (byte)modWithInvul.Condition;
                 // Если арморпен + армор больше инвуля, используем инвуль
-                if (attacker.ArmorPen + target.Save >= modWithInvul.Condition)
+                if (attacker.ArmorPen + target.Save >= invulCon)
                 {
-                    resultedRoll = (byte)modWithInvul.Condition;
+                    resultedRoll = invulCon;
                     return DiceRoller.RollTheDice(resultedRoll);
                 }
                 // Используем арморпен + армор, если это меньше инвуля
@@ -29,7 +25,7 @@ namespace WhmCalcNew.Services.Calculations
             }
             // Если нет инвуля
             resultedRoll = (byte)(attacker.ArmorPen + target.Save);
-            return 1f - DiceRoller.RollTheDice(resultedRoll);
+            return DiceRoller.RollTheDice(resultedRoll);
         }
     }
 }

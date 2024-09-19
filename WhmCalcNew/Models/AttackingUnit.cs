@@ -8,7 +8,7 @@ namespace WhmCalcNew.Models
         #region Свойства
 
         // Количество атак
-        private string _attacks;
+        private string _attacks = "0";
         [StringLength(10)]
         public string Attacks
         {
@@ -56,7 +56,7 @@ namespace WhmCalcNew.Models
         }
 
         // Урон атаки
-        private string _damage;
+        private string _damage = "0";
         [StringLength(10)]
         public string Damage
         {

@@ -13,7 +13,7 @@ namespace WhmCalcNew.Models
             {
                 return value.ToString();
             }
-            return String.Empty;
+            return "0";
         }
 
         // Стринг в байт:

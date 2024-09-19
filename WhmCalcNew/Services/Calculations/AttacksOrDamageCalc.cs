@@ -5,14 +5,14 @@
         /// <summary>
         /// Расчитывает количество атак или урон каждой атаки.
         /// </summary>
-        public static float CalculateAorD(string? input)
+        public static double CalculateAorD(string? input)
         {
             if (string.IsNullOrEmpty(input))
             {
                 return 0f;
             }
 
-            bool result = float.TryParse(input, out var number);
+            bool result = double.TryParse(input, out var number);
 
             // Если result запарсился успешно, возвращаем number,
             if (result == true)
@@ -22,32 +22,32 @@
             // если нет, ищем D
             else
             {
-                float amount = 0;
+                double amount = 0d;
                 int indexOfD = input.IndexOf('D', StringComparison.CurrentCultureIgnoreCase);
 
-                float numBeforeD = 0;
+                double numBeforeD = 0d;
                 if (indexOfD == 0 || input[indexOfD - 1].Equals(' ') || input[indexOfD - 1].Equals('1'))
                 {
-                    numBeforeD = 1;
+                    numBeforeD = 1d;
                 }
                 else
                 {
-                    numBeforeD = (float)char.GetNumericValue(input[indexOfD - 1]);
+                    numBeforeD = char.GetNumericValue(input[indexOfD - 1]);
                     if (numBeforeD == 0)
                     {
                         string _concatStringD = string.Concat(input[indexOfD - 2], input[indexOfD - 1]);
-                        numBeforeD = (float)Convert.ToDouble(_concatStringD);
+                        numBeforeD = Convert.ToDouble(_concatStringD);
                     }
                 }
 
-                float numAfterD = 0;
+                double numAfterD = 0d;
                 if (char.GetNumericValue(input[indexOfD + 1]) == 3)
                 {
-                    numAfterD = 2.0f;
+                    numAfterD = 2.0d;
                 }
                 if (char.GetNumericValue(input[indexOfD + 1]) == 6)
                 {
-                    numAfterD = 3.5f;
+                    numAfterD = 3.5d;
                 }
 
                 // Проверка на наличие в строке выражения
@@ -56,17 +56,17 @@
                 if (indexOfPlus != -1)
                 {
                     // Число после плюса
-                    float numAfterPlus = (float)char.GetNumericValue(input[indexOfPlus + 1]);
+                    double numAfterPlus = char.GetNumericValue(input[indexOfPlus + 1]);
                     if (numAfterPlus == 1)
                     {
                         if (indexOfPlus + 2 == input.Length)
                         {
-                            numAfterPlus = 1;
+                            numAfterPlus = 1d;
                         }
                         else
                         {
                             string _concatStringP = string.Concat(input[indexOfPlus + 1], input[indexOfPlus + 2]);
-                            numAfterPlus = (float)Convert.ToDouble(_concatStringP);
+                            numAfterPlus = Convert.ToDouble(_concatStringP);
                         }
                     }
 
