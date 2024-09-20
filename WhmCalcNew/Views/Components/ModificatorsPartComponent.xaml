@@ -40,7 +40,8 @@
                   Command="{Binding Path=DataContext.PickModCommand,
                                 RelativeSource={RelativeSource Mode=FindAncestor,
                                                  AncestorType={x:Type UserControl}}}"
-                  Name="CheckBoxR1">
+                  Name="CheckBoxR1"
+                  Checked="ReRollsCB_Checked">
             <CheckBox.CommandParameter>
                 <MultiBinding Converter="{StaticResource mvc}">
                     <Binding ElementName="CheckBoxR1"
@@ -164,7 +165,8 @@
                   Command="{Binding Path=DataContext.PickModCommand,
                                 RelativeSource={RelativeSource Mode=FindAncestor,
                                                  AncestorType={x:Type UserControl}}}"
-                  Name="CheckBoxRH">
+                  Name="CheckBoxRH"
+                  Checked="ReRollsCB_Checked">
             <CheckBox.CommandParameter>
                 <MultiBinding Converter="{StaticResource mvc}">
                     <Binding ElementName="CheckBoxRH"
@@ -441,7 +443,8 @@
                   Command="{Binding Path=DataContext.PickModCommand,
                                 RelativeSource={RelativeSource Mode=FindAncestor,
                                                  AncestorType={x:Type UserControl}}}"
-                  Name="CheckBoxR1W">
+                  Name="CheckBoxR1W"
+                  Checked="ReRollsCB_Checked">
             <CheckBox.CommandParameter>
                 <MultiBinding Converter="{StaticResource mvc}">
                     <Binding ElementName="CheckBoxR1W"
@@ -565,7 +568,8 @@
                   Command="{Binding Path=DataContext.PickModCommand,
                                 RelativeSource={RelativeSource Mode=FindAncestor,
                                                  AncestorType={x:Type UserControl}}}"
-                  Name="CheckBoxRW">
+                  Name="CheckBoxRW"
+                  Checked="ReRollsCB_Checked">
             <CheckBox.CommandParameter>
                 <MultiBinding Converter="{StaticResource mvc}">
                     <Binding ElementName="CheckBoxRW"

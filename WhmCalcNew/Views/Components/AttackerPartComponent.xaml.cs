@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WhmCalcNew.Views.Components
 {
@@ -23,6 +24,15 @@ namespace WhmCalcNew.Views.Components
         public AttackerPartComponent()
         {
             InitializeComponent();
+        }
+
+        private async void EditableTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = (sender as TextBox);
+            if (textBox != null)
+            {
+                await Application.Current.Dispatcher.InvokeAsync(textBox.SelectAll, DispatcherPriority.Background);
+            }
         }
     }
 }

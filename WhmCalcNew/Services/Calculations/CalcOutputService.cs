@@ -84,16 +84,16 @@ namespace WhmCalcNew.Services.Calculations
             if (mods.Any(m => m.Id == 13))
             {
                 damage = damage / 2;
-                // -1 урон (применяется после деления)
-                if (mods.Any(m => m.Id == 12))
-                {
-                    damage -= 1;
-                }
-                // Урон не может быть меньше 1
-                if (damage < 1)
-                {
-                    damage = 1;
-                }
+            }
+            // -1 урон
+            if (mods.Any(m => m.Id == 12))
+            {
+                damage -= 1;
+            }
+            // Урон не может быть меньше 1
+            if (damage < 1)
+            {
+                damage = 1;
             }
             damagePerWound = damage;
         }
