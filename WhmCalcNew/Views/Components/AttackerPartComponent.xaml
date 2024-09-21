@@ -35,10 +35,9 @@
                      MaxLength="5"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Center"
+                     MouseDoubleClick="EditableTextBox_GotFocus"
                      GotFocus="EditableTextBox_GotFocus"
-                     IsReadOnly="False"
-                     IsHitTestVisible="True"
-                     Style="{StaticResource TextBoxTheme}"
+                     Style="{StaticResource EditableTextBoxTheme}"
                      Width="70"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
                 <TextBox.Text>
@@ -75,12 +74,11 @@
             <TextBox x:Name="AccuracyTB"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
-                     IsReadOnly="False"
+                     MouseDoubleClick="EditableTextBox_GotFocus"
                      GotFocus="EditableTextBox_GotFocus"
-                     IsHitTestVisible="True"
                      Width="70"
                      MaxLength="1"
-                     Style="{StaticResource TextBoxTheme}"
+                     Style="{StaticResource EditableTextBoxTheme}"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
                 <TextBox.Text>
                     <Binding Path="Accuracy"
@@ -119,10 +117,9 @@
             <TextBox x:Name="StrengthTB"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
-                     IsReadOnly="False"
-                     IsHitTestVisible="True"
                      GotFocus="EditableTextBox_GotFocus"
-                     Style="{StaticResource TextBoxTheme}"
+                     MouseDoubleClick="EditableTextBox_GotFocus"
+                     Style="{StaticResource EditableTextBoxTheme}"
                      Width="70"
                      MaxLength="2"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
@@ -161,10 +158,9 @@
             <TextBox x:Name="ArmorPenTB"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
-                     IsReadOnly="False"
                      GotFocus="EditableTextBox_GotFocus"
-                     IsHitTestVisible="True"
-                     Style="{StaticResource TextBoxTheme}"
+                     MouseDoubleClick="EditableTextBox_GotFocus"
+                     Style="{StaticResource EditableTextBoxTheme}"
                      Width="70"
                      MaxLength="1"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
@@ -204,10 +200,9 @@
                      MaxLength="5"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
-                     IsReadOnly="False"
-                     IsHitTestVisible="True"
-                     Style="{StaticResource TextBoxTheme}"
+                     Style="{StaticResource EditableTextBoxTheme}"
                      Width="70"
+                     MouseDoubleClick="EditableTextBox_GotFocus"
                      GotFocus="EditableTextBox_GotFocus"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
                 <TextBox.Text>
