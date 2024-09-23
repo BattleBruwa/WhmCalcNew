@@ -73,7 +73,7 @@ namespace WhmCalcNew.ViewModel
             {
                 if (item.DataContext == this && item is IThemedWindow)
                 {
-                    (item as IThemedWindow).ChangeTheme();
+                    (item as IThemedWindow)?.ChangeTheme();
                 }
             }
         }
@@ -99,8 +99,11 @@ namespace WhmCalcNew.ViewModel
         [RelayCommand]
         public void ShowAddTarget(object obj)
         {
-            AddTargetWindow addTargetWindow = App.AppHost.Services.GetService<AddTargetWindow>();
-            addTargetWindow.Show();
+            AddTargetWindow? addTargetWindow = App.AppHost.Services.GetService<AddTargetWindow>();
+            if (addTargetWindow != null)
+            {
+                addTargetWindow.Show();
+            }
         }
         // Комманда для обработки чекбоксов модификаторов
         [RelayCommand]

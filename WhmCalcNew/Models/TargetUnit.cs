@@ -1,12 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace WhmCalcNew.Models
 {
-    public class TargetUnit
+    public partial class TargetUnit: ObservableObject
     {
-        [Key, StringLength(20, ErrorMessage = "Ошибка имени цели")]
-        public string UnitName { get; set; } = null!;
+        [ObservableProperty]
+        [property: Key]
+        [property: StringLength(20, ErrorMessage = "Ошибка имени цели")]
+        private string unitName;
 
         [MaxLength(3)]
         public byte Toughness { get; set; }
@@ -18,7 +21,7 @@ namespace WhmCalcNew.Models
         public byte Wounds { get; set; }
 
         [NotMapped]
-        public string TargetProps { get => this.ToString(); }
+        public string TargetProps { get => ToString(); }
 
         public override string ToString()
         {

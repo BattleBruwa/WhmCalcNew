@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services.DataAccess;
 
 namespace WhmCalcNew.ViewModel
 {
-    public partial class AddTargetViewModel
+    public partial class AddTargetViewModel: ObservableObject
     {
-        public TargetUnit NewTarget { get; set; } = new();
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddTargetCommand))]
+        private TargetUnit newTarget;
+
+
         public IWhmDbService DbService { get; }
 
         private MainViewModel mainViewModel;
@@ -21,14 +22,16 @@ namespace WhmCalcNew.ViewModel
         {
             DbService = dbService;
             this.mainViewModel = mainViewModel;
+            NewTarget = new TargetUnit();
+            // Тест
+            Task test = new Task(TestWriting);
+            test.Start();
         }
-        [RelayCommand]
-        public async Task AddTarget()
+
+
+        [RelayCommand(CanExecute = nameof(CanAddTarget))]
+        private async Task AddTarget()
         {
-            if (String.IsNullOrEmpty(NewTarget.UnitName))
-            {
-                return;
-            }
             // TODO: Оформить новое окно с подтверждением, если цель с таким именем уже существует
             if (await DbService.GetTargetByName(NewTarget.UnitName) == null)
             {
@@ -36,6 +39,15 @@ namespace WhmCalcNew.ViewModel
                 mainViewModel.TargetsList.Add(NewTarget);
             }
             await DbService.UpdateTargetAsync(NewTarget);
+        }
+        private bool CanAddTarget()
+        {
+            if (String.IsNullOrEmpty(NewTarget.UnitName))
+            {
+                return false;
+            }
+            else
+                return true;
         }
 
         [RelayCommand]
@@ -47,6 +59,16 @@ namespace WhmCalcNew.ViewModel
                 {
                     item.Hide();
                 }
+            }
+        }
+        
+        // Тест
+        private void TestWriting()
+        {
+            while (true)
+            {
+                Debug.WriteLine($"NT: {NewTarget.ToString()} where name : {NewTarget.UnitName}");
+                Thread.Sleep(1000);
             }
         }
     }

@@ -54,8 +54,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBoxBase}">
                         <Border x:Name="border"
-                                Background="{StaticResource BoxesInnerColor}"
-                                BorderBrush="{StaticResource MainOutlineColor}"
+                                Background="{DynamicResource BoxesInnerColor}"
+                                BorderBrush="{DynamicResource MainOutlineColor}"
                                 BorderThickness="1"
                                 Width="{TemplateBinding Width}"
                                 Height="50"
@@ -67,7 +67,7 @@
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Center"
                                                TextElement.FontSize="19"
-                                               TextElement.Foreground="{StaticResource TextMainColor}">
+                                               TextElement.Foreground="{DynamicResource TextMainColor}">
                             </ContentPresenter>
                         </Border>
                         <ControlTemplate.Triggers>
