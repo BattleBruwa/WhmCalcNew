@@ -38,11 +38,16 @@
                         Style="{StaticResource ButtonTheme}"
                         Content="Отмена"
                         Command="{Binding CloseWindowCommand}"/>
-                <Button Width="100"
+                <Button Content="Добавить"
+                        Margin="80 0 0 0"
+                        Width="100"
+                        Command="{Binding AddTargetCommand}"
+                        IsEnabled="{Binding CanExecuteAddTarget, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <!--<Button Width="100"
                         Height="40"
                         Margin="70 0 0 0"
                         Style="{StaticResource ButtonTheme}"
-                        Content="OK" Command="{Binding AddTargetCommand}"/>
+                        Content="OK" Command="{Binding AddTargetCommand}"/>-->
             </StackPanel>
         </Grid>
     </Border>
