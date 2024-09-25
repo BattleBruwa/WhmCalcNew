@@ -6,12 +6,11 @@
              xmlns:models="clr-namespace:WhmCalcNew.Models"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d"
-             d:DesignHeight="230"
+             d:DesignHeight="170"
              d:DesignWidth="130">
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="60" />
             <RowDefinition Height="60" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>

@@ -4,7 +4,7 @@ using System.Windows;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmHelpers;
-using WhmCalcNew.Bases;
+using WhmCalcNew.Engine.ThemeChanger;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services;
 using WhmCalcNew.Services.Calculations;
@@ -52,6 +52,9 @@ namespace WhmCalcNew.ViewModel
                 _outputData = value;
             }
         }
+
+        private bool isDarkThemed = true;
+
         #endregion
         #region Конструкторы
         public MainViewModel(IModListService modsList, ICalcOutputService calc)
@@ -66,17 +69,13 @@ namespace WhmCalcNew.ViewModel
 
         #endregion
         #region Комманды
+        // Смена цели
         [RelayCommand]
         private void ChangeTheme(object obj)
         {
-            foreach (Window item in Application.Current.Windows)
-            {
-                if (item.DataContext == this && item is IThemedWindow)
-                {
-                    (item as IThemedWindow)?.ChangeTheme();
-                }
-            }
+            ThemeChanger.ChangeTheme(ref isDarkThemed);
         }
+        // Закрыть окно
         [RelayCommand]
         private void CloseWindow(object obj)
         {
@@ -85,6 +84,7 @@ namespace WhmCalcNew.ViewModel
                 item.Close();
             }
         }
+        // Свернуть окно
         [RelayCommand]
         private void HideWindow(object obj)
         {
@@ -96,18 +96,20 @@ namespace WhmCalcNew.ViewModel
                 }
             }
         }
+        // Добавление цели
         [RelayCommand]
-        public void ShowAddTarget(object obj)
+        private void ShowAddTarget(object obj)
         {
             AddTargetWindow? addTargetWindow = App.AppHost.Services.GetService<AddTargetWindow>();
             if (addTargetWindow != null)
             {
-                addTargetWindow.Show();
+                addTargetWindow.Owner = App.AppHost.Services.GetService<MainWindow>();
+                addTargetWindow.ShowDialog();
             }
         }
         // Комманда для обработки чекбоксов модификаторов
         [RelayCommand]
-        public void PickMod(object obj)
+        private void PickMod(object obj)
         {
             var parameters = (object[])obj;
             bool check = (bool)parameters[0];
@@ -120,6 +122,21 @@ namespace WhmCalcNew.ViewModel
             {
                 ModsList.PickedMods.Remove(pickedMod);
             }
+        }
+        [RelayCommand]
+        private void DeleteSelectedTarget()
+        {
+
+        }
+        // Сброс ввода
+        [RelayCommand]
+        private void ResetInput()
+        {
+            AttackingUnit.Attacks = "0";
+            AttackingUnit.Accuracy = 0;
+            AttackingUnit.Strength = 0;
+            AttackingUnit.ArmorPen = 0;
+            AttackingUnit.Damage = "0";
         }
         #endregion
         #region Вспомогательные методы

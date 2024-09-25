@@ -14,7 +14,7 @@ namespace WhmCalcNew.ViewModel
 
         public IWhmDbService DbService { get; }
 
-        private MainViewModel mainViewModel;
+        private readonly MainViewModel mainViewModel;
 
         [ObservableProperty]
         private bool canExecuteAddTarget = false;
@@ -25,9 +25,6 @@ namespace WhmCalcNew.ViewModel
             this.mainViewModel = mainViewModel;
             NewTarget = new TargetUnit();
             NewTarget.PropertyChanged += NewTarget_PropertyChanged;
-            // Тест
-            Task test = new Task(TestWriting);
-            test.Start();
         }
 
         private void NewTarget_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -67,18 +64,8 @@ namespace WhmCalcNew.ViewModel
             {
                 if (item.DataContext == this)
                 {
-                    item.Hide();
+                    item.DialogResult = false;
                 }
-            }
-        }
-        
-        // Тест
-        private void TestWriting()
-        {
-            while (true)
-            {
-                Debug.WriteLine($"NT: {NewTarget.ToString()}");
-                Thread.Sleep(1000);
             }
         }
     }
