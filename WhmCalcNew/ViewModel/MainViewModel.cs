@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
+
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmHelpers;
@@ -21,7 +23,6 @@ namespace WhmCalcNew.ViewModel
 
         public ObservableCollection<TargetUnit> TargetsList { get; set; }
 
-
         private TargetUnit? _selectedTarget;
         public TargetUnit? SelectedTarget
         {
@@ -29,6 +30,7 @@ namespace WhmCalcNew.ViewModel
             set
             {
                 SetProperty(ref _selectedTarget, value);
+                DeleteSelectedTargetCommand.NotifyCanExecuteChanged();
                 Recalculate(AttackingUnit, SelectedTarget, OutputData, ModsList.PickedMods);
             }
         }
@@ -123,20 +125,28 @@ namespace WhmCalcNew.ViewModel
                 ModsList.PickedMods.Remove(pickedMod);
             }
         }
-        [RelayCommand]
-        private void DeleteSelectedTarget()
+        [RelayCommand(CanExecute = nameof(CanDeleteTarget))]
+        private async Task DeleteSelectedTarget()
         {
+            Debug.WriteLine("Target deleted");
+        }
 
+        private bool CanDeleteTarget()
+        {
+            if (SelectedTarget != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         // Сброс ввода
         [RelayCommand]
         private void ResetInput()
         {
-            AttackingUnit.Attacks = "0";
-            AttackingUnit.Accuracy = 0;
-            AttackingUnit.Strength = 0;
-            AttackingUnit.ArmorPen = 0;
-            AttackingUnit.Damage = "0";
+            AttackingUnit.ResetState();
         }
         #endregion
         #region Вспомогательные методы

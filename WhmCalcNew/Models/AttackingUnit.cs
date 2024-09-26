@@ -67,5 +67,15 @@ namespace WhmCalcNew.Models
             }
         }
         #endregion
+        #region Методы
+        public void ResetState()
+        {
+            Attacks = "0";
+            Accuracy = 0;
+            Strength = 0;
+            ArmorPen = 0;
+            Damage = "0";
+        }
+        #endregion
     }
 }
