@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
-
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using MvvmHelpers;
@@ -20,6 +19,7 @@ namespace WhmCalcNew.ViewModel
         #region Свойства, сервисы
         public IModListService ModsList { get; }
         public ICalcOutputService Calc { get; }
+        public IWhmDbService DbService { get; }
 
         public ObservableCollection<TargetUnit> TargetsList { get; set; }
 
@@ -59,14 +59,16 @@ namespace WhmCalcNew.ViewModel
 
         #endregion
         #region Конструкторы
-        public MainViewModel(IModListService modsList, ICalcOutputService calc)
+        public MainViewModel(IModListService modsList, ICalcOutputService calc, IWhmDbService dbService)
         {
             ModsList = modsList;
             Calc = calc;
+            DbService = dbService;
             OutputData = new OutputData();
             AttackingUnit = new AttackingUnit();
             AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
             ModsList.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
+
         }
 
         #endregion
@@ -128,7 +130,20 @@ namespace WhmCalcNew.ViewModel
         [RelayCommand(CanExecute = nameof(CanDeleteTarget))]
         private async Task DeleteSelectedTarget()
         {
-            Debug.WriteLine("Target deleted");
+            // TODO: Добавить форму с подтвреждением
+            var targetToDeleteTL = TargetsList.Single(t => t.UnitName == SelectedTarget.UnitName);
+            if (targetToDeleteTL != null)
+            {
+                var targetToDeleteDB = await DbService.GetTargetByName(SelectedTarget.UnitName);
+                if (targetToDeleteDB != null)
+                {
+                    await DbService.DeleteTargetAsync(targetToDeleteDB);
+                    if (TargetsList.Remove(targetToDeleteTL))
+                    {
+                        Debug.WriteLine("Target deleted");
+                    }
+                }
+            }
         }
 
         private bool CanDeleteTarget()
