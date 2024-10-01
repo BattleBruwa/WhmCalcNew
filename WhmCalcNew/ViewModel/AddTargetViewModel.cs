@@ -42,8 +42,8 @@ namespace WhmCalcNew.ViewModel
             }
         }
 
-        // Реализация через [NotifyCanExecuteChangedFor] не работает, возможно из-за async Task,
-        // по-этому включение кнопки реализавано в лоб через привязку свойства к ивенту
+        // Реализация через [NotifyCanExecuteChangedFor] не работает, по-этому включение кнопки
+        // реализавано в лоб через привязку свойства к ивенту
         // (обработчик - NewTarget_PropertyChanged)
         [RelayCommand/*(CanExecute = nameof(CanAddTarget))*/]
         private async Task AddTarget()
@@ -56,6 +56,17 @@ namespace WhmCalcNew.ViewModel
             }
             await DbService.UpdateTargetAsync(NewTarget);
         }
+        //private bool CanAddTarget()
+        //{
+        //    if (string.IsNullOrWhiteSpace(NewTarget.UnitName))
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
 
         [RelayCommand]
         private void CloseWindow(object obj)

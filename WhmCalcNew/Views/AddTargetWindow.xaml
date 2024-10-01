@@ -19,7 +19,7 @@
         <models:StringToByteDataConverter x:Key="stringToByteConverter" />
     </Window.Resources>
     <Border Background="{DynamicResource MainWindowBackgroundColor}"
-            CornerRadius="20">
+            CornerRadius="20" BorderBrush="{DynamicResource MainOutlineColor}" BorderThickness="2">
         <Grid>
 
             <Grid.RowDefinitions>
@@ -41,6 +41,7 @@
                 <Button Content="Добавить"
                         Margin="80 0 0 0"
                         Width="100"
+                        Style="{StaticResource ButtonTheme}"
                         Command="{Binding AddTargetCommand}"
                         IsEnabled="{Binding CanExecuteAddTarget, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <!--<Button Width="100"

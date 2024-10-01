@@ -71,7 +71,11 @@
                             </ContentPresenter>
                         </Border>
                         <ControlTemplate.Triggers>
-                            
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border"
+                                        Property="BorderThickness"
+                                        Value="2" />
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

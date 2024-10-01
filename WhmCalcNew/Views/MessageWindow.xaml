@@ -1,0 +1,73 @@
+﻿<Window x:Class="WhmCalcNew.Views.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WhmCalcNew.Views"
+        mc:Ignorable="d"
+        MaxWidth="300"
+        Topmost="True"
+        Background="Transparent"
+        Title="MessageWindow">
+    <Border CornerRadius="10"
+            BorderBrush="{DynamicResource MainOutlineColor}"
+            BorderThickness="2"
+            Background="{DynamicResource MainWindowBackgroundColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="messageHeader"
+                       Grid.Row="0"
+                       Foreground="{DynamicResource TextMainColor}"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock x:Name="messageText"
+                       Grid.Row="1"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource TextMainColor}"
+                       FontSize="18"
+                       Padding="10"
+                       HorizontalAlignment="Center" />
+
+            <StackPanel x:Name="twoButtonPanel"
+                        Grid.Row="2"
+                        Opacity="1"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button x:Name="leftBtn"
+                        Width="100"
+                        Height="40"
+                        Margin="10" Content="NO"
+                        Click="leftBtn_Click"
+                        Style="{StaticResource ButtonTheme}" />
+                <Button x:Name="rightBtn"
+                        Width="100"
+                        Height="40"
+                        Content="OK"
+                        Margin="10"
+                        Click="rightBtn_Click"
+                        Style="{StaticResource ButtonTheme}" />
+            </StackPanel>
+
+            <StackPanel x:Name="oneButtonPanel"
+                        HorizontalAlignment="Center"
+                        Grid.Row="2"
+                        Opacity="0">
+                <Button x:Name="oneBtn"
+                        HorizontalAlignment="Center"
+                        Width="100"
+                        Height="40"
+                        Margin="10"
+                        Content="OK"
+                        Click="oneBtn_Click"
+                        Style="{StaticResource ButtonTheme}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

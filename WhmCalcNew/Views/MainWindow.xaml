@@ -19,7 +19,9 @@
         <models:StringToByteDataConverter x:Key="stringToByteConverter" />
     </Window.Resources>
     <Border Background="{DynamicResource MainWindowBackgroundColor}"
-            CornerRadius="20">
+            CornerRadius="20"
+            BorderBrush="{DynamicResource MainOutlineColor}"
+            BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
