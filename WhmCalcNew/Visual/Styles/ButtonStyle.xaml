@@ -19,6 +19,7 @@
                                          Background="Transparent"
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"
+                                         IsReadOnly="True"
                                          FontSize="15"
                                          Foreground="{DynamicResource TextMainColor}"
                                          Padding="5"

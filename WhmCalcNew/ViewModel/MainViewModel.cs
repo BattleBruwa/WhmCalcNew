@@ -130,17 +130,25 @@ namespace WhmCalcNew.ViewModel
         [RelayCommand(CanExecute = nameof(CanDeleteTarget))]
         private async Task DeleteSelectedTarget()
         {
-            // TODO: Добавить форму с подтвреждением
             var targetToDeleteTL = TargetsList.Single(t => t.UnitName == SelectedTarget.UnitName);
             if (targetToDeleteTL != null)
             {
                 var targetToDeleteDB = await DbService.GetTargetByName(SelectedTarget.UnitName);
                 if (targetToDeleteDB != null)
                 {
-                    await DbService.DeleteTargetAsync(targetToDeleteDB);
-                    if (TargetsList.Remove(targetToDeleteTL))
+                    var ConfirmMessage = new MessageWindow("Are you sure, you want to delete this target?", MessageType.Confirmation);
+                    ConfirmMessage.Owner = App.AppHost.Services.GetService<MainWindow>();
+                    bool? confirmResult = ConfirmMessage.ShowDialog();
+                    if (confirmResult.Value)
                     {
-                        Debug.WriteLine("Target deleted");
+                        await DbService.DeleteTargetAsync(targetToDeleteDB);
+                        if (TargetsList.Remove(targetToDeleteTL))
+                        {
+                            Debug.WriteLine("Target deleted");
+                            var SuccessMessage = new MessageWindow("The target has been deleted from DataBase", MessageType.Success);
+                            SuccessMessage.Owner = App.AppHost.Services.GetService<MainWindow>();
+                            bool? result = SuccessMessage.ShowDialog();
+                        }
                     }
                 }
             }

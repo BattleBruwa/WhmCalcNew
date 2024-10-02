@@ -18,12 +18,12 @@ namespace WhmCalcNew.Views
                     oneButtonPanel.Visibility = Visibility.Collapsed;
                     break;
                 case MessageType.Success:
-                    messageHeader.Text = "Confirmation";
+                    messageHeader.Text = "Success";
                     twoButtonPanel.Visibility = Visibility.Collapsed;
                     oneButtonPanel.Visibility = Visibility.Visible;
                     break;
                 case MessageType.Error:
-                    messageHeader.Text = "Confirmation";
+                    messageHeader.Text = "Error";
                     twoButtonPanel.Visibility = Visibility.Collapsed;
                     oneButtonPanel.Visibility = Visibility.Visible;
                     break;
@@ -45,6 +45,12 @@ namespace WhmCalcNew.Views
         private void oneBtn_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+            Close();
+        }
+
+        private void closeWindowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
             Close();
         }
     }

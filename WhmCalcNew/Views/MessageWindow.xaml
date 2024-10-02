@@ -6,26 +6,46 @@
         xmlns:local="clr-namespace:WhmCalcNew.Views"
         mc:Ignorable="d"
         MaxWidth="300"
+        Height="auto"
+        WindowStartupLocation="CenterOwner"
         Topmost="True"
+        SizeToContent="WidthAndHeight"
         Background="Transparent"
-        Title="MessageWindow">
+        Title="MessageWindow"
+        WindowStyle="None">
     <Border CornerRadius="10"
             BorderBrush="{DynamicResource MainOutlineColor}"
             BorderThickness="2"
+            Height="auto"
             Background="{DynamicResource MainWindowBackgroundColor}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
+
+            <Button Margin="0 5 10 0"
+                    Height="20"
+                    x:Name="closeWindowBtn"
+                    Width="20" HorizontalAlignment="Right"
+                    Style="{StaticResource CloseWindowBtnTheme}"
+                    Click="closeWindowBtn_Click">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource ToolTipTheme}">
+                        <TextBlock>Закрыть</TextBlock>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
 
             <TextBlock x:Name="messageHeader"
                        Grid.Row="0"
                        Foreground="{DynamicResource TextMainColor}"
                        FontSize="22"
                        FontWeight="Bold"
-                       HorizontalAlignment="Center" />
+                       MaxWidth="190"
+                       Margin="10 0 0 0"
+                       HorizontalAlignment="Left" />
 
             <TextBlock x:Name="messageText"
                        Grid.Row="1"
@@ -37,7 +57,6 @@
 
             <StackPanel x:Name="twoButtonPanel"
                         Grid.Row="2"
-                        Opacity="1"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
                 <Button x:Name="leftBtn"
@@ -49,7 +68,7 @@
                 <Button x:Name="rightBtn"
                         Width="100"
                         Height="40"
-                        Content="OK"
+                        Content="YES"
                         Margin="10"
                         Click="rightBtn_Click"
                         Style="{StaticResource ButtonTheme}" />
@@ -57,8 +76,7 @@
 
             <StackPanel x:Name="oneButtonPanel"
                         HorizontalAlignment="Center"
-                        Grid.Row="2"
-                        Opacity="0">
+                        Grid.Row="2">
                 <Button x:Name="oneBtn"
                         HorizontalAlignment="Center"
                         Width="100"

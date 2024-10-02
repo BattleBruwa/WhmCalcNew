@@ -30,6 +30,21 @@
             </Grid.RowDefinitions>
             <components:AddTargetComponent Grid.Row="1" />
 
+            <Button Margin="0 10 30 0"
+                    Height="20"
+                    x:Name="closeWindowBtn"
+                    Width="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource CloseWindowBtnTheme}"
+                    Click="closeWindowBtn_Click">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource ToolTipTheme}">
+                        <TextBlock>Закрыть</TextBlock>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+
             <StackPanel Orientation="Horizontal"
                         Grid.Row="2">
                 <Button Width="100"
