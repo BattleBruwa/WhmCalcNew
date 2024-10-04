@@ -18,9 +18,17 @@ namespace WhmCalcNew.Services.DataAccess
         {
             using (var db = new DataContext())
             {
-                if (await db.Targets.AnyAsync(t => t.UnitName == name))
+                try
                 {
-                    return await db.Targets.SingleAsync(t => t.UnitName == name);
+                    if (await db.Targets.AnyAsync(t => t.UnitName == name))
+                    {
+                        return await db.Targets.SingleAsync(t => t.UnitName == name);
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    
                 }
                 return null;
             }
