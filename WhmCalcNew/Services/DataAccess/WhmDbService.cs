@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using WhmCalcNew.Models;
+using WhmCalcNew.Views;
 
 namespace WhmCalcNew.Services.DataAccess
 {
@@ -26,9 +29,22 @@ namespace WhmCalcNew.Services.DataAccess
                     }
                     return null;
                 }
-                catch (Exception ex)
+                catch (ArgumentNullException)
                 {
-                    
+
+                }
+                catch (OperationCanceledException)
+                {
+
+                }
+                catch (InvalidOperationException)
+                {
+
+                }
+                catch (Exception)
+                {
+                    var Message = new MessageWindow("The target has been deleted from DataBase", MessageType.Error);
+                    //Message.Owner = 
                 }
                 return null;
             }
