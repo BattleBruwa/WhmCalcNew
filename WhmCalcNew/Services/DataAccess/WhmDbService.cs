@@ -29,22 +29,25 @@ namespace WhmCalcNew.Services.DataAccess
                     }
                     return null;
                 }
-                catch (ArgumentNullException)
+                catch (ArgumentNullException ex)
                 {
-
+                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    Message.ShowDialog();
                 }
-                catch (OperationCanceledException)
+                catch (OperationCanceledException ex)
                 {
-
+                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    Message.ShowDialog();
                 }
-                catch (InvalidOperationException)
+                catch (InvalidOperationException ex)
                 {
-
+                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    Message.ShowDialog();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    var Message = new MessageWindow("The target has been deleted from DataBase", MessageType.Error);
-                    //Message.Owner = 
+                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    Message.ShowDialog();
                 }
                 return null;
             }
@@ -54,8 +57,8 @@ namespace WhmCalcNew.Services.DataAccess
         {
             using (var db = new DataContext())
             {
-                await db.Targets.AddAsync(target);
-                await db.SaveChangesAsync();
+                db.Targets.Add(target);
+                await DBSaveChangesAsync(db);
             }
         }
 
@@ -64,7 +67,7 @@ namespace WhmCalcNew.Services.DataAccess
             using (var db = new DataContext())
             {
                 db.Targets.Update(target);
-                await db.SaveChangesAsync();
+                await DBSaveChangesAsync(db);
             }
         }
 
@@ -73,8 +76,38 @@ namespace WhmCalcNew.Services.DataAccess
             using (var db = new DataContext())
             {
                 db.Targets.Remove(target);
-                await db.SaveChangesAsync();
+                await DBSaveChangesAsync(db);
             }
+        }
+
+
+        private static async Task<int> DBSaveChangesAsync(DataContext db)
+        {
+            try
+            {
+            return await db.SaveChangesAsync();
+            }
+            catch (OperationCanceledException ex)
+            {
+                var Message = new MessageWindow($"Failed to save Database changes.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                var Message = new MessageWindow($"Failed to save Database changes.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
+            catch (DbUpdateException ex)
+            {
+                var Message = new MessageWindow($"Failed to save Database changes.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                var Message = new MessageWindow($"Failed to save Database changes.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
+            return 0;
         }
     }
 }

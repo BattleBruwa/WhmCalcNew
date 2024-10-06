@@ -24,6 +24,7 @@ namespace WhmCalcNew.Views
                     break;
                 case MessageType.Error:
                     messageHeader.Text = "Error";
+                    this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     twoButtonPanel.Visibility = Visibility.Collapsed;
                     oneButtonPanel.Visibility = Visibility.Visible;
                     break;
