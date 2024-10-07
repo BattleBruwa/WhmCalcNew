@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,8 +14,23 @@ namespace WhmCalcNew.Services.DataAccess
         {
             using (var db = new DataContext())
             {
-                return await db.Targets.OrderBy(t => t.UnitName).ToListAsync();
+                try
+                {
+                    return await db.Targets.OrderBy(t => t.UnitName).ToListAsync();
+                }
+                catch (ArgumentNullException ex)
+                {
+                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    Message.ShowDialog();
+                }
+                catch (OperationCanceledException ex)
+                {
+                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    Message.ShowDialog();
+                }
+                return new List<TargetUnit>();
             }
+
         }
 
         public async Task<TargetUnit?> GetTargetByName(string name)
@@ -85,7 +101,7 @@ namespace WhmCalcNew.Services.DataAccess
         {
             try
             {
-            return await db.SaveChangesAsync();
+                return await db.SaveChangesAsync();
             }
             catch (OperationCanceledException ex)
             {

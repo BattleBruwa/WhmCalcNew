@@ -15,7 +15,7 @@ namespace WhmCalcNew.Views
 
         private void closeWindowBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
+            DialogResult = false;
             Close();
         }
     }
