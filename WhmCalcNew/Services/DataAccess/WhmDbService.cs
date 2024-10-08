@@ -20,12 +20,12 @@ namespace WhmCalcNew.Services.DataAccess
                 }
                 catch (ArgumentNullException ex)
                 {
-                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    var Message = new MessageWindow($"Failed to get targets from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
                     Message.ShowDialog();
                 }
                 catch (OperationCanceledException ex)
                 {
-                    var Message = new MessageWindow($"Failed to get target from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                    var Message = new MessageWindow($"Failed to get targets from Database.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
                     Message.ShowDialog();
                 }
                 return new List<TargetUnit>();

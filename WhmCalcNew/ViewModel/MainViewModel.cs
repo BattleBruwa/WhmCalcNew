@@ -127,10 +127,31 @@ namespace WhmCalcNew.ViewModel
                 ModsList.PickedMods.Remove(pickedMod);
             }
         }
+        // Комманда для удаления таргета из бд
         [RelayCommand(CanExecute = nameof(CanDeleteTarget))]
         private async Task DeleteSelectedTarget()
         {
-            var targetToDeleteTL = TargetsList.Single(t => t.UnitName == SelectedTarget.UnitName);
+            TargetUnit? targetToDeleteTL = null;
+
+            try
+            {
+            targetToDeleteTL = TargetsList.Single(t => t.UnitName == SelectedTarget.UnitName);
+            }
+            catch (ArgumentNullException ex)
+            {
+                var Message = new MessageWindow($"Failed to delete target.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
+            catch (InvalidOperationException ex)
+            {
+                var Message = new MessageWindow($"Failed to delete target.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                var Message = new MessageWindow($"Failed to delete target.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
             if (targetToDeleteTL != null)
             {
                 var targetToDeleteDB = await DbService.GetTargetByName(SelectedTarget.UnitName);
