@@ -175,17 +175,6 @@ namespace WhmCalcNew.ViewModel
             }
         }
 
-        private bool CanDeleteTarget()
-        {
-            if (SelectedTarget != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         // Сброс ввода
         [RelayCommand]
         private void ResetInput()
@@ -209,7 +198,7 @@ namespace WhmCalcNew.ViewModel
         {
             Recalculate(AttackingUnit, SelectedTarget, OutputData, ModsList.PickedMods);
         }
-
+        // Пересчет вывода
         private void Recalculate(AttackingUnit attacker, TargetUnit? target, OutputData output, ObservableCollection<Modificator> mods)
         {
             if (attacker != null && target != null && output != null)
@@ -217,6 +206,20 @@ namespace WhmCalcNew.ViewModel
                 Calc.CalculateOutput(attacker, target, output, mods);
             }
         }
+        // --------------
+        // Проверка условия для комманды удаления цели
+        private bool CanDeleteTarget()
+        {
+            if (SelectedTarget != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // ------------------------------------------
         #endregion
     }
 }
