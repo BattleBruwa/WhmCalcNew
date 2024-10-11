@@ -54,7 +54,7 @@ namespace WhmCalcNew.ViewModel
                 _outputData = value;
             }
         }
-
+        // Тема (по умолчанию темная)
         private bool isDarkThemed = true;
 
         #endregion

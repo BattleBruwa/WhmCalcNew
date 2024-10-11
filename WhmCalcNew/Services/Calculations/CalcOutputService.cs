@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using WhmCalcNew.Models;
+using WhmCalcNew.Views;
 
 namespace WhmCalcNew.Services.Calculations
 {
@@ -301,12 +302,20 @@ namespace WhmCalcNew.Services.Calculations
             lethalHits = 0d;
             devastatingWounds = 0d;
             damagePerWound = 0d;
+            try
+            {
             TotalAttacks(attacker, output);
             TotalHits(attacker, output, mods);
             TotalWounds(attacker, target, output, mods);
             TotalUnSaved(attacker, target, output, mods);
             TotalDeadModels(attacker, target, output, mods);
             TotalDamage(attacker, output, mods);
+            }
+            catch (Exception ex)
+            {
+                var Message = new MessageWindow($"Failed to calculate output.\r\n{ex.Source}\r\n{ex.Message}", MessageType.Error);
+                Message.ShowDialog();
+            }
         }
         #endregion
     }
