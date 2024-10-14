@@ -45,7 +45,7 @@
                              UpdateSourceTrigger="PropertyChanged"
                              ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
-                            <validation:AttacksDamageValidationRule />
+                            <validation:AttacksValidationRule />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -210,7 +210,7 @@
                              UpdateSourceTrigger="PropertyChanged"
                              ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
-                            <validation:AttacksDamageValidationRule />
+                            <validation:DamageValidationRule />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

@@ -10,9 +10,9 @@ namespace WhmCalcNew.Engine.Validations
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_wsPattern);
+            
             string? input = value.ToString();
-
-            if (regex.IsMatch(input) == false)
+            if (input == null || regex.IsMatch(input) == false)
             {
                 return new ValidationResult(false, "Меткость должна иметь значение от 0 до 6.");
             }

@@ -4,17 +4,17 @@ using System.Windows.Controls;
 
 namespace WhmCalcNew.Engine.Validations
 {
-    public class ArmorPenValidationRule : ValidationRule
+    internal class TargetSaveValidationRule : ValidationRule
     {
-        private const string _armorPenPattern = @"^[0-6]$";
+        private const string _savePattern = @"^[2-7]$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            Regex regex = new Regex(_armorPenPattern);
+            Regex regex = new Regex(_savePattern);
             string? input = value.ToString();
 
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Пробивание брони должно иметь значение от 0 до 6.");
+                return new ValidationResult(false, "Защита должна иметь значение от 2 до 7.");
             }
             else
             {

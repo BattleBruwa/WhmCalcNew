@@ -12,7 +12,7 @@ namespace WhmCalcNew.Engine.Validations
             Regex regex = new Regex(_strPattern);
             string? input = value.ToString();
 
-            if (regex.IsMatch(input) == false)
+            if (input == null || regex.IsMatch(input) == false)
             {
                 return new ValidationResult(false, "Сила должна иметь значение от 1 до 29.");
             }
