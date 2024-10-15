@@ -71,10 +71,17 @@
                             </ContentPresenter>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
+                            <Trigger Property="IsFocused"
+                                     Value="True">
                                 <Setter TargetName="border"
                                         Property="BorderThickness"
                                         Value="2" />
+                            </Trigger>
+                            <Trigger Property="Validation.HasError"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="BorderBrush"
+                                        Value="Red" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -84,7 +91,7 @@
         <Style.Triggers>
             <Trigger Property="Validation.HasError"
                      Value="True">
-                <Setter Property="ToolTip"
+                <Setter Property="ToolTip.Content"
                         Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
             </Trigger>
         </Style.Triggers>

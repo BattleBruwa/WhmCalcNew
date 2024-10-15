@@ -40,6 +40,15 @@
                      Style="{StaticResource EditableTextBoxTheme}"
                      Width="70"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTheme}">
+                <TextBox.ToolTip>
+                    <ToolTip Style="{StaticResource ToolTipTheme}" Content="123">
+                        <!--<TextBlock>
+<Run>A (</Run>
+<Run Foreground="{DynamicResource TextTooltipLabelColor}">Attacks</Run>
+<Run>): The amount of shots or strikes your weapon gets.</Run>
+                        </TextBlock>-->
+                    </ToolTip>
+                </TextBox.ToolTip>
                 <TextBox.Text>
                     <Binding Path="Attacks"
                              UpdateSourceTrigger="PropertyChanged"
