@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Защита должна иметь значение от 2 до 7.");
+                return new ValidationResult(false, ValidationMessages.TargetSaveError);
             }
             else
             {

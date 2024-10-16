@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Количество атак должно иметь значение от 1 до 99 или значение в формате xDx.");
+                return new ValidationResult(false, ValidationMessages.AttacksError);
             }
             else
             {

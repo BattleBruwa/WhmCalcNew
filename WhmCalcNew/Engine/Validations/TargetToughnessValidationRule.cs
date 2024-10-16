@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Стойкость должна иметь значение от 1 до 29.");
+                return new ValidationResult(false, ValidationMessages.TargetToughnessError);
             }
             else
             {

@@ -77,7 +77,8 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <StackPanel.ToolTip>
-                <ToolTip Style="{StaticResource ToolTipTheme}">
+                <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                <ToolTip>
                     <TextBlock>
     <Run>T (</Run>
     <Run Foreground="{DynamicResource TextTooltipLabelColor}">Toughness</Run>
@@ -117,7 +118,8 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <StackPanel.ToolTip>
-                <ToolTip Style="{StaticResource ToolTipTheme}">
+                <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                <ToolTip>
                     <TextBlock>
     <Run>Sv (</Run>
     <Run Foreground="{DynamicResource TextTooltipLabelColor}">Save</Run>
@@ -157,7 +159,8 @@
                    HorizontalContentAlignment="Center"
                    Height="40" />
             <StackPanel.ToolTip>
-                <ToolTip Style="{StaticResource ToolTipTheme}">
+                <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                <ToolTip>
                     <TextBlock>
     <Run>W (</Run>
     <Run Foreground="{DynamicResource TextTooltipLabelColor}">Wounds</Run>

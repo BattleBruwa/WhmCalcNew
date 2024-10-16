@@ -19,8 +19,9 @@
                   Style="{StaticResource ChangeThemeCheckBox}"
                   Command="{Binding ChangeThemeCommand}">
             <CheckBox.ToolTip>
-                <ToolTip Style="{StaticResource ToolTipTheme}">
-                    <TextBlock>Сменить тему</TextBlock>
+                <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                    <ToolTip>
+                        <TextBlock>Сменить тему</TextBlock>
                 </ToolTip>
             </CheckBox.ToolTip>
         </CheckBox>
@@ -31,7 +32,8 @@
                 Style="{StaticResource HideWindowBtnTheme}"
                 Command="{Binding HideWindowCommand}">
             <Button.ToolTip>
-                <ToolTip Style="{StaticResource ToolTipTheme}">
+                <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                <ToolTip>
                     <TextBlock>Свернуть</TextBlock>
                 </ToolTip>
             </Button.ToolTip>
@@ -44,7 +46,8 @@
                 Style="{StaticResource CloseWindowBtnTheme}"
                 Command="{Binding CloseWindowCommand}">
             <Button.ToolTip>
-                <ToolTip Style="{StaticResource ToolTipTheme}">
+                <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                <ToolTip>
                     <TextBlock>Закрыть</TextBlock>
                 </ToolTip>
             </Button.ToolTip>

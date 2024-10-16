@@ -1,9 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:validation="clr-namespace:WhmCalcNew.Engine.Validations"
+                    xmlns:local="clr-namespace:WhmCalcNew.Views.Components">
     <ControlTemplate x:Key="ValidationErrorTheme">
         <Grid>
+            <Grid.ToolTip>
+                <ToolTip
+                         Content="{Binding Path=/ErrorContent}" />
+            </Grid.ToolTip>
             <AdornedElementPlaceholder HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" />
+                                       VerticalAlignment="Center">
+            </AdornedElementPlaceholder>
         </Grid>
     </ControlTemplate>
 </ResourceDictionary>

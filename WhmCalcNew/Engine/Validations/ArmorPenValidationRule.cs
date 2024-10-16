@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Пробивание брони должно иметь значение от 0 до 6.");
+                return new ValidationResult(false, ValidationMessages.ArmorPenError);
             }
             else
             {

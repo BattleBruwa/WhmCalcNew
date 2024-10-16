@@ -32,7 +32,8 @@
                     Style="{StaticResource CloseWindowBtnTheme}"
                     Click="closeWindowBtn_Click">
                 <Button.ToolTip>
-                    <ToolTip Style="{StaticResource ToolTipTheme}">
+                    <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
+                    <ToolTip>
                         <TextBlock>Закрыть</TextBlock>
                     </ToolTip>
                 </Button.ToolTip>

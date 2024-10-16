@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
             string? input = value.ToString();
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Меткость должна иметь значение от 0 до 6.");
+                return new ValidationResult(false, ValidationMessages.AccuracyError);
             }
             else
             {

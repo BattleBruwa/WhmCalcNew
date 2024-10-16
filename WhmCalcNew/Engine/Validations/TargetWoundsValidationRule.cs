@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     internal class TargetWoundsValidationRule : ValidationRule
     {
-        private const string _woundsPattern = @"^([1-9]|[1-9][0-9])$";
+        private const string _woundsPattern = @"^([0-9]|[1-9][0-9])$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_woundsPattern);
@@ -14,7 +14,7 @@ namespace WhmCalcNew.Engine.Validations
 
             if (input == null || regex.IsMatch(input) == false)
             {
-                return new ValidationResult(false, "Количество вунд должно иметь значение от 1 до 99.");
+                return new ValidationResult(false, ValidationMessages.TargetWoundsError);
             }
             else
             {
