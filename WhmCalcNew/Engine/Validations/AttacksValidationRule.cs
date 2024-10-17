@@ -6,7 +6,7 @@ namespace WhmCalcNew.Engine.Validations
 {
     public class AttacksValidationRule : ValidationRule
     {
-        private const string _attacksPattern = @"^([1-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$";
+        private const string _attacksPattern = @"^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$";
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             Regex regex = new Regex(_attacksPattern);
