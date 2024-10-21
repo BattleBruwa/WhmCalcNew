@@ -52,14 +52,46 @@
                         Height="40"
                         Margin="50 0 0 0"
                         Style="{StaticResource ButtonTheme}"
-                        Content="Отмена"
-                        Command="{Binding CloseWindowCommand}"/>
-                <Button Content="Добавить"
+                        Command="{Binding CloseWindowCommand}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Path Fill="DarkRed"
+                                  VerticalAlignment="Center"
+                                  Margin="2"
+                                  Data="M20.4596 1.07736C20.0258 0.643506 19.3223 0.643506 18.8885 1.07736L10.7849 9.1809L2.68142 1.07736C2.24758 0.643506 1.54417 0.643506 1.11033 1.07736C0.67648 1.5112 0.67648 2.2146 1.11033 2.64844L9.21385 10.752L1.11035 18.8554C0.676502 19.2893 0.676502 19.9927 1.11035 20.4266C1.54419 20.8604 2.2476 20.8604 2.68144 20.4266L10.7849 12.323L18.8885 20.4266C19.3223 20.8604 20.0258 20.8604 20.4596 20.4266C20.8934 19.9927 20.8934 19.2893 20.4596 18.8555L12.356 10.752L20.4596 2.64844C20.8934 2.2146 20.8934 1.5112 20.4596 1.07736Z" />
+                            <TextBlock Text="Cancel"
+                                       FontSize="13"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource TextMainColor}"
+                                       Padding="2" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <Button
                         Margin="80 0 0 0"
                         Width="100"
                         Style="{StaticResource ButtonTheme}"
                         Command="{Binding AddTargetCommand}"
-                        IsEnabled="{Binding CanExecuteAddTarget, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        IsEnabled="{Binding CanExecuteAddTarget, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Path Fill="DarkGreen"
+                                  VerticalAlignment="Center"
+                                  Margin="2"
+                                  Data="M28.694 1.13877C28.1783 0.623034 27.3421 0.623034 26.8264 1.13877L10.2347 17.7305C9.71893 18.2462 8.88277 18.2462 8.36703 17.7305L2.29388 11.6574C1.77816 11.1415 0.941984 11.1415 0.426258 11.6574C-0.089473 12.1731 -0.0894743 13.0093 0.426258 13.525L6.50653 19.5941C8.05406 21.1388 10.5605 21.1378 12.1067 19.5917L28.694 3.0064C29.2097 2.49067 29.2097 1.6545 28.694 1.13877Z" />
+                            <TextBlock Text="Add"
+                                       FontSize="13"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource TextMainColor}"
+                                       Padding="2" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
                 <!--<Button Width="100"
                         Height="40"
                         Margin="70 0 0 0"
