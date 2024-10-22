@@ -77,7 +77,7 @@
                                        FontSize="13"
                                        FontWeight="Bold"
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource TextMainColor}"
+                                       Foreground="{DynamicResource BoxesInnerColor}"
                                        Padding="2" />
                         </StackPanel>
                     </Button.Content>
@@ -99,7 +99,7 @@
                                        FontSize="13"
                                        FontWeight="Bold"
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource TextMainColor}"
+                                       Foreground="{DynamicResource BoxesInnerColor}"
                                        Padding="2" />
                         </StackPanel>
                     </Button.Content>
@@ -123,7 +123,7 @@
                                        FontSize="13"
                                        FontWeight="Bold"
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource TextMainColor}"
+                                       Foreground="{DynamicResource BoxesInnerColor}"
                                        Padding="2" />
                         </StackPanel>
                     </Button.Content>

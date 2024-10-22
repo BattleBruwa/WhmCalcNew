@@ -21,7 +21,7 @@
             <CheckBox.ToolTip>
                 <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
                     <ToolTip>
-                        <TextBlock>Сменить тему</TextBlock>
+                    <TextBlock>Change Theme</TextBlock>
                 </ToolTip>
             </CheckBox.ToolTip>
         </CheckBox>
@@ -34,7 +34,7 @@
             <Button.ToolTip>
                 <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
                 <ToolTip>
-                    <TextBlock>Свернуть</TextBlock>
+                    <TextBlock>Hide</TextBlock>
                 </ToolTip>
             </Button.ToolTip>
         </Button>
@@ -48,7 +48,7 @@
             <Button.ToolTip>
                 <!--<ToolTip Style="{StaticResource ToolTipTheme}">-->
                 <ToolTip>
-                    <TextBlock>Закрыть</TextBlock>
+                    <TextBlock>Close</TextBlock>
                 </ToolTip>
             </Button.ToolTip>
         </Button>

@@ -31,6 +31,7 @@
                 <TextBox.Text>
                     <Binding Path="UnitName"
                              UpdateSourceTrigger="PropertyChanged"
+                             NotifyOnValidationError="True"
                              ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:TargetNameValidationRule />
@@ -62,6 +63,7 @@
                 <TextBox.Text>
                     <Binding Path="Toughness"
                              UpdateSourceTrigger="PropertyChanged"
+                             NotifyOnValidationError="True"
                              ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:TargetToughnessValidationRule />
@@ -103,6 +105,7 @@
                 <TextBox.Text>
                     <Binding Path="Save"
                              UpdateSourceTrigger="PropertyChanged"
+                             NotifyOnValidationError="True"
                              ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:TargetSaveValidationRule />
@@ -144,6 +147,7 @@
                 <TextBox.Text>
                     <Binding Path="Wounds"
                              UpdateSourceTrigger="PropertyChanged"
+                             NotifyOnValidationError="True"
                              ValidatesOnDataErrors="True">
                         <Binding.ValidationRules>
                             <validation:TargetWoundsValidationRule />

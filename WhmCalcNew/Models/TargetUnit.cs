@@ -11,14 +11,17 @@ namespace WhmCalcNew.Models
         [property: StringLength(20, ErrorMessage = "Ошибка имени цели")]
         private string unitName;
 
-        [MaxLength(3)]
-        public byte Toughness { get; set; }
+        [ObservableProperty]
+        [property: MaxLength(3)]
+        private byte toughness;
 
-        [MaxLength(1)]
-        public byte Save { get; set; }
+        [ObservableProperty]
+        [property: MaxLength(1)]
+        private byte save;
 
-        [MaxLength(3)]
-        public byte Wounds { get; set; }
+        [ObservableProperty]
+        [property: MaxLength(3)]
+        private byte wounds;
 
         [NotMapped]
         public string TargetProps { get => ToString(); }

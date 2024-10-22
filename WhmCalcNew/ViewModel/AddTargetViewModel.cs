@@ -1,7 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DocumentFormat.OpenXml.Office.CustomUI;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services.DataAccess;
 using WhmCalcNew.Views;
@@ -11,35 +15,24 @@ namespace WhmCalcNew.ViewModel
     public partial class AddTargetViewModel : ObservableObject
     {
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddTargetCommand))]
         private TargetUnit newTarget;
 
         public IWhmDbService DbService { get; }
 
         private readonly MainViewModel mainViewModel;
 
-        [ObservableProperty]
-        private bool canExecuteAddTarget = false;
-
         public AddTargetViewModel(IWhmDbService dbService, MainViewModel mainViewModel)
         {
             DbService = dbService;
             this.mainViewModel = mainViewModel;
             NewTarget = new TargetUnit();
-            NewTarget.PropertyChanged += NewTarget_PropertyChanged;
-        }
-
-        private void NewTarget_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(NewTarget.UnitName))
-            {
-                CanExecuteAddTarget = !string.IsNullOrWhiteSpace(NewTarget.UnitName);
-            }
         }
 
         // Реализация через [NotifyCanExecuteChangedFor] не работает, по-этому включение кнопки
         // реализавано в лоб через привязку свойства к ивенту
         // (обработчик - NewTarget_PropertyChanged)
-        [RelayCommand/*(CanExecute = nameof(CanAddTarget))*/]
+        [RelayCommand(CanExecute = nameof(CanAddTarget))]
         private async Task AddTarget()
         {
             if (await DbService.GetTargetByName(NewTarget.UnitName) == null)
@@ -66,23 +59,32 @@ namespace WhmCalcNew.ViewModel
                 }
             }
         }
-        //private bool CanAddTarget()
-        //{
-        //    if (string.IsNullOrWhiteSpace(NewTarget.UnitName))
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
+        private bool CanAddTarget()
+        {
+            if (IsValid(GetAssociatedWindow()))
+            {
+                return true;
+            }
+            else
+            { return false; }
+        }
+
+        // Метод для проверки кнопки Add
+        private void CanExecuteAddTarget(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = IsValid(sender as DependencyObject);
+        }
+
+        private bool IsValid(DependencyObject obj)
+        {
+            return !Validation.GetHasError(obj) && LogicalTreeHelper.GetChildren(obj).OfType<DependencyObject>().All(IsValid);
+        }
 
         private Window? GetAssociatedWindow()
         {
             foreach (Window item in Application.Current.Windows)
             {
-                if (item.DataContext == this)
+                if (item is AddTargetWindow && item.DataContext == this)
                 {
                     return item;
                 }
