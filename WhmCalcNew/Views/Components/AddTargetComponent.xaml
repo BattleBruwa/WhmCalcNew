@@ -6,6 +6,7 @@
              xmlns:validation="clr-namespace:WhmCalcNew.Engine.Validations"
              xmlns:local="clr-namespace:WhmCalcNew.Views.Components"
              mc:Ignorable="d"
+             x:Name="AddComponentControl"
              d:DesignHeight="230"
              d:DesignWidth="360">
     <Grid HorizontalAlignment="Center"

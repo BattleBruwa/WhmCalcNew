@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
@@ -17,6 +19,15 @@ namespace WhmCalcNew.Views
         {
             DialogResult = false;
             Close();
+        }
+
+        private async void EditableTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = (sender as TextBox);
+            if (textBox != null)
+            {
+                await Application.Current.Dispatcher.InvokeAsync(textBox.SelectAll, DispatcherPriority.Background);
+            }
         }
     }
 }

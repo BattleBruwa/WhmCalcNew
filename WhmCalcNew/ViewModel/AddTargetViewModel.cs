@@ -2,10 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using DocumentFormat.OpenXml.Office.CustomUI;
 using WhmCalcNew.Models;
 using WhmCalcNew.Services.DataAccess;
 using WhmCalcNew.Views;
@@ -29,9 +27,7 @@ namespace WhmCalcNew.ViewModel
             NewTarget = new TargetUnit();
         }
 
-        // Реализация через [NotifyCanExecuteChangedFor] не работает, по-этому включение кнопки
-        // реализавано в лоб через привязку свойства к ивенту
-        // (обработчик - NewTarget_PropertyChanged)
+        
         [RelayCommand(CanExecute = nameof(CanAddTarget))]
         private async Task AddTarget()
         {
@@ -69,13 +65,7 @@ namespace WhmCalcNew.ViewModel
             { return false; }
         }
 
-        // Метод для проверки кнопки Add
-        private void CanExecuteAddTarget(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = IsValid(sender as DependencyObject);
-        }
-
-        private bool IsValid(DependencyObject obj)
+        public bool IsValid(DependencyObject obj)
         {
             return !Validation.GetHasError(obj) && LogicalTreeHelper.GetChildren(obj).OfType<DependencyObject>().All(IsValid);
         }

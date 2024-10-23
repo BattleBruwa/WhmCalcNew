@@ -68,18 +68,6 @@ namespace WhmCalcNew.ViewModel
             AttackingUnit = new AttackingUnit();
             AttackingUnit.PropertyChanged += AttackingUnit_PropertyChanged;
             ModsList.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
-            Task test = new Task(Testing);
-            test.Start();
-        }
-
-        //Test 
-        void Testing()
-        {
-            while (true)
-            {
-                Debug.WriteLine(AttackingUnit.Attacks);
-                Thread.Sleep(1500);
-            }
         }
 
         #endregion

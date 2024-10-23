@@ -6,6 +6,8 @@
         <Style.Setters>
             <Setter Property="Background"
                     Value="{DynamicResource ButtonMainColor}" />
+            <Setter Property="IsEnabled"
+                    Value="True" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
