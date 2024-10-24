@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style BasedOn="{StaticResource {x:Type CheckBox}}"
+           TargetType="{x:Type CheckBox}"
+           x:Key="ModCheckBoxStyle">
+        <Style.Setters>
+            <Setter Property="Height"
+                    Value="70" />
+            <Setter Property="Width"
+                    Value="85" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Border Name="Border"
+                                Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}"
+                                SnapsToDevicePixels="True"
+                                BorderBrush="{DynamicResource MainOutlineColor}"
+                                Background="{DynamicResource MainWindowBackgroundColor}"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                            <ContentPresenter Name="Grid">
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter TargetName="Grid"
+                                        Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="{DynamicResource DropShadowColor}"
+                                                          ShadowDepth="0"
+                                                          Direction="0"
+                                                          BlurRadius="5" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="Border"
+                                        Property="BorderThickness"
+                                        Value="2" />
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="{DynamicResource BoxesInnerColor}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.5" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
