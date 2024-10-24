@@ -13,7 +13,6 @@
                 <ResourceDictionary Source="Visual\Styles\LabelStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ButtonStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\CheckBoxStyle.xaml" />
-                <ResourceDictionary Source="Visual\Styles\ModificatorsTextBlockStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ToolTipStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\WindowControlsStyle.xaml" />
                 <ResourceDictionary Source="Visual\Styles\ModsBoxStyle.xaml" />

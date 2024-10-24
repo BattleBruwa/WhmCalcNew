@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WhmCalcNew.Models;
@@ -13,7 +12,7 @@ namespace WhmCalcNew.ViewModel
     public partial class AddTargetViewModel : ObservableObject
     {
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(AddTargetCommand))]
+        //[NotifyCanExecuteChangedFor(nameof(AddTargetCommand))]
         private TargetUnit newTarget;
 
         public IWhmDbService DbService { get; }
@@ -25,6 +24,12 @@ namespace WhmCalcNew.ViewModel
             DbService = dbService;
             this.mainViewModel = mainViewModel;
             NewTarget = new TargetUnit();
+            NewTarget.PropertyChanged += NewTarget_PropertyChanged;
+        }
+
+        private void NewTarget_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            AddTargetCommand.NotifyCanExecuteChanged();
         }
 
         
@@ -57,12 +62,19 @@ namespace WhmCalcNew.ViewModel
         }
         private bool CanAddTarget()
         {
-            if (IsValid(GetAssociatedWindow()))
+            if (string.IsNullOrWhiteSpace(NewTarget.UnitName))
             {
-                return true;
+                return false;
             }
             else
-            { return false; }
+            {
+                if (IsValid(GetAssociatedWindow()))
+                {
+                    return true;
+                }
+                else
+                { return false; }
+            }
         }
 
         public bool IsValid(DependencyObject obj)

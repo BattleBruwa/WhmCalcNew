@@ -51,8 +51,6 @@
                 </MultiBinding>
             </CheckBox.CommandParameter>
             <CheckBox.ToolTip>
-                <!--<ToolTip Style="{StaticResource ToolTipTheme}"
-                         Content="{Binding ModInfo}" />-->
                 <ToolTip Content="{Binding ModInfo}" />
             </CheckBox.ToolTip>
             <CheckBox.Template>

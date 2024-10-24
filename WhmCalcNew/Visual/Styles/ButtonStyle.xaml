@@ -18,20 +18,6 @@
                                 BorderBrush="{DynamicResource MainOutlineColor}">
                             <ContentPresenter>
                             </ContentPresenter>
-                            <!--<Grid>
-                                <TextBox Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
-                                         BorderThickness="0"
-                                         IsHitTestVisible="False"
-                                         Background="Transparent"
-                                         VerticalAlignment="Center"
-                                         HorizontalAlignment="Center"
-                                         IsReadOnly="True"
-                                         FontSize="15"
-                                         Foreground="{DynamicResource TextMainColor}"
-                                         Padding="5"
-                                         TextWrapping="NoWrap">
-                                </TextBox>
-                            </Grid>-->
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>

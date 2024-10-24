@@ -32,7 +32,6 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-            <!--<components:AddTargetComponent x:Name="AddComponent" Grid.Row="1"/>-->
 
             <Grid HorizontalAlignment="Center"
                   Margin="55 0 0 0"
