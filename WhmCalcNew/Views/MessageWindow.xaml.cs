@@ -4,7 +4,6 @@ namespace WhmCalcNew.Views
 {
     public partial class MessageWindow : Window
     {
-
         public MessageWindow(string text, MessageType type)
         {
             InitializeComponent();

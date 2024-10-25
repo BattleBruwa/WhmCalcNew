@@ -11,7 +11,7 @@ namespace WhmCalcNew.Models
         public string ToolTip { get; set; }
 
         [JsonIgnore]
-        public byte? Condition { get; set; } = null;
+        public byte? Condition { get; set; } = null; // Для модификаторов с выбором значения
 
         [JsonIgnore]
         public string ModInfo { get => this.ToString(); }

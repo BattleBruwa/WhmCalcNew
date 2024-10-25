@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq.Expressions;
-using System.Windows;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using WhmCalcNew.Models;
 using WhmCalcNew.Views;
 

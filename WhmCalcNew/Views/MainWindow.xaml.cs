@@ -3,9 +3,6 @@ using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для Main.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         MainViewModel viewModel;

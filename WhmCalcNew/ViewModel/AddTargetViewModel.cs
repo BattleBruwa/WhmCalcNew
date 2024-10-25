@@ -12,7 +12,6 @@ namespace WhmCalcNew.ViewModel
     public partial class AddTargetViewModel : ObservableObject
     {
         [ObservableProperty]
-        //[NotifyCanExecuteChangedFor(nameof(AddTargetCommand))]
         private TargetUnit newTarget;
 
         public IWhmDbService DbService { get; }
@@ -40,7 +39,6 @@ namespace WhmCalcNew.ViewModel
             {
                 await DbService.AddTargetAsync(NewTarget);
                 mainViewModel.TargetsList.Add(NewTarget);
-                Debug.WriteLine("Target added");
                 var SuccessMessage = new MessageWindow("The target has been added to DataBase", MessageType.Success);
                 SuccessMessage.Owner = GetAssociatedWindow();
                 bool? result = SuccessMessage.ShowDialog();
@@ -53,7 +51,6 @@ namespace WhmCalcNew.ViewModel
                 if (confirmResult.Value)
                 {
                     await DbService.UpdateTargetAsync(NewTarget);
-                    Debug.WriteLine("Target updated");
                     var SuccessMessage = new MessageWindow("The target has been updated", MessageType.Success);
                     SuccessMessage.Owner = GetAssociatedWindow();
                     bool? result = SuccessMessage.ShowDialog();

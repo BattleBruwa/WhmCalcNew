@@ -164,7 +164,6 @@ namespace WhmCalcNew.ViewModel
                         await DbService.DeleteTargetAsync(targetToDeleteDB);
                         if (TargetsList.Remove(targetToDeleteTL))
                         {
-                            Debug.WriteLine("Target deleted");
                             var SuccessMessage = new MessageWindow("The target has been deleted from DataBase", MessageType.Success);
                             SuccessMessage.Owner = App.AppHost.Services.GetService<MainWindow>();
                             bool? result = SuccessMessage.ShowDialog();
