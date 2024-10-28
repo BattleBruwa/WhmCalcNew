@@ -83,8 +83,16 @@
                     VerticalAlignment="Top"
                     BorderBrush="{DynamicResource MainOutlineColor}"
                     BorderThickness="1,0,0,0">
-                <StackPanel Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+
                     <ComboBox x:Name="TargetChoiceBox"
+                              Grid.Row="0"
                               Width="150"
                               Height="50"
                               VerticalAlignment="Top"
@@ -103,10 +111,12 @@
                     </ComboBox>
                     <components:TargetPartComponent Margin="16 10 0 0"
                                                     HorizontalAlignment="Left"
+                                                    Grid.Row="1"
                                                     DataContext="{Binding ElementName=TargetChoiceBox}" />
 
                     <Button Width="100"
                             Height="40"
+                            Grid.Row="2"
                             Style="{StaticResource ButtonTheme}"
                             Margin="0 20 0 0"
                             ToolTip="Delete selected target from Database"
@@ -131,6 +141,7 @@
                     </Button>
                     <Button Width="100"
                             Height="40"
+                            Grid.Row="3"
                             ToolTip="Add new target to Database"
                             Margin="0 20 0 0"
                             Style="{StaticResource ButtonTheme}"
@@ -151,7 +162,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                </StackPanel>
+                </Grid>
             </Border>
 
             <Border Grid.Row="1"

@@ -29,6 +29,15 @@
                 <Setter Property="Opacity"
                         Value="0.5" />
             </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.98"
+                                        ScaleY="0.98" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
