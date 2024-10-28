@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using WhmCalcNew.ViewModel;
 
 namespace WhmCalcNew.Views
@@ -21,6 +22,14 @@ namespace WhmCalcNew.Views
             AttackerComponent.StrengthTB.Text = "0";
             AttackerComponent.ArmorPenTB.Text = "0";
             AttackerComponent.DamageTB.Text = "0";
+        }
+        // Драг окна
+        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
     }
 }

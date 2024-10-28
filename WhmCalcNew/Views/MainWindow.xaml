@@ -21,7 +21,7 @@
     <Border Background="{DynamicResource MainWindowBackgroundColor}"
             CornerRadius="20"
             BorderBrush="{DynamicResource MainOutlineColor}"
-            BorderThickness="2">
+            BorderThickness="2" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
