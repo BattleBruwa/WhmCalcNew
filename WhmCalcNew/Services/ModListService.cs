@@ -9,7 +9,7 @@ namespace WhmCalcNew.Services
     {
         // Путь до файла с модификаторами
         private readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
-
+        
         // Все модификаторы
         public List<Modificator> ModificatorsList { get; set; }
 
