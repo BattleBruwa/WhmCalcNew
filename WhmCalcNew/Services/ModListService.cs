@@ -8,8 +8,8 @@ namespace WhmCalcNew.Services
     public class ModListService : IModListService
     {
         // Путь до файла с модификаторами
-        private readonly string jsonPath = string.Concat(Path.GetFullPath("../../../Data"), "\\Modificators.json");
-        
+        private readonly string jsonPath = string.Concat(AppDomain.CurrentDomain.BaseDirectory, "/Data/Modificators.json");
+
         // Все модификаторы
         public List<Modificator> ModificatorsList { get; set; }
 
@@ -262,7 +262,7 @@ namespace WhmCalcNew.Services
         // Вызывается в App.OnSturtup() для заполнения коллекции модификаторов из json файла
         public async Task InitializeModListAsync()
         {
-            using (FileStream fs = new FileStream($"{jsonPath}", FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(jsonPath, FileMode.Open, FileAccess.Read))
             {
                 ModificatorsList = new(await JsonSerializer.DeserializeAsync<List<Modificator>>(fs));
                 ModificatorsList = ModificatorsList.OrderBy(x => x.Id).ToList();
